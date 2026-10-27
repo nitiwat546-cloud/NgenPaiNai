@@ -1,0 +1,34 @@
+name: Bug
+description: แจ้งสิ่งที่ทำงานผิด (เทียบได้กับ Bug ใน Jira)
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: ขั้นตอนที่ทำให้เกิด
+      placeholder: |
+        1. เปิดแผ่น "จด" บนมือถือ
+        2. แตะช่องจำนวนเงิน คีย์บอร์ดเด้งขึ้นมา
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: ควรเป็นแบบไหน
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: ตอนนี้เป็นแบบไหน
+      description: แนบภาพหน้าจอได้ (ลากไฟล์มาวาง)
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: อุปกรณ์ / เบราว์เซอร์
+      multiple: true
+      options: ["มือถือ Android (Chrome)", "iPhone (Safari)", "คอม (Chrome/Edge)", "คอม (Firefox)", "อื่นๆ"]

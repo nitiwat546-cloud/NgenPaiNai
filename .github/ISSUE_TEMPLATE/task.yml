@@ -1,0 +1,19 @@
+name: Task
+description: งานเทคนิคที่ไม่ใช่ฟีเจอร์โดยตรง เช่น เขียนเทสต์ ตั้งค่า deploy (เทียบได้กับ Task ใน Jira)
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: ต้องทำอะไร
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      placeholder: |
+        - [ ] …
+    validations:
+      required: true

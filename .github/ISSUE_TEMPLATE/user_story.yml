@@ -1,0 +1,38 @@
+name: User story
+description: ฟีเจอร์จากมุมมองผู้ใช้ (เทียบได้กับ Story ใน Jira)
+title: "[Story] "
+labels: ["story"]
+# ถ้ารู้เลข Project แล้ว ใส่ตรงนี้ได้ เพื่อให้ issue ถูกเพิ่มเข้า Project อัตโนมัติ เช่น ["pthanathon/1"]
+# projects: ["pthanathon/1"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: เขียนในรูป "ในฐานะ… ฉันอยาก… เพื่อ…"
+      placeholder: ในฐานะคนที่จดรายจ่ายก่อนนอน ฉันอยากตั้งเป้าเก็บเงินต่อเดือน เพื่อรู้ว่าเดือนนี้เก็บได้ตามเป้าไหม
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: เงื่อนไขที่ต้องผ่านถึงจะถือว่า "เสร็จ" เขียนเป็น checklist
+      placeholder: |
+        - [ ] ตั้งเป้าเก็บเงินได้ในเมนู ⋯
+        - [ ] แผงหน้าแรกบอกว่าเก็บได้กี่ % ของเป้า
+    validations:
+      required: true
+  - type: dropdown
+    id: points
+    attributes:
+      label: Story points (ประมาณการ)
+      description: ฟอร์มนี้ใส่ค่าลงฟิลด์ใน Project ให้ไม่ได้ ต้องไปตั้งฟิลด์ "Points" ใน Project เองอีกครั้ง
+      options: ["1", "2", "3", "5", "8", "13", "ยังไม่ได้ประมาณ"]
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: หมายเหตุ / ลิงก์ที่เกี่ยวข้อง
+      placeholder: เช่น Epic ที่เป็นแม่ของงานนี้ ภาพร่าง หรือข้อจำกัด
