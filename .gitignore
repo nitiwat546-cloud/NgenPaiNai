@@ -1,0 +1,4 @@
+# Impeccable: ไฟล์ชั่วคราวระหว่างทำงาน
+.impeccable/hook.cache.json
+.impeccable/review/
+.impeccable/questions/

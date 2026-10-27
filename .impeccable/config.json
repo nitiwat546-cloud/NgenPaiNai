@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-10-20T08:15:20.825Z",
+        "reason": "brief-pinned: the user's chosen reference (ZZZ site) grounds every section in a fine diagonal hatch; this is the pinned world's ground texture, kept at 3% opacity"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-21T01:11:04.797Z",
+        "reason": "finish reviewer confirmed false positive: <dialog class=sheet> has padding 0 by design; its child #txForm/.menu carries calc(18px + safe-area) bottom padding"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/*"
+        ],
+        "createdAt": "2026-10-21T01:18:02.325Z",
+        "reason": "spent decision-round sketches of unchosen directions; they intentionally use other worlds' fonts and never ship"
+      }
+    ]
+  }
+}

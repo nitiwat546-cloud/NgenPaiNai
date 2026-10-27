@@ -1,0 +1,735 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T01:16:48.465Z",
+  "title": "Design System: เงินไปไหน (NgenPaiNai)",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Alley Ground",
+        "canonical": "#0f0f0f",
+        "oklch": "oklch(16.8% 0 77.1)",
+        "tonalRamp": [
+          "oklch(15% 0 77.1)",
+          "oklch(25% 0 77.1)",
+          "oklch(35% 0 77.1)",
+          "oklch(45% 0 77.1)",
+          "oklch(55% 0 77.1)",
+          "oklch(65% 0 77.1)",
+          "oklch(80% 0 77.1)",
+          "oklch(95% 0 77.1)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Charcoal Panel",
+        "canonical": "#1a1a1a",
+        "oklch": "oklch(21.8% 0 77.1)",
+        "tonalRamp": [
+          "oklch(15% 0 77.1)",
+          "oklch(25% 0 77.1)",
+          "oklch(35% 0 77.1)",
+          "oklch(45% 0 77.1)",
+          "oklch(55% 0 77.1)",
+          "oklch(65% 0 77.1)",
+          "oklch(80% 0 77.1)",
+          "oklch(95% 0 77.1)"
+        ]
+      },
+      "panel-2": {
+        "role": "neutral",
+        "displayName": "Charcoal Lift",
+        "canonical": "#242424",
+        "oklch": "oklch(26% 0 77.1)",
+        "tonalRamp": [
+          "oklch(15% 0 77.1)",
+          "oklch(25% 0 77.1)",
+          "oklch(35% 0 77.1)",
+          "oklch(45% 0 77.1)",
+          "oklch(55% 0 77.1)",
+          "oklch(65% 0 77.1)",
+          "oklch(80% 0 77.1)",
+          "oklch(95% 0 77.1)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Seam",
+        "canonical": "#2e2e2e",
+        "oklch": "oklch(30.1% 0 77.1)",
+        "tonalRamp": [
+          "oklch(15% 0 77.1)",
+          "oklch(25% 0 77.1)",
+          "oklch(35% 0 77.1)",
+          "oklch(45% 0 77.1)",
+          "oklch(55% 0 77.1)",
+          "oklch(65% 0 77.1)",
+          "oklch(80% 0 77.1)",
+          "oklch(95% 0 77.1)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Bone Ink",
+        "canonical": "#f4f4ee",
+        "oklch": "oklch(96.5% 0.008 106.5)",
+        "tonalRamp": [
+          "oklch(15% 0.008 106.5)",
+          "oklch(25% 0.008 106.5)",
+          "oklch(35% 0.008 106.5)",
+          "oklch(45% 0.008 106.5)",
+          "oklch(55% 0.008 106.5)",
+          "oklch(65% 0.008 106.5)",
+          "oklch(80% 0.008 106.5)",
+          "oklch(95% 0.008 106.5)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Stone Muted",
+        "canonical": "#a6a69c",
+        "oklch": "oklch(72.2% 0.014 106.7)",
+        "tonalRamp": [
+          "oklch(15% 0.014 106.7)",
+          "oklch(25% 0.014 106.7)",
+          "oklch(35% 0.014 106.7)",
+          "oklch(45% 0.014 106.7)",
+          "oklch(55% 0.014 106.7)",
+          "oklch(65% 0.014 106.7)",
+          "oklch(80% 0.014 106.7)",
+          "oklch(95% 0.014 106.7)"
+        ]
+      },
+      "lime": {
+        "role": "primary",
+        "displayName": "Acid Lime",
+        "canonical": "#d4ff2a",
+        "oklch": "oklch(93.7% 0.217 121.5)",
+        "tonalRamp": [
+          "oklch(15% 0.2 121.5)",
+          "oklch(25% 0.2 121.5)",
+          "oklch(35% 0.2 121.5)",
+          "oklch(45% 0.2 121.5)",
+          "oklch(55% 0.2 121.5)",
+          "oklch(65% 0.2 121.5)",
+          "oklch(80% 0.2 121.5)",
+          "oklch(95% 0.2 121.5)"
+        ]
+      },
+      "on-lime": {
+        "role": "primary",
+        "displayName": "On Lime",
+        "canonical": "#0f0f0f",
+        "oklch": "oklch(16.8% 0 77.1)",
+        "tonalRamp": [
+          "oklch(15% 0 77.1)",
+          "oklch(25% 0 77.1)",
+          "oklch(35% 0 77.1)",
+          "oklch(45% 0 77.1)",
+          "oklch(55% 0 77.1)",
+          "oklch(65% 0 77.1)",
+          "oklch(80% 0 77.1)",
+          "oklch(95% 0 77.1)"
+        ]
+      },
+      "on-lime-2": {
+        "role": "primary",
+        "displayName": "On Lime Secondary",
+        "canonical": "#3d4d00",
+        "oklch": "oklch(39.2% 0.095 122.2)",
+        "tonalRamp": [
+          "oklch(15% 0.095 122.2)",
+          "oklch(25% 0.095 122.2)",
+          "oklch(35% 0.095 122.2)",
+          "oklch(45% 0.095 122.2)",
+          "oklch(55% 0.095 122.2)",
+          "oklch(65% 0.095 122.2)",
+          "oklch(80% 0.095 122.2)",
+          "oklch(95% 0.095 122.2)"
+        ]
+      },
+      "coral": {
+        "role": "secondary",
+        "displayName": "Signal Coral",
+        "canonical": "#ff5c5c",
+        "oklch": "oklch(69.1% 0.199 23.9)",
+        "tonalRamp": [
+          "oklch(15% 0.199 23.9)",
+          "oklch(25% 0.199 23.9)",
+          "oklch(35% 0.199 23.9)",
+          "oklch(45% 0.199 23.9)",
+          "oklch(55% 0.199 23.9)",
+          "oklch(65% 0.199 23.9)",
+          "oklch(80% 0.199 23.9)",
+          "oklch(95% 0.199 23.9)"
+        ]
+      },
+      "on-coral": {
+        "role": "secondary",
+        "displayName": "On Coral",
+        "canonical": "#1a0505",
+        "oklch": "oklch(15.5% 0.039 22.8)",
+        "tonalRamp": [
+          "oklch(15% 0.039 22.8)",
+          "oklch(25% 0.039 22.8)",
+          "oklch(35% 0.039 22.8)",
+          "oklch(45% 0.039 22.8)",
+          "oklch(55% 0.039 22.8)",
+          "oklch(65% 0.039 22.8)",
+          "oklch(80% 0.039 22.8)",
+          "oklch(95% 0.039 22.8)"
+        ]
+      },
+      "on-coral-2": {
+        "role": "secondary",
+        "displayName": "On Coral Secondary",
+        "canonical": "#5c1010",
+        "oklch": "oklch(31.2% 0.108 26.2)",
+        "tonalRamp": [
+          "oklch(15% 0.108 26.2)",
+          "oklch(25% 0.108 26.2)",
+          "oklch(35% 0.108 26.2)",
+          "oklch(45% 0.108 26.2)",
+          "oklch(55% 0.108 26.2)",
+          "oklch(65% 0.108 26.2)",
+          "oklch(80% 0.108 26.2)",
+          "oklch(95% 0.108 26.2)"
+        ]
+      },
+      "pill": {
+        "role": "neutral",
+        "displayName": "Bone Pill",
+        "canonical": "#f4f4ee",
+        "oklch": "oklch(96.5% 0.008 106.5)",
+        "tonalRamp": [
+          "oklch(15% 0.008 106.5)",
+          "oklch(25% 0.008 106.5)",
+          "oklch(35% 0.008 106.5)",
+          "oklch(45% 0.008 106.5)",
+          "oklch(55% 0.008 106.5)",
+          "oklch(65% 0.008 106.5)",
+          "oklch(80% 0.008 106.5)",
+          "oklch(95% 0.008 106.5)"
+        ]
+      },
+      "reel-black": {
+        "role": "neutral",
+        "displayName": "Reel Black",
+        "canonical": "#000000",
+        "oklch": "oklch(0% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "cat-food": {
+        "role": "tertiary",
+        "displayName": "Food Orange",
+        "canonical": "#ff9f43",
+        "oklch": "oklch(78.5% 0.154 60.7)",
+        "tonalRamp": [
+          "oklch(15% 0.154 60.7)",
+          "oklch(25% 0.154 60.7)",
+          "oklch(35% 0.154 60.7)",
+          "oklch(45% 0.154 60.7)",
+          "oklch(55% 0.154 60.7)",
+          "oklch(65% 0.154 60.7)",
+          "oklch(80% 0.154 60.7)",
+          "oklch(95% 0.154 60.7)"
+        ]
+      },
+      "cat-drink": {
+        "role": "tertiary",
+        "displayName": "Milk Tea",
+        "canonical": "#d9b48f",
+        "oklch": "oklch(79.3% 0.066 66.6)",
+        "tonalRamp": [
+          "oklch(15% 0.066 66.6)",
+          "oklch(25% 0.066 66.6)",
+          "oklch(35% 0.066 66.6)",
+          "oklch(45% 0.066 66.6)",
+          "oklch(55% 0.066 66.6)",
+          "oklch(65% 0.066 66.6)",
+          "oklch(80% 0.066 66.6)",
+          "oklch(95% 0.066 66.6)"
+        ]
+      },
+      "cat-transport": {
+        "role": "tertiary",
+        "displayName": "Transit Cyan",
+        "canonical": "#4cc9f0",
+        "oklch": "oklch(78.2% 0.121 222.5)",
+        "tonalRamp": [
+          "oklch(15% 0.121 222.5)",
+          "oklch(25% 0.121 222.5)",
+          "oklch(35% 0.121 222.5)",
+          "oklch(45% 0.121 222.5)",
+          "oklch(55% 0.121 222.5)",
+          "oklch(65% 0.121 222.5)",
+          "oklch(80% 0.121 222.5)",
+          "oklch(95% 0.121 222.5)"
+        ]
+      },
+      "cat-shopping": {
+        "role": "tertiary",
+        "displayName": "Shopping Pink",
+        "canonical": "#ff7ab8",
+        "oklch": "oklch(75.1% 0.174 352.9)",
+        "tonalRamp": [
+          "oklch(15% 0.174 352.9)",
+          "oklch(25% 0.174 352.9)",
+          "oklch(35% 0.174 352.9)",
+          "oklch(45% 0.174 352.9)",
+          "oklch(55% 0.174 352.9)",
+          "oklch(65% 0.174 352.9)",
+          "oklch(80% 0.174 352.9)",
+          "oklch(95% 0.174 352.9)"
+        ]
+      },
+      "cat-bills": {
+        "role": "tertiary",
+        "displayName": "Bill Yellow",
+        "canonical": "#ffd43b",
+        "oklch": "oklch(88.3% 0.165 92.2)",
+        "tonalRamp": [
+          "oklch(15% 0.165 92.2)",
+          "oklch(25% 0.165 92.2)",
+          "oklch(35% 0.165 92.2)",
+          "oklch(45% 0.165 92.2)",
+          "oklch(55% 0.165 92.2)",
+          "oklch(65% 0.165 92.2)",
+          "oklch(80% 0.165 92.2)",
+          "oklch(95% 0.165 92.2)"
+        ]
+      },
+      "cat-home": {
+        "role": "tertiary",
+        "displayName": "Home Periwinkle",
+        "canonical": "#a5abff",
+        "oklch": "oklch(76.9% 0.12 280)",
+        "tonalRamp": [
+          "oklch(15% 0.12 280)",
+          "oklch(25% 0.12 280)",
+          "oklch(35% 0.12 280)",
+          "oklch(45% 0.12 280)",
+          "oklch(55% 0.12 280)",
+          "oklch(65% 0.12 280)",
+          "oklch(80% 0.12 280)",
+          "oklch(95% 0.12 280)"
+        ]
+      },
+      "cat-health": {
+        "role": "tertiary",
+        "displayName": "Health Mint",
+        "canonical": "#63e6be",
+        "oklch": "oklch(84.1% 0.13 170.1)",
+        "tonalRamp": [
+          "oklch(15% 0.13 170.1)",
+          "oklch(25% 0.13 170.1)",
+          "oklch(35% 0.13 170.1)",
+          "oklch(45% 0.13 170.1)",
+          "oklch(55% 0.13 170.1)",
+          "oklch(65% 0.13 170.1)",
+          "oklch(80% 0.13 170.1)",
+          "oklch(95% 0.13 170.1)"
+        ]
+      },
+      "cat-fun": {
+        "role": "tertiary",
+        "displayName": "Fun Lilac",
+        "canonical": "#c39bff",
+        "oklch": "oklch(76.4% 0.145 301.5)",
+        "tonalRamp": [
+          "oklch(15% 0.145 301.5)",
+          "oklch(25% 0.145 301.5)",
+          "oklch(35% 0.145 301.5)",
+          "oklch(45% 0.145 301.5)",
+          "oklch(55% 0.145 301.5)",
+          "oklch(65% 0.145 301.5)",
+          "oklch(80% 0.145 301.5)",
+          "oklch(95% 0.145 301.5)"
+        ]
+      },
+      "cat-merit": {
+        "role": "tertiary",
+        "displayName": "Merit Peach",
+        "canonical": "#ffb3a7",
+        "oklch": "oklch(83.6% 0.091 29.1)",
+        "tonalRamp": [
+          "oklch(15% 0.091 29.1)",
+          "oklch(25% 0.091 29.1)",
+          "oklch(35% 0.091 29.1)",
+          "oklch(45% 0.091 29.1)",
+          "oklch(55% 0.091 29.1)",
+          "oklch(65% 0.091 29.1)",
+          "oklch(80% 0.091 29.1)",
+          "oklch(95% 0.091 29.1)"
+        ]
+      },
+      "cat-other": {
+        "role": "tertiary",
+        "displayName": "Other Grey",
+        "canonical": "#b4b4ac",
+        "oklch": "oklch(76.8% 0.011 106.7)",
+        "tonalRamp": [
+          "oklch(15% 0.011 106.7)",
+          "oklch(25% 0.011 106.7)",
+          "oklch(35% 0.011 106.7)",
+          "oklch(45% 0.011 106.7)",
+          "oklch(55% 0.011 106.7)",
+          "oklch(65% 0.011 106.7)",
+          "oklch(80% 0.011 106.7)",
+          "oklch(95% 0.011 106.7)"
+        ]
+      },
+      "cat-salary": {
+        "role": "tertiary",
+        "displayName": "Salary Pale Lime",
+        "canonical": "#e9ff8a",
+        "oklch": "oklch(96% 0.144 118)",
+        "tonalRamp": [
+          "oklch(15% 0.144 118)",
+          "oklch(25% 0.144 118)",
+          "oklch(35% 0.144 118)",
+          "oklch(45% 0.144 118)",
+          "oklch(55% 0.144 118)",
+          "oklch(65% 0.144 118)",
+          "oklch(80% 0.144 118)",
+          "oklch(95% 0.144 118)"
+        ]
+      },
+      "cat-side": {
+        "role": "tertiary",
+        "displayName": "Side Gold",
+        "canonical": "#ffe066",
+        "oklch": "oklch(91% 0.144 95.1)",
+        "tonalRamp": [
+          "oklch(15% 0.144 95.1)",
+          "oklch(25% 0.144 95.1)",
+          "oklch(35% 0.144 95.1)",
+          "oklch(45% 0.144 95.1)",
+          "oklch(55% 0.144 95.1)",
+          "oklch(65% 0.144 95.1)",
+          "oklch(80% 0.144 95.1)",
+          "oklch(95% 0.144 95.1)"
+        ]
+      },
+      "cat-gift": {
+        "role": "tertiary",
+        "displayName": "Gift Rose",
+        "canonical": "#ff9fbd",
+        "oklch": "oklch(80.8% 0.119 359.9)",
+        "tonalRamp": [
+          "oklch(15% 0.119 359.9)",
+          "oklch(25% 0.119 359.9)",
+          "oklch(35% 0.119 359.9)",
+          "oklch(45% 0.119 359.9)",
+          "oklch(55% 0.119 359.9)",
+          "oklch(65% 0.119 359.9)",
+          "oklch(80% 0.119 359.9)",
+          "oklch(95% 0.119 359.9)"
+        ]
+      },
+      "cat-refund": {
+        "role": "tertiary",
+        "displayName": "Refund Sky",
+        "canonical": "#80c8ff",
+        "oklch": "oklch(80.6% 0.107 242.6)",
+        "tonalRamp": [
+          "oklch(15% 0.107 242.6)",
+          "oklch(25% 0.107 242.6)",
+          "oklch(35% 0.107 242.6)",
+          "oklch(45% 0.107 242.6)",
+          "oklch(55% 0.107 242.6)",
+          "oklch(65% 0.107 242.6)",
+          "oklch(80% 0.107 242.6)",
+          "oklch(95% 0.107 242.6)"
+        ]
+      },
+      "cat-other-in": {
+        "role": "tertiary",
+        "displayName": "Other Silver",
+        "canonical": "#d0d4d8",
+        "oklch": "oklch(86.8% 0.007 247.9)",
+        "tonalRamp": [
+          "oklch(15% 0.007 247.9)",
+          "oklch(25% 0.007 247.9)",
+          "oklch(35% 0.007 247.9)",
+          "oklch(45% 0.007 247.9)",
+          "oklch(55% 0.007 247.9)",
+          "oklch(65% 0.007 247.9)",
+          "oklch(80% 0.007 247.9)",
+          "oklch(95% 0.007 247.9)"
+        ]
+      },
+      "hatch": {
+        "role": "neutral",
+        "displayName": "Hatch",
+        "canonical": "rgb(255 255 255 / 0.03)",
+        "purpose": "135deg repeating-linear-gradient on ground: 1px line every 7px."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Numeral",
+        "purpose": "Remaining-money total on the answer panel only."
+      },
+      "numeral-entry": {
+        "displayName": "Numeral Entry",
+        "purpose": "Amount input in the entry sheet (2rem in the budget field)."
+      },
+      "numeral-sm": {
+        "displayName": "Numeral Small",
+        "purpose": "Day totals and stat block numbers (1.15-1.35rem)."
+      },
+      "headline": {
+        "displayName": "Logo Headline",
+        "purpose": "App name in Kanit 800 italic, followed by a skewed lime block."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sheet, stat block, menu group and empty-state headings (1.05-1.2rem)."
+      },
+      "label": {
+        "displayName": "Control Label",
+        "purpose": "All buttons, tabs, pills, chips and the answer tab."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "UI text; row titles at 500, row amounts at 600 tabular."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Muted secondary lines, field labels, legend (0.72-0.92rem)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "float",
+        "value": "0 8px 24px rgb(0 0 0 / 0.55)",
+        "purpose": "Floating add button; toast uses the same at 0.5."
+      },
+      {
+        "name": "scrim",
+        "value": "rgb(0 0 0 / 0.66)",
+        "purpose": "Sheet backdrop."
+      },
+      {
+        "name": "inset-ring-lime",
+        "value": "inset 0 0 0 2px #d4ff2a",
+        "purpose": "Selected category button in the entry sheet."
+      },
+      {
+        "name": "today-ring",
+        "value": "0 0 0 2px #000, 0 0 0 3.5px var(--face)",
+        "purpose": "Today hole on the answer reel."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #d4ff2a; outline-offset: 2px",
+        "purpose": "Global :focus-visible."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Single easing for every transition and keyframe."
+      },
+      {
+        "name": "sheet-in",
+        "value": "0.32s; from translateY(40px) opacity 0",
+        "purpose": "Sheet entrance."
+      },
+      {
+        "name": "count-up",
+        "value": "450ms; exponential ease-out 1 - 2^(-10p), in JS",
+        "purpose": "Answer total counts from the old to the new value after a save."
+      },
+      {
+        "name": "hole-pop",
+        "value": "0.5s; 40% scaleY(1.7)",
+        "purpose": "Today hole pops once after saving a transaction dated today."
+      },
+      {
+        "name": "face-swap",
+        "value": "background-color 0.4s",
+        "purpose": "Answer face changes lime to coral when over budget."
+      },
+      {
+        "name": "fab-lift",
+        "value": "transform 0.2s; hover translateY(-2px), active scale(0.96)",
+        "purpose": "Floating add button feedback."
+      },
+      {
+        "name": "toast",
+        "value": "opacity 0.2s, transform 0.3s; rises 14px",
+        "purpose": "Undo toast."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none; transition: none on all elements",
+        "purpose": "prefers-reduced-motion disables all motion; count-up is skipped in JS."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "column",
+        "value": "540px",
+        "purpose": "Max app column width; FAB anchors to its right edge."
+      },
+      {
+        "name": "sheet-dialog",
+        "value": "640px",
+        "purpose": "Sheet becomes a centered 480px dialog with 22px radius on all corners."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Lime pill for the one primary action in a sheet (save).",
+      "html": "<button class=\"ds-btn ds-btn-primary\">บันทึก</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:999px;min-height:46px;padding:0 22px;font-family:\"Kanit\",\"Anuphan\",sans-serif;font-weight:600;font-size:16px;cursor:pointer}.ds-btn-primary{background:var(--lime,#d4ff2a);color:var(--on-lime,#0f0f0f)}.ds-btn-primary:hover{filter:brightness(1.06)}.ds-btn:focus-visible{outline:2px solid var(--lime,#d4ff2a);outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Charcoal pill for secondary actions.",
+      "html": "<button class=\"ds-btn2\">ยกเลิก</button>",
+      "css": ".ds-btn2{border:none;border-radius:999px;min-height:46px;padding:0 22px;font-family:\"Kanit\",\"Anuphan\",sans-serif;font-weight:600;font-size:16px;background:var(--panel-2,#242424);color:var(--ink,#f4f4ee);cursor:pointer}.ds-btn2:focus-visible{outline:2px solid var(--lime,#d4ff2a);outline-offset:2px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent pill in muted text; brightens to ink on hover.",
+      "html": "<button class=\"ds-btn3\">ปิด</button>",
+      "css": ".ds-btn3{border:none;border-radius:999px;min-height:46px;padding:0 22px;font-family:\"Kanit\",\"Anuphan\",sans-serif;font-weight:600;font-size:16px;background:transparent;color:var(--muted,#a6a69c);cursor:pointer}.ds-btn3:hover{color:var(--ink,#f4f4ee)}.ds-btn3:focus-visible{outline:2px solid var(--lime,#d4ff2a);outline-offset:2px}"
+    },
+    {
+      "name": "Floating Add Button",
+      "kind": "button",
+      "refersTo": "fab",
+      "description": "Lime pill under the thumb in Kanit 800 italic; the only floating control.",
+      "html": "<button class=\"ds-fab\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>จด</button>",
+      "css": ".ds-fab{display:inline-flex;align-items:center;gap:6px;height:58px;padding:0 26px 0 20px;border:none;border-radius:999px;background:var(--lime,#d4ff2a);color:var(--on-lime,#0f0f0f);font-family:\"Kanit\",sans-serif;font-weight:800;font-style:italic;font-size:1.2rem;box-shadow:0 8px 24px rgb(0 0 0 / .55);transition:transform .2s cubic-bezier(.16,1,.3,1);cursor:pointer}.ds-fab svg{stroke-width:3;width:24px;height:24px}.ds-fab:hover{transform:translateY(-2px)}.ds-fab:active{transform:scale(.96)}.ds-fab:focus-visible{outline:2px solid var(--lime,#d4ff2a);outline-offset:2px}"
+    },
+    {
+      "name": "Pill Tabs",
+      "kind": "nav",
+      "refersTo": "pill-tab-active",
+      "description": "Charcoal pill track; the selected pill is bone white with black text.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">รายการ</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">เงินไปไหน</button></div>",
+      "css": ".ds-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--panel,#1a1a1a);border-radius:999px;padding:4px;width:320px}.ds-tab{border:none;background:none;border-radius:999px;min-height:40px;font-family:\"Kanit\",sans-serif;font-weight:600;font-size:16px;color:var(--muted,#a6a69c);cursor:pointer}.ds-tab:hover{color:var(--ink,#f4f4ee)}.ds-tab[aria-selected=\"true\"]{background:var(--pill,#f4f4ee);color:var(--on-lime,#0f0f0f)}.ds-tab:focus-visible{outline:2px solid var(--lime,#d4ff2a);outline-offset:2px}"
+    },
+    {
+      "name": "Day Chips",
+      "kind": "chip",
+      "refersTo": "chip-now",
+      "description": "Day-group chips; today is lime.",
+      "html": "<span class=\"ds-chip ds-now\">วันนี้</span> <span class=\"ds-chip\">เมื่อวาน</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;background:var(--panel-2,#242424);color:var(--ink,#f4f4ee);font-family:\"Kanit\",sans-serif;font-weight:600;font-size:.85rem;padding:2px 12px;border-radius:999px}.ds-now{background:var(--lime,#d4ff2a);color:var(--on-lime,#0f0f0f)}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field-input",
+      "description": "Ground-filled field with a seam border that turns lime on focus.",
+      "html": "<label class=\"ds-field\"><span>บันทึกช่วยจำ</span><input placeholder=\"เช่น ข้าวมันไก่\"></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:6px;width:280px;font-family:\"Anuphan\",sans-serif}.ds-field span{font-size:.85rem;color:var(--muted,#a6a69c)}.ds-field input{min-height:46px;border:1.5px solid var(--line,#2e2e2e);border-radius:12px;background:var(--ground,#0f0f0f);color:var(--ink,#f4f4ee);padding:9px 12px;font:inherit;font-size:16px}.ds-field input::placeholder{color:#8f8f86}.ds-field input:focus{outline:none;border-color:var(--lime,#d4ff2a)}"
+    },
+    {
+      "name": "Transaction Row in Cut Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Charcoal panel with one cut top-right corner holding rows with category sticker tiles.",
+      "html": "<ul class=\"ds-panel\"><li><button class=\"ds-tx\"><span class=\"ds-tile\" style=\"background:#d9b48f\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6.5 8h11l-1.4 12.2a1 1 0 0 1-1 .8H8.9a1 1 0 0 1-1-.8Z\"/><path d=\"m12 8 1.6-5H17M7 13h10\"/></svg></span><span class=\"ds-main\"><span>กาแฟ</span><small>เครื่องดื่ม</small></span><b>−฿55</b></button></li></ul>",
+      "css": ".ds-panel{list-style:none;margin:0;padding:0;width:340px;background:var(--panel,#1a1a1a);border-radius:16px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%);overflow:hidden}.ds-tx{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;min-height:60px;border:none;background:none;color:var(--ink,#f4f4ee);font-family:\"Anuphan\",sans-serif;font-size:16px;text-align:left;cursor:pointer}.ds-tx:hover{background:var(--panel-2,#242424)}.ds-tx:focus-visible{outline:2px solid #d4ff2a;outline-offset:-2px}.ds-tile{flex:none;width:38px;height:38px;display:grid;place-items:center;border-radius:10px;color:#0f0f0f}.ds-main{flex:1;display:flex;flex-direction:column;font-weight:500}.ds-main small{font-size:.82rem;color:var(--muted,#a6a69c);font-weight:400}.ds-tx b{font-weight:600;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Answer Panel",
+      "kind": "custom",
+      "refersTo": "answer-panel",
+      "description": "Signature: black panel with a slanted question tab, lime face, Anton total, and a per-day film-strip reel.",
+      "html": "<section class=\"ds-answer\"><div class=\"ds-ah\"><span class=\"ds-atab\">เดือนนี้ใช้ได้อีก</span><span class=\"ds-afill\"></span></div><div class=\"ds-ab\"><p class=\"ds-anum\"><span class=\"ds-cur\">฿</span>6,530</p><p class=\"ds-aline\">อีก 11 วัน · ใช้ได้วันละ <b>฿593</b></p></div><div class=\"ds-reel\"><i class=\"hi\"></i><i class=\"ok\"></i><i class=\"ok\"></i><i class=\"none\"></i><i class=\"hi\"></i><i class=\"ok\"></i><i class=\"ok\"></i><i class=\"none today\"></i><i class=\"future\"></i><i class=\"future\"></i><i class=\"future\"></i><i class=\"future\"></i></div></section>",
+      "css": ".ds-answer{--face:#d4ff2a;width:360px;background:#000;color:#0f0f0f;border-radius:16px;clip-path:polygon(0 0,calc(100% - 28.8px) 0,100% 28.8px,100% 100%,0 100%);overflow:hidden}.ds-ah{display:flex}.ds-atab{color:var(--face);font-family:\"Kanit\",sans-serif;font-weight:600;font-size:.95rem;padding:7px 14px 7px 16px}.ds-afill{flex:1;margin-left:-2px;margin-bottom:-1px;background:var(--face);clip-path:polygon(16px 0,100% 0,100% 100%,0 100%)}.ds-ab{padding:6px 18px 16px;background:var(--face)}.ds-anum{margin:0;font-family:\"Anton\",\"Kanit\",sans-serif;font-size:4.6rem;line-height:1.05;font-variant-numeric:tabular-nums}.ds-cur{font-family:\"Kanit\",sans-serif;font-weight:800;font-size:.55em;margin-right:.08em;vertical-align:.38em}.ds-aline{margin:2px 0 0;font-family:\"Anuphan\",sans-serif;font-weight:500;color:#3d4d00}.ds-aline b{color:#0f0f0f;font-weight:600}.ds-reel{display:flex;gap:3px;padding:9px 12px}.ds-reel i{flex:1;height:13px;border-radius:3px}.ds-reel .ok{background:#f4f4ee}.ds-reel .hi{background:#ff5c5c}.ds-reel .none{box-shadow:inset 0 0 0 1.5px #77776e}.ds-reel .future{box-shadow:inset 0 0 0 1.5px #2c2c2a}.ds-reel .today.none{box-shadow:inset 0 0 0 1.5px #77776e,0 0 0 2px #000,0 0 0 3.5px var(--face)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "ป้ายไฟมะนาวในซอยมืด (The Acid Signal)",
+    "overview": "ทั้งแอปคือซอยกลางคืนที่มืด เงียบ และมีลายเส้นทแยงละเอียดบนพื้น มีป้ายไฟสีเขียวมะนาวป้ายเดียวที่ตะโกนคำตอบว่าเดือนนี้ใช้ได้อีกเท่าไร ภาษาภาพมาจาก street-pop แบบเว็บ Zenless Zone Zero ที่ผู้ใช้ปักหมุดไว้ (ใช้เฉพาะภาษาภาพ ไม่มีโลโก้ ตัวละคร หรือแอสเซ็ตของแบรนด์) ได้แก่ ตัวเลข condensed หนักมาก แผงมุมมนที่ถูกตัดเฉียงหนึ่งมุม แท็บหัวขอบเฉียง แถบฟิล์มมีรู และตัวควบคุมทรงเม็ดยาที่อันทำงานเป็นสีขาว\n\nความหนาแน่นเป็นแบบแอปมือถือคอลัมน์เดียว (กว้างสุด 540px) ใช้ในห้องแสงน้อยก่อนนอน จึงเป็นโหมดมืดเท่านั้น (`color-scheme: dark`) ความลึกมาจากชั้นโทนเทาถ่านมากกว่าเงา สีสดมีแค่สามกลุ่ม: มะนาวสำหรับคำตอบและการกระทำ คอรัลสำหรับเกินงบ และสีสติกเกอร์ของหมวด ที่เหลือคือเทากับขาวนวล\n\nภาพที่ปฏิเสธ (ยืนยันใน direction contract): การ์ดขาวมุมมนกับป้ายเขียว/แดงแบบแอปการเงินทั่วไป แอปธนาคารที่เย็นชา และความน่ารักแบบพาสเทลมาสคอต",
+    "keyCharacteristics": [
+      "โหมดมืดเท่านั้น พื้นเกือบดำมีลายทแยง 135° ความทึบ 3%",
+      "มะนาวแสบเป็นป้ายไฟเดียวของหน้าจอ ไม่ใช่สีตกแต่ง",
+      "ตัวเลขเงินทุกตัวที่เป็นพระเอกใช้ Anton condensed และตัวเลขแบบ tabular",
+      "มุมมน 16px ที่ถูกตัดเฉียงหนึ่งมุม (มุมขวาบน) คือซิลูเอตประจำโลก",
+      "ตัวควบคุมทุกชนิดเป็นเม็ดยา อันที่เลือกเป็นพื้นขาวนวลตัวดำ",
+      "ไอคอนหมวดเป็นสติกเกอร์สีเต็มกับไอคอน SVG เส้นดำ 2px ที่วาดเอง"
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "มะนาวแสบมีหน้าที่เดียวคือบอกคำตอบหรือการกระทำที่ทำได้ตอนนี้ ห้ามใช้เป็นสีตกแต่ง เส้นขอบลอยๆ หรือพื้นหลังของส่วนที่ไม่มีความหมาย แผงคำตอบเป็นพื้นที่มะนาวขนาดใหญ่เพียงพื้นที่เดียวของหน้า",
+        "section": "colors"
+      },
+      {
+        "name": "The Coral Means Over Rule",
+        "body": "คอรัลแปลว่า \"เกิน\" หรือ \"ทำลาย\" เท่านั้น รายจ่ายปกติเป็นสีขาวนวล ไม่ใช่สีแดง แอปไม่ทำให้รู้สึกผิดเวลาใช้เงิน",
+        "section": "colors"
+      },
+      {
+        "name": "The Black Glyph Rule",
+        "body": "สติกเกอร์หมวดทุกสีใช้ไอคอนสีดำ ไม่ใช้ไอคอนสีขาวหรือไอคอนสีตามหมวดบนพื้นเทา",
+        "section": "colors"
+      },
+      {
+        "name": "The Anton Is Money Rule",
+        "body": "Anton ใช้กับตัวเลขเงินเท่านั้น ไม่ใช้กับคำไทยหรือหัวข้อ (Anton ไม่มีอักษรไทย) และตัวเลขเงินทุกที่ใช้ `font-variant-numeric: tabular-nums`",
+        "section": "typography"
+      },
+      {
+        "name": "The Italic Is Voice Rule",
+        "body": "Kanit 800 italic สงวนไว้กับชื่อแอปและปุ่ม \"จด\" ซึ่งเป็นเสียงตะโกนของแบรนด์ ไม่ใช้กับหัวข้อทั่วไป",
+        "section": "typography"
+      },
+      {
+        "name": "The Float Only Rule",
+        "body": "แผง การ์ด และแถวไม่มีเงา เงานุ่มใช้กับองค์ประกอบที่ลอยทับเนื้อหาเท่านั้น (ปุ่มลอยและ toast)",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Cut Rule",
+        "body": "แผงหนึ่งแผงมีมุมตัดเฉียงหนึ่งมุมเสมอ ที่มุมขวาบน ไม่ตัดหลายมุมและไม่ย้ายมุม",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** ใช้พื้น `ground` พร้อมลายทแยง 135° ความทึบ 3% (เส้น 1px ทุก 7px) เป็นพื้นของทั้งแอป มันคือพื้นผิวของโลกนี้",
+      "**Do** ให้หน้าจอหนึ่งมีพื้นที่มะนาวใหญ่เพียงแผงคำตอบ ปุ่มหลักและสถานะทำงานเป็นมะนาวขนาดเล็ก",
+      "**Do** ใช้เม็ดยามนเต็มกับทุกตัวควบคุม และให้อันที่เลือกเป็นพื้นขาวนวลตัวดำ (ยกเว้นบริบทรายรับและวันที่ ที่ใช้มะนาว)",
+      "**Do** ตัดมุมขวาบนของแผงด้วย clip-path และคงมุมมน 16px ไว้ที่มุมอื่น",
+      "**Do** ใช้ Anton กับตัวเลขเงินที่เป็นพระเอก และตัวเลขแบบ tabular ทุกที่ที่มีเงิน",
+      "**Do** วาดไอคอนใหม่เป็น SVG ใน sprite เดิม viewBox 24 เส้น 2px ปลายมน สีตาม currentColor",
+      "**Do** ใส่ทางเลือก reduced-motion ให้ทุกการเคลื่อนไหวใหม่"
+    ],
+    "donts": [
+      "**Don't** ทำการ์ดขาวมุมมนกับป้ายเขียว/แดงแบบแอปการเงินทั่วไป",
+      "**Don't** เพิ่มโหมดสว่าง ระบบนี้เป็นโหมดมืดเท่านั้น",
+      "**Don't** ใช้คอรัลกับรายจ่ายปกติ คอรัลแปลว่าเกินหรือลบเท่านั้น",
+      "**Don't** ใช้โลโก้ ตัวละคร ชื่อ หรือแอสเซ็ตของ Zenless Zone Zero ใช้ได้เฉพาะภาษาภาพ",
+      "**Don't** ใส่เงาให้แผง แถว หรือชิป เงามีไว้ให้สิ่งที่ลอยเท่านั้น",
+      "**Don't** ใช้ Anton กับข้อความภาษาไทย หรือใช้ Kanit italic กับหัวข้อทั่วไป",
+      "**Don't** ใช้ไอคอนฟอนต์ อีโมจิ หรือไอคอนสีขาวบนสติกเกอร์หมวด"
+    ]
+  }
+}
