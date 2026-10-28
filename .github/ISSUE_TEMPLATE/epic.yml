@@ -1,0 +1,45 @@
+name: Epic
+description: ฟีเจอร์ใหญ่ที่แตกเป็นหลาย story (เทียบได้กับ Epic ใน Jira) story ลูกให้ผูกเป็น sub-issues
+title: "[Epic] "
+labels: ["epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Epic ไม่ต้องใส่ Story point ใน Project เพราะแต้มของ epic คือผลรวมของ story ลูก ถ้าใส่ซ้ำจะนับแต้มเกิน
+        สร้างเสร็จแล้วกด **Create sub-issue** ใต้เนื้อหา เพื่อเพิ่ม story ลูก
+  - type: textarea
+    id: goal
+    attributes:
+      label: เป้าหมาย
+      description: epic นี้ทำให้ผู้ใช้ได้อะไร เขียนสั้นๆ 1–2 ประโยค
+      placeholder: ทำให้การจดรวบก่อนนอนเร็วขึ้น จดหลายรายการได้โดยแตะให้น้อยที่สุด
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: ทำไมต้องทำ
+      description: ปัญหาที่เจอ หรือเหตุผลทางธุรกิจ
+      placeholder: ผู้ใช้จดรายจ่ายทีละหลายรายการตอนก่อนนอน ถ้าจดช้าจะเลิกจดกลางทาง
+    validations:
+      required: true
+  - type: textarea
+    id: stories
+    attributes:
+      label: Story ที่คาดว่าจะมี
+      description: รายการคร่าวๆ ตอนเริ่ม epic ภายหลังให้สร้างเป็น sub-issues จริง
+      placeholder: |
+        - ปุ่มรายการที่จดบ่อย
+        - ค้นหารายการ
+        - จัดการหมวดเอง
+  - type: textarea
+    id: done
+    attributes:
+      label: Epic นี้ถือว่าเสร็จเมื่อ
+      description: เขียนเป็น checklist ที่วัดผลได้
+      value: |
+        - [ ] sub-issues ทุกใบปิดแล้ว
+        - [ ]
+    validations:
+      required: true
