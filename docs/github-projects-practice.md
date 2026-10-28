@@ -1,76 +1,206 @@
-# ฝึกใช้ GitHub Projects แทน Jira ด้วย repo เงินไปไหน
+# ฝึกใช้ GitHub Projects แทน Jira
 
-ไฟล์นี้เป็นแบบฝึกหัดทีละขั้น ตั้งแต่ทำ product backlog → แบ่ง sprint → สร้าง issue → ใช้ Insights ดูความคืบหน้า โดยใช้ repo นี้เป็นสนามซ้อม
-backlog ในข้อ 8 เป็นงานจริงของแอปนี้ ทำเสร็จแล้วปิด issue ได้จริง กราฟใน Insights จึงจะมีข้อมูลจริงให้ดู
+คู่มือแบบภาพ 18 ขั้น ภาพถ่ายจากหน้าจอ GitHub จริงของ Project [เงินไปไหน – Dev](https://github.com/users/pthanathon/projects/22) เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ
 
-> ข้อมูลอ้างอิงจากเอกสาร GitHub ณ ตุลาคม 2569 (2026) ฟีเจอร์นี้เปลี่ยนบ่อย จุดที่มีหมายเหตุ **"ลองเช็กเอง"** ให้ทดสอบกับบัญชีจริงก่อนไปสรุปให้ทีม
+> ฉบับ HTML อ่านง่ายกว่า: เปิด `docs/github-projects-practice.html` ในเบราว์เซอร์
 
----
-
-## 1. เทียบคำศัพท์ Jira → GitHub
+## เทียบคำศัพท์ Jira → GitHub
 
 | Jira | GitHub | หมายเหตุ |
 |---|---|---|
-| Project / Board | **Project** (ระดับ user หรือ org) | Project หนึ่งดึง issue จากหลาย repo ได้ |
+| Project / Board | **Project** | Project เดียวดึง issue จากหลาย repo ได้ |
 | Epic | **Parent issue + sub-issues** | issue แม่แสดงความคืบหน้าของ sub-issue ให้เอง |
-| Story / Task / Bug | **Issue** + **label** (`story` `task` `bug`) | **Issue types** ของจริงมีเฉพาะ repo ที่อยู่ใน organization |
-| Story points | **ฟิลด์ Number** ที่สร้างเอง (เช่น `Points`) | ไม่มีให้ในตัว ต้องสร้างเอง |
-| Sprint | **ฟิลด์ Iteration** (เช่น `Sprint`) | ตั้งความยาว วันเริ่ม และช่วงพักได้ |
-| Status / Workflow | **ฟิลด์ Status** (single select) + **Workflows** | ย้ายสถานะอัตโนมัติได้บางส่วน เช่น ปิด issue แล้วย้ายไป Done |
-| Backlog view | **Table view** ที่กรอง `no:sprint` | |
-| Sprint board | **Board view** กรอง `sprint:@current` | |
-| Roadmap / Timeline | **Roadmap view** | |
-| Fix version / Release | **Milestone** | |
-| Component | **Label** | |
-| Sprint report / Burndown | **Insights** (charts) | มี **Burn up** ในตัว แต่**ไม่มี burndown สำเร็จรูป** (ดูข้อ 7) |
-| Issue template | `.github/ISSUE_TEMPLATE/*.yml` (issue forms) | repo นี้มี template ให้แล้ว 3 แบบ |
+| Story / Task / Bug | **Issue** + **label** + template | Issue types ของจริงมีเฉพาะ repo ใน organization |
+| Story points | ฟิลด์ **Estimate** (Number) | template Team planning มีให้แล้ว |
+| Sprint | ฟิลด์ **Iteration** | template ตั้งไว้ sprint ละ 2 สัปดาห์ |
+| Backlog | view ตารางที่กรอง `no:iteration` |  |
+| Sprint board | view **Board** กรอง `iteration:@current` |  |
+| Fix version | **Milestone** |  |
+| Component | **Label** |  |
+| Burndown | Insights → **Burn up** | ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 17–18) |
 
----
+## 1. เตรียม repo
 
-## 2. เตรียม repo (ทำครั้งเดียว)
+ทำครั้งเดียว ก่อนเริ่มสร้าง issue
 
-1. **สร้าง label**: ไปที่ repo → **Issues** → **Labels** → **New label** สร้าง `story`, `task`, `bug` (มี `bug` อยู่แล้ว) และ `epic`
-   template ในโฟลเดอร์ `.github/ISSUE_TEMPLATE/` จะติด label เหล่านี้ให้อัตโนมัติ แต่ label ต้องมีอยู่ใน repo ก่อน
-2. **ลองเปิด template**: ไปที่ **Issues** → **New issue** จะเห็น 3 แบบให้เลือก คือ **User story**, **Bug**, **Task**
+### ขั้นที่ 1: เปิดหน้า Labels ของ repo
 
----
+[เปิดหน้านี้](https://github.com/pthanathon/NgenPaiNai/labels)
 
-## 3. สร้าง Project
+![ขั้นที่ 1](images/steps/step-01.png)
 
-1. ไปที่โปรไฟล์ GitHub ของตัวเอง → แท็บ **Projects** → **New project**
-2. เลือก template **Team planning** หรือเริ่มจาก **Table** เปล่าก็ได้ ตั้งชื่อเช่น `เงินไปไหน – Dev`
-3. เชื่อม Project กับ repo: ใน repo → แท็บ **Projects** → **Link a project** เลือก Project ที่เพิ่งสร้าง
-4. **Settings** ของ Project (เมนู ⋯ มุมขวาบน) → ตั้งเป็น **Public** ถ้าไม่มีข้อมูลลับ
-   เอกสาร GitHub ระบุว่า project แบบ public บันทึก chart ใน Insights ได้ไม่จำกัด ส่วนบัญชีฟรีแบบ private เคยจำกัดไว้ที่ 2 chart (**ลองเช็กเอง**)
-5. จดเลข Project จาก URL ไว้ เช่น `github.com/users/pthanathon/projects/1` คือเลข `1`
-   เอาไปใส่บรรทัด `projects:` ใน `.github/ISSUE_TEMPLATE/*.yml` ได้ issue ที่สร้างจาก template จะเข้า Project ให้เอง
+1. กด **New label** เพื่อสร้าง label ใหม่ ตอนนี้ยังไม่มี `story`, `task` และ `epic` (มีแค่ `bug`)
 
----
+### ขั้นที่ 2: สร้าง label story, task และ epic
 
-## 4. สร้างฟิลด์ (เทียบได้กับการตั้งค่า board ใน Jira)
+![ขั้นที่ 2](images/steps/step-02.png)
 
-ใน Table view ให้**เลื่อนตารางไปทางขวาสุด** ที่หัวคอลัมน์ขวาสุดจะมีปุ่ม **+** (Add field) → **New field** → พิมพ์ชื่อ → เลือกชนิด → **Save**
+1. พิมพ์ชื่อ label เช่น `story`
+2. กด **Create label** แล้วทำซ้ำอีกครั้งสำหรับ `task` และ `epic`
 
-> **ถ้าสร้าง Project จาก template "Team planning"** จะมีฟิลด์ **Iteration** และ **Estimate** (Number) ให้แล้ว ใช้แทน `Sprint` และ `Points` ได้เลยโดยไม่ต้องสร้างใหม่
-> แค่เปลี่ยนคำในคู่มือตอนพิมพ์ filter: `sprint:@current` → `iteration:@current`, `no:sprint` → `no:iteration` และ Sum of Points → Sum of Estimate
-> template นี้มี view Backlog, Board, Current iteration, Roadmap และ Workflows ที่เปิดไว้ให้แล้วด้วย ข้อ 5–6 จึงข้ามบางขั้นได้
+> issue template ของ repo นี้ติด label ให้อัตโนมัติ แต่จะติดได้ก็ต่อเมื่อ label นั้นมีอยู่แล้ว
 
-| ฟิลด์ | ชนิด | ค่า |
-|---|---|---|
-| `Status` | Single select (มีให้อยู่แล้ว) | แก้ตัวเลือกเป็น `Backlog`, `Ready`, `In progress`, `In review`, `Done` |
-| `Priority` | Single select | `P0 ด่วน`, `P1 สำคัญ`, `P2 ทำเมื่อว่าง` |
-| `Points` | Number | ใส่ **1 ค่าต่อ issue** เลือกจาก 1, 2, 3, 5, 8, 13 (ดูความหมายด้านล่าง) |
-| `Sprint` | **Iteration** | ความยาว **1 สัปดาห์** เริ่ม **พุธ 28 ต.ค. 2569** (ฝึกแบบสั้นจะได้เห็นกราฟเร็ว ทีมจริงมักใช้ 2 สัปดาห์) |
+## 2. สร้าง issue จาก template
 
-หมายเหตุเรื่องฟิลด์ Iteration:
-- สร้างแล้วจะได้ 3 iteration ให้ทันที ชื่อตั้งต้นคือ `Iteration 1-3` เปลี่ยนชื่อเป็น `Sprint 1-3` ได้ใน Settings
-- ใส่ **break** (ช่วงพัก) คั่นระหว่าง sprint ได้ เช่น ช่วงสอบ
+เทียบได้กับปุ่ม Create ใน Jira
 
-### ความหมายของ story points
+### ขั้นที่ 3: เลือก template ของ issue
 
-**Story points ใส่ได้ 1 ค่าต่อ issue** เป็นตัวเลขบอกขนาดงานเมื่อเทียบกับงานอื่น ไม่ใช่จำนวนชั่วโมง คิดรวมทั้งปริมาณงาน ความยาก และสิ่งที่ยังไม่รู้ ชุด 1, 2, 3, 5, 8, 13 เป็นแบบ Fibonacci ที่ใช้กันทั่วไปใน Scrum และ Jira ตัวเลขห่างกันขึ้นเรื่อยๆ เพราะงานยิ่งใหญ่ยิ่งประเมินไม่แม่น
+[เปิดหน้านี้](https://github.com/pthanathon/NgenPaiNai/issues/new/choose)
 
-| แต้ม | ความหมายโดยประมาณ | ตัวอย่างจาก backlog |
+![ขั้นที่ 3](images/steps/step-03.png)
+
+1. เลือกตามชนิดงาน: **Bug**, **Task** หรือ **User story** (เทียบได้กับ issue type ใน Jira)
+
+### ขั้นที่ 4: กรอก User story
+
+![ขั้นที่ 4](images/steps/step-04.png)
+
+1. ตั้งชื่อต่อท้าย `[Story]` แล้วกรอก user story กับ acceptance criteria ด้านล่าง
+2. **Labels** ยังขึ้นว่า "No labels" เพราะยังไม่ได้ทำขั้นที่ 2 ถ้าสร้าง label แล้วจะติด `story` ให้เอง
+3. **Projects** เลือก "เงินไปไหน – Dev" ตรงนี้ได้เลย (หรือปล่อยให้ workflow ในขั้นที่ 16 เพิ่มให้)
+4. ติ๊ก **Create more** แล้วจะสร้าง issue ถัดไปต่อได้ทันที เหมาะตอนลง backlog ทีละหลายใบ
+
+## 3. ตั้งค่า Project
+
+Project นี้สร้างจาก template "Team planning" ฟิลด์และ view ส่วนใหญ่จึงมีให้แล้ว
+
+### ขั้นที่ 5: ส่วนต่างๆ ของ Project
+
+[เปิดหน้านี้](https://github.com/users/pthanathon/projects/22)
+
+![ขั้นที่ 5](images/steps/step-05.png)
+
+1. **View** ที่ template สร้างให้: Backlog (ตาราง), Board, Current iteration, Roadmap และ My items
+2. **Insights**: หน้ากราฟ (ขั้นที่ 17)
+3. **Workflows**: ระบบอัตโนมัติ เปิดอยู่ 7 ตัว (ขั้นที่ 15)
+
+### ขั้นที่ 6: ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)
+
+![ขั้นที่ 6](images/steps/step-06.png)
+
+1. ฟิลด์ทั้งหมดของ Project template ให้มาแล้ว 7 ตัว: Status, Sub-issues progress, Priority, Size, Estimate, Iteration, Start/Target date
+2. ปุ่ม **+** ตรงนี้ใช้สร้างฟิลด์ใหม่ได้เหมือนกัน
+
+> ⚠️ ตอนนี้มี **Point** ซ้ำกับ **Estimate** และ **Sprint** ซ้ำกับ **Iteration** ควรเลือกใช้อย่างละตัว คู่มือนี้ใช้ **Estimate** เป็น story points และ **Iteration** เป็น sprint ถ้าไม่ใช้ Point กับ Sprint ลบได้ที่หน้านี้ (คลิกชื่อฟิลด์ → Delete field)
+
+### ขั้นที่ 7: อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง
+
+![ขั้นที่ 7](images/steps/step-07.png)
+
+1. ใน view ตาราง เลื่อนไปขวาสุด (Shift + ล้อเมาส์) แล้วกด **+**
+
+### ขั้นที่ 8: เลือก New field
+
+![ขั้นที่ 8](images/steps/step-08.png)
+
+1. กด **New field** รายการด้านล่างใช้ซ่อนหรือแสดงคอลัมน์ในตาราง
+
+### ขั้นที่ 9: ตั้งชื่อและชนิดฟิลด์
+
+![ขั้นที่ 9](images/steps/step-09.png)
+
+1. ชื่อฟิลด์
+2. ชนิดฟิลด์ (ดูขั้นถัดไป)
+3. กด **Save**
+
+### ขั้นที่ 10: ชนิดฟิลด์ที่เลือกได้
+
+![ขั้นที่ 10](images/steps/step-10.png)
+
+1. **Number**: ใช้กับ story points เพราะ Insights รวมผล (Sum) ได้
+2. **Single select**: ตัวเลือกเดียว เช่น Priority หรือ Status
+3. **Iteration**: ใช้เป็น sprint
+
+### ขั้นที่ 11: ตั้งค่า sprint (ฟิลด์ Iteration)
+
+![ขั้นที่ 11](images/steps/step-11.png)
+
+1. template สร้างไว้ 3 sprint ยาว **2 สัปดาห์** เริ่ม 27 ต.ค. sprint ที่กำลังทำอยู่มีป้าย **Current**
+2. **Add iteration** เพิ่ม sprint ถัดไป ส่วนเมนู More options ใช้เปลี่ยนความยาวหรือเพิ่มช่วงพักได้
+
+## 4. ทำ backlog และแบ่ง sprint
+
+ใช้ filter กับ view จัดงาน
+
+### ขั้นที่ 12: กรองงานด้วย filter
+
+![ขั้นที่ 12](images/steps/step-12.png)
+
+1. พิมพ์ filter ในช่องนี้ ภาพนี้พิมพ์ `no:sprint` ตามฟิลด์ Sprint ถ้าใช้ Iteration ให้พิมพ์ `no:iteration` จะได้ **product backlog** (งานที่ยังไม่อยู่ใน sprint ไหน)
+2. **Save** เก็บ filter ไว้กับ view นี้ ส่วน **Discard** ยกเลิก
+
+| filter | ได้อะไร |
+|---|---|
+| `no:iteration` | งานที่ยังไม่อยู่ใน sprint (backlog) |
+| `iteration:@current` | งานใน sprint ปัจจุบัน |
+| `iteration:@next` | งานที่วางไว้ sprint หน้า |
+| `-status:Done` | ซ่อนงานที่เสร็จแล้ว |
+| `label:bug` | เฉพาะ bug |
+
+### ขั้นที่ 13: ตั้งค่า view (ปุ่ม View)
+
+![ขั้นที่ 13](images/steps/step-13.png)
+
+1. เปลี่ยนรูปแบบ: Table / Board / Roadmap
+2. **Group by**: จัดกลุ่ม เช่น ตาม Iteration เพื่อดูงานแยกตาม sprint ระหว่างวางแผน
+3. **Field sum**: แสดงผลรวม Estimate ใช้ดูว่าแต้มรวมเกินกำลังของ sprint หรือไม่
+
+### ขั้นที่ 14: Sprint board
+
+[เปิดหน้านี้](https://github.com/users/pthanathon/projects/22/views/2)
+
+![ขั้นที่ 14](images/steps/step-14.png)
+
+1. แต่ละคอลัมน์คือ Status พร้อมจำนวนการ์ดและแต้ม Estimate รวม ลากการ์ดข้ามคอลัมน์เพื่อเปลี่ยนสถานะ ถ้าใส่ filter `iteration:@current` จะเห็นเฉพาะงานใน sprint นี้
+
+## 5. ตั้งระบบอัตโนมัติ
+
+ให้การ์ดย้ายสถานะเองเมื่อปิด issue หรือ merge PR
+
+### ขั้นที่ 15: Workflows ที่เปิดอยู่
+
+[เปิดหน้านี้](https://github.com/users/pthanathon/projects/22/workflows)
+
+![ขั้นที่ 15](images/steps/step-15.png)
+
+1. จุดเขียว = เปิดอยู่ เช่น **Item closed** ย้ายการ์ดไป Done เอง และ **Pull request merged** ก็เช่นกัน
+2. **Auto-archive items** ปิดอยู่ ซึ่งถูกต้อง เพราะ Insights ไม่นับ item ที่ archive แล้ว กราฟจะหายถ้าเปิด
+
+### ขั้นที่ 16: Auto-add: เพิ่ม issue ใหม่เข้า Project เอง
+
+![ขั้นที่ 16](images/steps/step-16.png)
+
+1. ตอนนี้ตั้งให้เพิ่ม issue ที่เปิดอยู่ของ repo NgenPaiNai ทุกใบ (`is:issue is:open`)
+2. กด **Edit** ถ้าอยากเปลี่ยน filter เช่น เอาเฉพาะ `label:story,task,bug`
+
+## 6. ดูรายงาน (burn up)
+
+ใช้แทน burndown ของ Jira
+
+### ขั้นที่ 17: กราฟ Burn up
+
+[เปิดหน้านี้](https://github.com/users/pthanathon/projects/22/insights)
+
+![ขั้นที่ 17](images/steps/step-17.png)
+
+1. **Burn up** มีให้ในบัญชีนี้แล้ว (บัญชีส่วนตัว ตรวจเมื่อ 28 ต.ค. 2569) ตอนนี้ยังไม่มีข้อมูลเพราะยังไม่มี issue
+2. เปลี่ยน filter เป็น `iteration:@current` เพื่อดูเฉพาะ sprint นี้ ส่วนที่เป็น **Open** คือ "งานคงเหลือ" ซึ่งให้ข้อมูลเดียวกับ burndown
+3. กด **Configure** เพื่อเปลี่ยนสิ่งที่นับ (ขั้นถัดไป)
+
+### ขั้นที่ 18: นับเป็นแต้มแทนจำนวน issue
+
+![ขั้นที่ 18](images/steps/step-18.png)
+
+1. ที่ Y-axis เลือก **Sum of a field** แล้วเลือก **Estimate** กราฟจะเป็น burn up ตาม story points แล้วกด **Save to new chart**
+
+> GitHub ไม่มี burndown แบบมีเส้นอุดมคติให้ในตัว ถ้าทีมต้องการจริงๆ ต้องใช้เครื่องมือเสริม หรือเขียน GitHub Action ดึงข้อมูลมาวาดเอง
+
+## Story points: ใส่ 1 ค่าต่อ issue
+
+ใส่ในฟิลด์ **Estimate** เป็นตัวเลขบอกขนาดงานเมื่อเทียบกับงานอื่น ไม่ใช่จำนวนชั่วโมง
+
+| แต้ม | ความหมาย | ตัวอย่างจาก backlog |
 |---|---|---|
 | 1 | งานเล็กมาก รู้ชัดว่าต้องทำอะไร | B1 เปิด GitHub Pages |
 | 2 | งานเล็ก | B2 เพิ่ม manifest กับไอคอน |
@@ -79,128 +209,52 @@ backlog ในข้อ 8 เป็นงานจริงของแอปน
 | 8 | งานใหญ่ หรือยังมีจุดที่ไม่แน่ใจ | C3 เพิ่มหรือแก้หมวดเองได้ |
 | 13 | ใหญ่เกินไป ควรแตกเป็นหลาย story ก่อน | – |
 
-- ฟิลด์ Number ไม่ได้บังคับให้ใส่เฉพาะเลขชุดนี้ ทีมต้องตกลงกันเอง
-- อย่าเปลี่ยนเป็นฟิลด์ชนิด Single select เพื่อบังคับตัวเลือก เพราะ Insights จะ Sum (รวมแต้ม) ไม่ได้ ซึ่งต้องใช้ทำ velocity
+## Product backlog ตัวอย่างของเงินไปไหน
 
----
+**Epic A: เป้าเก็บเงิน**
 
-## 5. ทำ Product backlog
-
-1. **สร้าง Epic**: ใช้ template **User story** หรือ issue เปล่าก็ได้ ตั้งชื่อเช่น `[Epic] เป้าเก็บเงิน` แล้วติด label `epic`
-2. **สร้าง Story / Task / Bug** จาก template ตามรายการในข้อ 8
-3. **ผูก story เข้ากับ Epic**: เปิด issue ของ Epic → **Create sub-issue** หรือ **Add existing issue** แล้วเลือก story
-   Epic จะแสดงแถบความคืบหน้า เช่น 1 of 3 ให้เอง
-4. **ใส่ issue เข้า Project**: เลือก Project ที่แถบขวาของ issue หรือพิมพ์ `#เลข` ที่แถวล่างสุดของตาราง
-5. ใน Project ใส่ `Priority` กับ `Points` ให้ทุก story
-6. **สร้าง view "Backlog"**: ใช้ Table view ตั้ง filter `no:sprint -status:Done` แล้วเรียงตาม **Priority** ตามด้วย **Points**
-   view นี้คือ product backlog ที่เรียงลำดับแล้ว
-
----
-
-## 6. Sprint planning และระหว่าง sprint
-
-1. **Sprint planning**: ใน view Backlog ใส่ `Sprint = Sprint 1` ให้ story ด้านบนสุด ให้ผลรวม Points ไม่เกินกำลังทีม (ฝึกคนเดียวลองประมาณ 8 แต้ม/สัปดาห์)
-   - เปิด **Field sum** ของคอลัมน์ Points ในเมนู view จะเห็นผลรวมแต้ม
-2. **สร้าง view "Sprint board"**: เพิ่ม view ใหม่ เลือก layout **Board** ให้ column ตาม **Status** และตั้ง filter `sprint:@current`
-   - เปิด **Field sum** ของ Points จะเห็นแต้มรวมของแต่ละคอลัมน์ คล้าย board ใน Jira
-3. **สร้าง view "Roadmap"**: เลือก layout **Roadmap** แล้วใช้ `Sprint` เป็นแกนเวลา
-4. **ตั้ง Workflows** (เมนู ⋯ → **Workflows**):
-   - *Item added to project* → Status = `Backlog`
-   - *Item closed* → Status = `Done` (เปิดไว้ตั้งแต่แรก)
-   - *Pull request merged* → Status = `Done`
-   - *Auto-add to project*: เพิ่ม issue ใหม่จาก repo นี้เข้า Project เอง ตั้ง filter ได้ เช่น `is:issue label:story,task,bug` (แผนฟรีสร้าง auto-add ได้จำนวนจำกัด **ลองเช็กเอง**)
-   - **อย่าเปิด** *Auto-archive items* ระหว่างฝึก เพราะ Insights ไม่นับ item ที่ archive แล้ว กราฟจะหาย
-5. **ระหว่าง sprint**: ลากการ์ดจาก Ready → In progress → Done หรือปิด issue ผ่าน commit/PR ที่เขียนว่า `Closes #12`
-6. **จบ sprint**: งานที่ค้างให้ย้ายไป sprint ถัดไป วิธีคือ group view ตาม Sprint แล้วใช้คำสั่ง **move all items** ที่หัวกลุ่ม
-   GitHub ไม่มีปุ่ม "Complete sprint" แบบ Jira sprint จะจบเองตามวันที่
-
----
-
-## 7. Report: burn up และ burndown
-
-**ข้อจำกัดที่ต้องบอกทีม: GitHub Projects ไม่มี burndown chart สำเร็จรูปแบบ Jira**
-แต่ Insights มี chart 2 แบบ:
-
-- **Current chart**: แสดงสถานะ *ตอนนี้* เช่น แต้มรวมต่อ sprint ใช้ทำ velocity ได้
-- **Historical chart**: แสดงการเปลี่ยนแปลง *ตามเวลา* ตั้งต้นมีกราฟ **Burn up** ให้ (Open กับ Completed ซ้อนกัน)
-  - เอกสาร GitHub รุ่นเก่าเขียนว่า historical chart ใช้ได้กับ **GitHub Team / Enterprise Cloud ของ organization** ส่วนเอกสารปัจจุบันไม่ได้ระบุ (**ลองเช็กเอง** ด้วยการเปิด Insights ดูว่ามีกราฟ Burn up ให้หรือไม่)
-
-### 7.1 Sprint burn-up (ใช้แทน burndown)
-1. Project → ไอคอน **Insights** (มุมขวาบน) → เปิด chart **Burn up**
-2. ใส่ filter `sprint:@current` แล้ว **Save changes**
-3. อ่านกราฟ: เส้นบนสุดคืองานทั้งหมดใน sprint ส่วนที่เป็น *Open* คือ "งานที่เหลือ" ซึ่งเท่ากับเส้น burndown นั่นเอง
-   แต่ละวันที่ปิด issue ได้ ส่วน Open จะหดลง
-4. ลองเปิด **Configure** แล้วดูว่าแกน Y เลือก **Sum of Points** ได้ไหม ถ้าได้จะเป็น burn-up ตามแต้ม ถ้าไม่ได้จะนับเป็นจำนวน issue (**ลองเช็กเอง**)
-
-### 7.2 Velocity (แต้มที่ทำเสร็จต่อ sprint)
-- **New chart** → Layout **Column** → X-axis **Sprint** → Group by **Status** → Y-axis **Sum of Points**
-  แท่ง `Done` ของแต่ละ sprint คือ velocity
-
-### 7.3 ถ้าทีมต้องการ burndown แบบมีเส้นอุดมคติจริงๆ
-- ทางเลือก 1: ใช้ burn-up ข้างบนแทน อ่านส่วน Open เป็น "งานคงเหลือ"
-- ทางเลือก 2: ใช้เครื่องมือเสริมที่อ่านข้อมูล GitHub Projects ได้ เช่น Screenful (เสียเงิน)
-- ทางเลือก 3: เขียน GitHub Action ที่ดึงข้อมูลผ่าน GraphQL API ทุกวัน แล้ววาดกราฟเอง ทำได้แต่ต้องดูแลเอง
-
----
-
-## 8. Product backlog ตัวอย่างของเงินไปไหน (ใช้ฝึกได้ทันที)
-
-ทุกข้อเป็นงานจริงของแอปนี้ ที่มาคือ `PRODUCT.md` และสิ่งที่ผู้ตรวจงานบอกว่ายังไม่ได้ทดสอบ
-
-### Epic A: เป้าเก็บเงิน
-| # | ชนิด | ชื่อ | Points | Priority |
+| # | ชนิด | ชื่อ | Estimate | Priority |
 |---|---|---|---|---|
 | A1 | Story | ตั้งเป้าเก็บเงินต่อเดือนในเมนู ⋯ | 3 | P1 |
-| A2 | Story | แสดงความคืบหน้าเป้าเก็บเงิน (รายรับ − รายจ่าย เทียบกับเป้า) ในหน้าแรก | 5 | P1 |
-| A3 | Story | สรุปท้ายเดือนว่าเก็บได้ตามเป้าไหม ด้วยข้อความแบบเพื่อน | 2 | P2 |
+| A2 | Story | แสดงความคืบหน้าเป้าเก็บเงินในหน้าแรก | 5 | P1 |
+| A3 | Story | สรุปท้ายเดือนว่าเก็บได้ตามเป้าไหม | 2 | P2 |
 
-### Epic B: ใช้บนมือถือเหมือนแอปจริง
-| # | ชนิด | ชื่อ | Points | Priority |
+**Epic B: ใช้บนมือถือเหมือนแอปจริง**
+
+| # | ชนิด | ชื่อ | Estimate | Priority |
 |---|---|---|---|---|
 | B1 | Task | เปิด GitHub Pages ให้แอปมีลิงก์เข้าใช้จากมือถือ | 1 | P0 |
-| B2 | Story | เพิ่ม web app manifest และไอคอน เพื่อ "เพิ่มไปยังหน้าจอหลัก" | 2 | P1 |
-| B3 | Story | ใช้งานแบบออฟไลน์ด้วย service worker | 5 | P2 |
-| B4 | Bug | ตรวจว่าคีย์บอร์ดมือถือบังปุ่ม "บันทึก" ในแผ่นจดหรือไม่ (ผู้ตรวจงานยังไม่ได้ทดสอบ) | 2 | P0 |
+| B2 | Story | เพิ่ม web app manifest และไอคอน | 2 | P1 |
+| B3 | Story | ใช้งานออฟไลน์ด้วย service worker | 5 | P2 |
+| B4 | Bug | ตรวจว่าคีย์บอร์ดมือถือบังปุ่ม "บันทึก" หรือไม่ | 2 | P0 |
 
-### Epic C: จดเร็วขึ้น
-| # | ชนิด | ชื่อ | Points | Priority |
+**Epic C: จดเร็วขึ้น**
+
+| # | ชนิด | ชื่อ | Estimate | Priority |
 |---|---|---|---|---|
-| C1 | Story | ปุ่มรายการที่จดบ่อย (เช่น "ข้าวมันไก่ 50") แตะครั้งเดียวจดได้เลย | 5 | P1 |
+| C1 | Story | ปุ่มรายการที่จดบ่อย แตะครั้งเดียวจดได้ | 5 | P1 |
 | C2 | Story | ค้นหารายการจากบันทึกช่วยจำ | 3 | P2 |
 | C3 | Story | เพิ่มหรือแก้ชื่อหมวดเองได้ | 8 | P2 |
 
-### Epic D: คุณภาพโค้ด
-| # | ชนิด | ชื่อ | Points | Priority |
+**Epic D: คุณภาพโค้ด**
+
+| # | ชนิด | ชื่อ | Estimate | Priority |
 |---|---|---|---|---|
-| D1 | Task | เขียน unit test ให้ `parseAmount` และการคำนวณงบ/รายจ่ายประจำ | 3 | P1 |
-| D2 | Task | ตั้ง GitHub Actions ให้รันเทสต์ทุกครั้งที่ push | 2 | P2 |
+| D1 | Task | unit test ให้ parseAmount และการคำนวณงบ | 3 | P1 |
+| D2 | Task | GitHub Actions รันเทสต์ทุกครั้งที่ push | 2 | P2 |
 
-รวม 12 งาน 41 แต้ม ถ้าทำได้ประมาณ 8 แต้ม/สัปดาห์ จะได้ประมาณ 5 sprint
+รวม 12 งาน 41 แต้ม ตัวอย่าง sprint แรก (2 สัปดาห์): B1 + B4 + A1 + B2 + D1 = 11 แต้ม
 
-**ตัวอย่างการแบ่ง Sprint 1 (28 ต.ค. – 3 พ.ย.)**: B1 (1) + B4 (2) + A1 (3) + B2 (2) = 8 แต้ม
+## สรุปสำหรับเล่าให้พี่เลี้ยงฟัง
 
----
+**ข้อดี**
+- อยู่ที่เดียวกับโค้ด ปิด issue ได้จาก PR (`Closes #12`) และการ์ดย้ายไป Done เอง
+- ฟิลด์และ view ปรับได้ยืดหยุ่น Project เดียวดึงงานจากหลาย repo ได้
+- บัญชีส่วนตัวแบบฟรีก็ใช้ Burn up ได้ และนับเป็นแต้มได้ (ตรวจแล้ว 28 ต.ค. 2569)
 
-## 9. สรุปสำหรับเล่าให้พี่เลี้ยงฟัง
-
-**ข้อดีของ GitHub Projects**
-- อยู่ที่เดียวกับโค้ด เชื่อม issue ↔ PR ↔ commit ได้ทันที (`Closes #12`)
-- ฟิลด์ยืดหยุ่น Project เดียวดึงงานจากหลาย repo ได้
-- ใช้กับ repo public ได้ฟรี และไม่ต้องจ่ายค่า license แยกต่อคนแบบ Jira
-
-**ข้อที่ด้อยกว่า Jira (ควรรู้ก่อนย้าย)**
-- ไม่มี burndown สำเร็จรูป มีแค่ burn up กับ chart ที่สร้างเอง (ข้อ 7)
-- ไม่มีขั้นตอน start/complete sprint ต้องย้ายงานค้างเอง
-- Story points เป็นแค่ฟิลด์ตัวเลข ไม่มีรายงาน velocity สำเร็จรูป
-- Issue types มีเฉพาะ organization และบางฟีเจอร์ขึ้นกับแผนที่ใช้
-- ย้ายข้อมูลเก่าจาก Jira ไม่มีเครื่องมือในตัว ต้องใช้สคริปต์หรือเครื่องมือภายนอก
-
-**สิ่งที่ควรทดลองกับ org จริงของทีมก่อนตัดสินใจ**: historical chart, issue types และจำนวน auto-add workflow ที่แผนของทีมใช้ได้
-
----
-
-แหล่งอ้างอิง
-- [About insights for Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/viewing-insights-from-your-project/about-insights-for-projects)
-- [Configuring charts](https://docs.github.com/en/issues/planning-and-tracking-with-projects/viewing-insights-from-your-project/configuring-charts)
-- [About iteration fields](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-iteration-fields)
-- [About insights (Enterprise Server 3.11, ระบุข้อจำกัดตามแผน)](https://docs.github.com/en/enterprise-server@3.11/issues/planning-and-tracking-with-projects/viewing-insights-from-your-project/about-insights-for-projects)
+**ข้อที่ด้อยกว่า Jira**
+- ไม่มี burndown แบบมีเส้นอุดมคติในตัว
+- ไม่มีปุ่ม start/complete sprint งานค้างต้องย้ายเอง
+- ไม่มีรายงาน velocity สำเร็จรูป ต้องสร้างกราฟเอง
+- Issue types มีเฉพาะ organization
+- ไม่มีเครื่องมือย้ายข้อมูลจาก Jira ในตัว
