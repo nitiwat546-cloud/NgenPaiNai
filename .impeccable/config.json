@@ -38,6 +38,15 @@
         ],
         "createdAt": "2026-10-28T01:13:15.440Z",
         "reason": "monospace used only for inline code snippets in the practice guide"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "docs/github-projects-practice.html"
+        ],
+        "createdAt": "2026-10-28T01:14:21.928Z",
+        "reason": "table-wrap is a bordered scroll container; the inset lives on the th/td cells (10px 14px)"
       }
     ]
   }
