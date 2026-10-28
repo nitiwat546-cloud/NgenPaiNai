@@ -152,7 +152,8 @@ footer ul { padding-left: 1.2em; }
 
 <section id="s4">
 <h2><span class="n">4</span>สร้างฟิลด์ (เทียบได้กับการตั้งค่า board ใน Jira)</h2>
-<p>ใน Project → คลิกหัวคอลัมน์ <strong>+</strong> → <strong>New field</strong></p>
+<p>ใน Table view ให้<strong>เลื่อนตารางไปทางขวาสุด</strong> ที่หัวคอลัมน์ขวาสุดจะมีปุ่ม <strong>+</strong> (Add field) → <strong>New field</strong> → พิมพ์ชื่อ → เลือกชนิด → <strong>Save</strong></p>
+<div class="note"><p><strong>ถ้าสร้าง Project จาก template &quot;Team planning&quot;</strong> จะมีฟิลด์ <strong>Iteration</strong> และ <strong>Estimate</strong> (Number) ให้แล้ว ใช้แทน <code>Sprint</code> และ <code>Points</code> ได้เลยโดยไม่ต้องสร้างใหม่</p><p>แค่เปลี่ยนคำในคู่มือตอนพิมพ์ filter: <code>sprint:@current</code> → <code>iteration:@current</code>, <code>no:sprint</code> → <code>no:iteration</code> และ Sum of Points → Sum of Estimate</p><p>template นี้มี view Backlog, Board, Current iteration, Roadmap และ Workflows ที่เปิดไว้ให้แล้วด้วย ข้อ 5–6 จึงข้ามบางขั้นได้</p></div>
 <div class="table-wrap"><table>
 <thead><tr><th>ฟิลด์</th><th>ชนิด</th><th>ค่า</th></tr></thead>
 <tbody>

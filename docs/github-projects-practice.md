@@ -49,7 +49,11 @@ backlog ในข้อ 8 เป็นงานจริงของแอปน
 
 ## 4. สร้างฟิลด์ (เทียบได้กับการตั้งค่า board ใน Jira)
 
-ใน Project → คลิกหัวคอลัมน์ **+** → **New field**
+ใน Table view ให้**เลื่อนตารางไปทางขวาสุด** ที่หัวคอลัมน์ขวาสุดจะมีปุ่ม **+** (Add field) → **New field** → พิมพ์ชื่อ → เลือกชนิด → **Save**
+
+> **ถ้าสร้าง Project จาก template "Team planning"** จะมีฟิลด์ **Iteration** และ **Estimate** (Number) ให้แล้ว ใช้แทน `Sprint` และ `Points` ได้เลยโดยไม่ต้องสร้างใหม่
+> แค่เปลี่ยนคำในคู่มือตอนพิมพ์ filter: `sprint:@current` → `iteration:@current`, `no:sprint` → `no:iteration` และ Sum of Points → Sum of Estimate
+> template นี้มี view Backlog, Board, Current iteration, Roadmap และ Workflows ที่เปิดไว้ให้แล้วด้วย ข้อ 5–6 จึงข้ามบางขั้นได้
 
 | ฟิลด์ | ชนิด | ค่า |
 |---|---|---|
