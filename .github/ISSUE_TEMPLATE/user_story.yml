@@ -2,8 +2,8 @@ name: User story
 description: ฟีเจอร์จากมุมมองผู้ใช้ (เทียบได้กับ Story ใน Jira)
 title: "[Story] "
 labels: ["story"]
-# ถ้ารู้เลข Project แล้ว ใส่ตรงนี้ได้ เพื่อให้ issue ถูกเพิ่มเข้า Project อัตโนมัติ เช่น ["pthanathon/1"]
-# projects: ["pthanathon/1"]
+# ถ้ารู้เลข Project แล้ว ใส่ตรงนี้ได้ เพื่อให้ issue ถูกเพิ่มเข้า Project อัตโนมัติ เช่น ["pthanathon/22"]
+# projects: ["pthanathon/22"]
 body:
   - type: textarea
     id: story

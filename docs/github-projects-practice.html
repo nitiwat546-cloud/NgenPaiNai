@@ -40,6 +40,8 @@ figure img { display:block; width:100%; height:auto; }
 ol.notes { list-style:none; counter-reset:n; padding:0; margin:14px 0 0; }
 ol.notes li { counter-increment:n; position:relative; padding-left:36px; margin:8px 0; max-width:70ch; }
 ol.notes li::before { content:counter(n); position:absolute; left:0; top:2px; width:24px; height:24px; border-radius:50%; background:var(--red); color:#fff; font:700 13px/24px Arial,sans-serif; text-align:center; }
+pre.code { margin:14px 0 0; padding:14px 16px; background:#16160f; color:#f4f4ee; border-radius:10px; overflow-x:auto; font-size:.85rem; line-height:1.6; }
+pre.code code { background:none; padding:0; color:inherit; font-size:inherit; }
 .callout { margin:14px 0 0; padding:12px 16px; border-radius:10px; background:var(--surface-2); }
 .callout.warn { background:var(--warn-bg); color:var(--warn-ink); }
 .table-wrap { overflow-x:auto; margin:14px 0 0; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
@@ -63,11 +65,12 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 <nav class="toc" aria-label="สารบัญ"><b>สารบัญ</b><ol>
   <li><a href="#map">เทียบ Jira → GitHub</a></li>
   <li><a href="#p1">1. เตรียม repo</a></li>
-  <li><a href="#p2">2. สร้าง issue จาก template</a></li>
-  <li><a href="#p3">3. ตั้งค่า Project</a></li>
-  <li><a href="#p4">4. ทำ backlog และแบ่ง sprint</a></li>
-  <li><a href="#p5">5. ตั้งระบบอัตโนมัติ</a></li>
-  <li><a href="#p6">6. ดูรายงาน (burn up)</a></li>
+  <li><a href="#p1t">2. สร้าง issue template</a></li>
+  <li><a href="#p2">3. สร้าง issue จาก template</a></li>
+  <li><a href="#p3">4. ตั้งค่า Project</a></li>
+  <li><a href="#p4">5. ทำ backlog และแบ่ง sprint</a></li>
+  <li><a href="#p5">6. ตั้งระบบอัตโนมัติ</a></li>
+  <li><a href="#p6">7. ดูรายงาน (burn up)</a></li>
   <li><a href="#points">Story points</a></li>
   <li><a href="#backlog">Backlog ตัวอย่าง</a></li>
   <li><a href="#summary">สรุปให้พี่เลี้ยง</a></li>
@@ -75,7 +78,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 <main>
 <header>
   <h1>ฝึกใช้ <span class="tag">GitHub Projects</span> แทน Jira</h1>
-  <p class="lead">คู่มือแบบภาพ 18 ขั้น ภาพทุกภาพถ่ายจากหน้าจอ GitHub จริงของ Project <a href="https://github.com/users/pthanathon/projects/22">เงินไปไหน – Dev</a> เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ</p>
+  <p class="lead">คู่มือแบบภาพ 24 ขั้น ภาพทุกภาพถ่ายจากหน้าจอ GitHub จริงของ Project <a href="https://github.com/users/pthanathon/projects/22">เงินไปไหน – Dev</a> เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ</p>
 </header>
 
 <section id="map">
@@ -90,7 +93,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 <tr><td>Sprint board</td><td>view <b>Board</b> กรอง <code>iteration:@current</code></td><td></td></tr>
 <tr><td>Fix version</td><td><b>Milestone</b></td><td></td></tr>
 <tr><td>Component</td><td><b>Label</b></td><td></td></tr>
-<tr><td>Burndown</td><td>Insights → <b>Burn up</b></td><td>ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 17–18)</td></tr>
+<tr><td>Burndown</td><td>Insights → <b>Burn up</b></td><td>ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 23–24)</td></tr>
 </tbody></table></div>
 </section>
 
@@ -105,6 +108,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
     
     
     
+    
   </article>
 
   <article class="step" id="step-2">
@@ -112,28 +116,112 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
     <figure><img src="images/steps/step-02.png" alt="ขั้นที่ 2: สร้าง label story, task และ epic" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>พิมพ์ชื่อ label เช่น <code>story</code></li><li>กด <b>Create label</b> แล้วทำซ้ำอีกครั้งสำหรับ <code>task</code> และ <code>epic</code></li></ol>
     
+    
     <p class="callout">issue template ของ repo นี้ติด label ให้อัตโนมัติ แต่จะติดได้ก็ต่อเมื่อ label นั้นมีอยู่แล้ว</p>
     
   </article>
 </section>
 
-<section id="p2">
-<h2><span class="n">2</span>สร้าง issue จาก template</h2>
-<p class="part-lead">เทียบได้กับปุ่ม Create ใน Jira</p>
+<section id="p1t">
+<h2><span class="n">2</span>สร้าง issue template</h2>
+<p class="part-lead">template ทำให้ทุกคนกรอก issue ในรูปแบบเดียวกัน มี 2 วิธี: <b>ผ่านหน้าเว็บ</b> ง่ายแต่ได้แค่ข้อความตั้งต้น หรือ <b>เขียนไฟล์ YAML</b> ได้ฟอร์มที่มีช่องบังคับกรอกและ dropdown (repo นี้ใช้วิธีที่ 2)</p>
 
   <article class="step" id="step-3">
-    <header><span class="num">3</span><h3>เลือก template ของ issue</h3><a class="open" href="https://github.com/pthanathon/NgenPaiNai/issues/new/choose" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-03.png" alt="ขั้นที่ 3: เลือก template ของ issue" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>เลือกตามชนิดงาน: <b>Bug</b>, <b>Task</b> หรือ <b>User story</b> (เทียบได้กับ issue type ใน Jira)</li></ol>
+    <header><span class="num">3</span><h3>วิธีที่ 1 (หน้าเว็บ): เปิด Settings ของ repo</h3><a class="open" href="https://github.com/pthanathon/NgenPaiNai/settings" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-03.png" alt="ขั้นที่ 3: วิธีที่ 1 (หน้าเว็บ): เปิด Settings ของ repo" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>เลื่อนลงไปที่หัวข้อ <b>Issues</b> แล้วกด <b>Set up templates</b></li></ol>
+    
     
     
     
   </article>
 
   <article class="step" id="step-4">
-    <header><span class="num">4</span><h3>กรอก User story</h3></header>
-    <figure><img src="images/steps/step-04.png" alt="ขั้นที่ 4: กรอก User story" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ตั้งชื่อต่อท้าย <code>[Story]</code> แล้วกรอก user story กับ acceptance criteria ด้านล่าง</li><li><b>Labels</b> ยังขึ้นว่า "No labels" เพราะยังไม่ได้ทำขั้นที่ 2 ถ้าสร้าง label แล้วจะติด <code>story</code> ให้เอง</li><li><b>Projects</b> เลือก "เงินไปไหน – Dev" ตรงนี้ได้เลย (หรือปล่อยให้ workflow ในขั้นที่ 16 เพิ่มให้)</li><li>ติ๊ก <b>Create more</b> แล้วจะสร้าง issue ถัดไปต่อได้ทันที เหมาะตอนลง backlog ทีละหลายใบ</li></ol>
+    <header><span class="num">4</span><h3>วิธีที่ 1: เลือกแบบ template</h3></header>
+    <figure><img src="images/steps/step-04.png" alt="ขั้นที่ 4: วิธีที่ 1: เลือกแบบ template" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>กด <b>Add template: select</b></li><li>เลือก <b>Bug report</b> หรือ <b>Feature request</b> ที่ GitHub เตรียมไว้ หรือ <b>Custom template</b> เพื่อเขียนเอง</li><li>แก้เสร็จแล้วกด <b>Propose changes</b> GitHub จะ commit ไฟล์ <code>.md</code> ลงโฟลเดอร์ <code>.github/ISSUE_TEMPLATE/</code> ให้</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-5">
+    <header><span class="num">5</span><h3>วิธีที่ 1: แก้เนื้อหา template</h3></header>
+    <figure><img src="images/steps/step-05.png" alt="ขั้นที่ 5: วิธีที่ 1: แก้เนื้อหา template" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>กดไอคอนดินสอเพื่อแก้ชื่อ คำอธิบาย และข้อความตั้งต้นในตัว issue</li><li>ตั้งค่าเพิ่มได้: ชื่อ issue ตั้งต้น ผู้รับผิดชอบ และ label ที่จะติดให้อัตโนมัติ</li></ol>
+    
+    
+    <p class="callout">วิธีนี้ได้แค่ข้อความตั้งต้นให้แก้ต่อ บังคับให้กรอกช่องไหนไม่ได้ ถ้าอยากได้ฟอร์มจริงให้ใช้วิธีที่ 2</p>
+    
+  </article>
+
+  <article class="step" id="step-6">
+    <header><span class="num">6</span><h3>วิธีที่ 2 (ไฟล์ YAML): โฟลเดอร์ template</h3><a class="open" href="https://github.com/pthanathon/NgenPaiNai/tree/main/.github/ISSUE_TEMPLATE" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-06.png" alt="ขั้นที่ 6: วิธีที่ 2 (ไฟล์ YAML): โฟลเดอร์ template" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>template ต้องอยู่ในโฟลเดอร์ <code>.github/ISSUE_TEMPLATE/</code> ของ repo</li><li>ไฟล์ <code>.yml</code> หนึ่งไฟล์คือ template หนึ่งแบบ ส่วน <code>config.yml</code> ใช้ตั้งค่าหน้าเลือก template เช่น อนุญาตให้สร้าง issue เปล่าได้ไหม</li><li>สร้างไฟล์ใหม่บนเว็บได้ที่ <b>Add file</b> → <b>Create new file</b> ตั้งชื่อลงท้าย <code>.yml</code> หรือสร้างในเครื่องแล้ว push ก็ได้</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-7">
+    <header><span class="num">7</span><h3>วิธีที่ 2: GitHub ตรวจว่าไฟล์ถูกต้อง</h3></header>
+    <figure><img src="images/steps/step-07.png" alt="ขั้นที่ 7: วิธีที่ 2: GitHub ตรวจว่าไฟล์ถูกต้อง" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ถ้าเขียนถูก จะขึ้นว่า "This file is used as an Issue Form template" ถ้าผิดจะบอกบรรทัดที่ผิดตรงนี้</li><li><b>Preview</b> ดูหน้าตาฟอร์ม ส่วน <b>Code</b> ดูโค้ด YAML (ขั้นถัดไป)</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-8">
+    <header><span class="num">8</span><h3>วิธีที่ 2: โครงสร้างไฟล์ YAML</h3></header>
+    <figure><img src="images/steps/step-08.png" alt="ขั้นที่ 8: วิธีที่ 2: โครงสร้างไฟล์ YAML" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ส่วนหัว: <code>name</code> ชื่อในหน้าเลือก template, <code>description</code>, <code>title</code> ชื่อ issue ตั้งต้น และ <code>labels</code> ที่จะติดให้อัตโนมัติ</li><li><code>projects</code>: ใส่ <code>["pthanathon/22"]</code> แล้ว issue ใหม่จะเข้า Project เอง (repo นี้ปิดไว้ เพราะ workflow Auto-add ทำให้อยู่แล้ว)</li><li><code>body</code>: รายการช่องในฟอร์ม แต่ละช่องมี <code>type</code> (textarea, input, dropdown, checkboxes, markdown) และ <code>required: true</code> บังคับให้กรอก</li></ol>
+    
+    <pre class="code"><code>name: User story
+description: ฟีเจอร์จากมุมมองผู้ใช้
+title: "[Story] "
+labels: ["story"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      placeholder: ในฐานะ… ฉันอยาก… เพื่อ…
+    validations:
+      required: true
+  - type: dropdown
+    id: points
+    attributes:
+      label: Story points
+      options: ["1", "2", "3", "5", "8", "13"]</code></pre>
+    <p class="callout">ดูตัวอย่างเต็มได้ในไฟล์ <code>.github/ISSUE_TEMPLATE/user_story.yml</code> ของ repo นี้ ส่วนช่องทั้งหมดที่ใช้ได้ดูที่ GitHub Docs หัวข้อ "Syntax for issue forms"</p>
+    
+  </article>
+</section>
+
+<section id="p2">
+<h2><span class="n">3</span>สร้าง issue จาก template</h2>
+<p class="part-lead">เทียบได้กับปุ่ม Create ใน Jira</p>
+
+  <article class="step" id="step-9">
+    <header><span class="num">9</span><h3>เลือก template ของ issue</h3><a class="open" href="https://github.com/pthanathon/NgenPaiNai/issues/new/choose" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-09.png" alt="ขั้นที่ 9: เลือก template ของ issue" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>เลือกตามชนิดงาน: <b>Bug</b>, <b>Task</b> หรือ <b>User story</b> (เทียบได้กับ issue type ใน Jira)</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-10">
+    <header><span class="num">10</span><h3>กรอก User story</h3></header>
+    <figure><img src="images/steps/step-10.png" alt="ขั้นที่ 10: กรอก User story" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ตั้งชื่อต่อท้าย <code>[Story]</code> แล้วกรอก user story กับ acceptance criteria ด้านล่าง</li><li><b>Labels</b> ยังขึ้นว่า "No labels" เพราะยังไม่ได้ทำขั้นที่ 2 ถ้าสร้าง label แล้วจะติด <code>story</code> ให้เอง</li><li><b>Projects</b> เลือก "เงินไปไหน – Dev" ตรงนี้ได้เลย (หรือปล่อยให้ workflow ในขั้นที่ 22 เพิ่มให้)</li><li>ติ๊ก <b>Create more</b> แล้วจะสร้าง issue ถัดไปต่อได้ทันที เหมาะตอนลง backlog ทีละหลายใบ</li></ol>
+    
     
     
     
@@ -141,67 +229,74 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 </section>
 
 <section id="p3">
-<h2><span class="n">3</span>ตั้งค่า Project</h2>
+<h2><span class="n">4</span>ตั้งค่า Project</h2>
 <p class="part-lead">Project นี้สร้างจาก template "Team planning" ฟิลด์และ view ส่วนใหญ่จึงมีให้แล้ว</p>
 
-  <article class="step" id="step-5">
-    <header><span class="num">5</span><h3>ส่วนต่างๆ ของ Project</h3><a class="open" href="https://github.com/users/pthanathon/projects/22" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-05.png" alt="ขั้นที่ 5: ส่วนต่างๆ ของ Project" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li><b>View</b> ที่ template สร้างให้: Backlog (ตาราง), Board, Current iteration, Roadmap และ My items</li><li><b>Insights</b>: หน้ากราฟ (ขั้นที่ 17)</li><li><b>Workflows</b>: ระบบอัตโนมัติ เปิดอยู่ 7 ตัว (ขั้นที่ 15)</li></ol>
+  <article class="step" id="step-11">
+    <header><span class="num">11</span><h3>ส่วนต่างๆ ของ Project</h3><a class="open" href="https://github.com/users/pthanathon/projects/22" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-11.png" alt="ขั้นที่ 11: ส่วนต่างๆ ของ Project" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li><b>View</b> ที่ template สร้างให้: Backlog (ตาราง), Board, Current iteration, Roadmap และ My items</li><li><b>Insights</b>: หน้ากราฟ (ขั้นที่ 23)</li><li><b>Workflows</b>: ระบบอัตโนมัติ เปิดอยู่ 7 ตัว (ขั้นที่ 21)</li></ol>
+    
     
     
     
   </article>
 
-  <article class="step" id="step-6">
-    <header><span class="num">6</span><h3>ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)</h3></header>
-    <figure><img src="images/steps/step-06.png" alt="ขั้นที่ 6: ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-12">
+    <header><span class="num">12</span><h3>ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)</h3></header>
+    <figure><img src="images/steps/step-12.png" alt="ขั้นที่ 12: ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>ฟิลด์ทั้งหมดของ Project ทุกตัวมาจาก template: <b>Estimate</b> ใช้เป็น story points, <b>Iteration</b> ใช้เป็น sprint, <b>Priority</b> ใช้จัดลำดับ backlog ส่วน <b>Size</b> เป็นขนาดแบบ S/M/L ใช้แทน Estimate ได้ถ้าทีมไม่ใช้แต้ม</li><li>ปุ่ม <b>+</b> ตรงนี้ใช้สร้างฟิลด์ใหม่ได้เหมือนกัน</li></ol>
     
     
     
+    
   </article>
 
-  <article class="step" id="step-7">
-    <header><span class="num">7</span><h3>อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง</h3></header>
-    <figure><img src="images/steps/step-07.png" alt="ขั้นที่ 7: อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-13">
+    <header><span class="num">13</span><h3>อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง</h3></header>
+    <figure><img src="images/steps/step-13.png" alt="ขั้นที่ 13: อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>ใน view ตาราง เลื่อนไปขวาสุด (Shift + ล้อเมาส์) แล้วกด <b>+</b></li></ol>
     
     
     
+    
   </article>
 
-  <article class="step" id="step-8">
-    <header><span class="num">8</span><h3>เลือก New field</h3></header>
-    <figure><img src="images/steps/step-08.png" alt="ขั้นที่ 8: เลือก New field" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-14">
+    <header><span class="num">14</span><h3>เลือก New field</h3></header>
+    <figure><img src="images/steps/step-14.png" alt="ขั้นที่ 14: เลือก New field" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>กด <b>New field</b> รายการด้านล่างใช้ซ่อนหรือแสดงคอลัมน์ในตาราง</li></ol>
     
     
     
+    
   </article>
 
-  <article class="step" id="step-9">
-    <header><span class="num">9</span><h3>ตั้งชื่อและชนิดฟิลด์</h3></header>
-    <figure><img src="images/steps/step-09.png" alt="ขั้นที่ 9: ตั้งชื่อและชนิดฟิลด์" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-15">
+    <header><span class="num">15</span><h3>ตั้งชื่อและชนิดฟิลด์</h3></header>
+    <figure><img src="images/steps/step-15.png" alt="ขั้นที่ 15: ตั้งชื่อและชนิดฟิลด์" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>ชื่อฟิลด์</li><li>ชนิดฟิลด์ (ดูขั้นถัดไป)</li><li>กด <b>Save</b></li></ol>
     
     
     
+    
   </article>
 
-  <article class="step" id="step-10">
-    <header><span class="num">10</span><h3>ชนิดฟิลด์ที่เลือกได้</h3></header>
-    <figure><img src="images/steps/step-10.png" alt="ขั้นที่ 10: ชนิดฟิลด์ที่เลือกได้" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-16">
+    <header><span class="num">16</span><h3>ชนิดฟิลด์ที่เลือกได้</h3></header>
+    <figure><img src="images/steps/step-16.png" alt="ขั้นที่ 16: ชนิดฟิลด์ที่เลือกได้" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li><b>Number</b>: ใช้กับ story points เพราะ Insights รวมผล (Sum) ได้</li><li><b>Single select</b>: ตัวเลือกเดียว เช่น Priority หรือ Status</li><li><b>Iteration</b>: ใช้เป็น sprint</li></ol>
     
     
     
+    
   </article>
 
-  <article class="step" id="step-11">
-    <header><span class="num">11</span><h3>ตั้งค่า sprint (ฟิลด์ Iteration)</h3></header>
-    <figure><img src="images/steps/step-11.png" alt="ขั้นที่ 11: ตั้งค่า sprint (ฟิลด์ Iteration)" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-17">
+    <header><span class="num">17</span><h3>ตั้งค่า sprint (ฟิลด์ Iteration)</h3></header>
+    <figure><img src="images/steps/step-17.png" alt="ขั้นที่ 17: ตั้งค่า sprint (ฟิลด์ Iteration)" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>template สร้างไว้ 3 sprint ยาว <b>2 สัปดาห์</b> เริ่ม 27 ต.ค. sprint ที่กำลังทำอยู่มีป้าย <b>Current</b></li><li><b>Add iteration</b> เพิ่ม sprint ถัดไป ส่วนเมนู More options ใช้เปลี่ยนความยาวหรือเพิ่มช่วงพักได้</li></ol>
+    
     
     
     
@@ -209,31 +304,34 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 </section>
 
 <section id="p4">
-<h2><span class="n">4</span>ทำ backlog และแบ่ง sprint</h2>
+<h2><span class="n">5</span>ทำ backlog และแบ่ง sprint</h2>
 <p class="part-lead">ใช้ filter กับ view จัดงาน</p>
 
-  <article class="step" id="step-12">
-    <header><span class="num">12</span><h3>กรองงานด้วย filter</h3></header>
-    <figure><img src="images/steps/step-12.png" alt="ขั้นที่ 12: กรองงานด้วย filter" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-18">
+    <header><span class="num">18</span><h3>กรองงานด้วย filter</h3></header>
+    <figure><img src="images/steps/step-18.png" alt="ขั้นที่ 18: กรองงานด้วย filter" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>พิมพ์ filter ในช่องนี้ เช่น <code>no:iteration</code> จะได้ <b>product backlog</b> (งานที่ยังไม่อยู่ใน sprint ไหน)</li><li><b>Save</b> เก็บ filter ไว้กับ view นี้ ส่วน <b>Discard</b> ยกเลิก</li></ol>
     <div class="table-wrap"><table><thead><tr><th>filter</th><th>ได้อะไร</th></tr></thead><tbody><tr><td><code>no:iteration</code></td><td>งานที่ยังไม่อยู่ใน sprint (backlog)</td></tr><tr><td><code>iteration:@current</code></td><td>งานใน sprint ปัจจุบัน</td></tr><tr><td><code>iteration:@next</code></td><td>งานที่วางไว้ sprint หน้า</td></tr><tr><td><code>-status:Done</code></td><td>ซ่อนงานที่เสร็จแล้ว</td></tr><tr><td><code>label:bug</code></td><td>เฉพาะ bug</td></tr></tbody></table></div>
     
     
+    
   </article>
 
-  <article class="step" id="step-13">
-    <header><span class="num">13</span><h3>ตั้งค่า view (ปุ่ม View)</h3></header>
-    <figure><img src="images/steps/step-13.png" alt="ขั้นที่ 13: ตั้งค่า view (ปุ่ม View)" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-19">
+    <header><span class="num">19</span><h3>ตั้งค่า view (ปุ่ม View)</h3></header>
+    <figure><img src="images/steps/step-19.png" alt="ขั้นที่ 19: ตั้งค่า view (ปุ่ม View)" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>เปลี่ยนรูปแบบ: Table / Board / Roadmap</li><li><b>Group by</b>: จัดกลุ่ม เช่น ตาม Iteration เพื่อดูงานแยกตาม sprint ระหว่างวางแผน</li><li><b>Field sum</b>: แสดงผลรวม Estimate ใช้ดูว่าแต้มรวมเกินกำลังของ sprint หรือไม่</li></ol>
     
     
     
+    
   </article>
 
-  <article class="step" id="step-14">
-    <header><span class="num">14</span><h3>Sprint board</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/views/2" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-14.png" alt="ขั้นที่ 14: Sprint board" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-20">
+    <header><span class="num">20</span><h3>Sprint board</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/views/2" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-20.png" alt="ขั้นที่ 20: Sprint board" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>แต่ละคอลัมน์คือ Status พร้อมจำนวนการ์ดและแต้ม Estimate รวม ลากการ์ดข้ามคอลัมน์เพื่อเปลี่ยนสถานะ ถ้าใส่ filter <code>iteration:@current</code> จะเห็นเฉพาะงานใน sprint นี้</li></ol>
+    
     
     
     
@@ -241,22 +339,24 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 </section>
 
 <section id="p5">
-<h2><span class="n">5</span>ตั้งระบบอัตโนมัติ</h2>
+<h2><span class="n">6</span>ตั้งระบบอัตโนมัติ</h2>
 <p class="part-lead">ให้การ์ดย้ายสถานะเองเมื่อปิด issue หรือ merge PR</p>
 
-  <article class="step" id="step-15">
-    <header><span class="num">15</span><h3>Workflows ที่เปิดอยู่</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/workflows" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-15.png" alt="ขั้นที่ 15: Workflows ที่เปิดอยู่" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-21">
+    <header><span class="num">21</span><h3>Workflows ที่เปิดอยู่</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/workflows" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-21.png" alt="ขั้นที่ 21: Workflows ที่เปิดอยู่" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>จุดเขียว = เปิดอยู่ เช่น <b>Item closed</b> ย้ายการ์ดไป Done เอง และ <b>Pull request merged</b> ก็เช่นกัน</li><li><b>Auto-archive items</b> ปิดอยู่ ซึ่งถูกต้อง เพราะ Insights ไม่นับ item ที่ archive แล้ว กราฟจะหายถ้าเปิด</li></ol>
+    
     
     
     
   </article>
 
-  <article class="step" id="step-16">
-    <header><span class="num">16</span><h3>Auto-add: เพิ่ม issue ใหม่เข้า Project เอง</h3></header>
-    <figure><img src="images/steps/step-16.png" alt="ขั้นที่ 16: Auto-add: เพิ่ม issue ใหม่เข้า Project เอง" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-22">
+    <header><span class="num">22</span><h3>Auto-add: เพิ่ม issue ใหม่เข้า Project เอง</h3></header>
+    <figure><img src="images/steps/step-22.png" alt="ขั้นที่ 22: Auto-add: เพิ่ม issue ใหม่เข้า Project เอง" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>ตอนนี้ตั้งให้เพิ่ม issue ที่เปิดอยู่ของ repo NgenPaiNai ทุกใบ (<code>is:issue is:open</code>)</li><li>กด <b>Edit</b> ถ้าอยากเปลี่ยน filter เช่น เอาเฉพาะ <code>label:story,task,bug</code></li></ol>
+    
     
     
     
@@ -264,22 +364,24 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 </section>
 
 <section id="p6">
-<h2><span class="n">6</span>ดูรายงาน (burn up)</h2>
+<h2><span class="n">7</span>ดูรายงาน (burn up)</h2>
 <p class="part-lead">ใช้แทน burndown ของ Jira</p>
 
-  <article class="step" id="step-17">
-    <header><span class="num">17</span><h3>กราฟ Burn up</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/insights" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-17.png" alt="ขั้นที่ 17: กราฟ Burn up" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-23">
+    <header><span class="num">23</span><h3>กราฟ Burn up</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/insights" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-23.png" alt="ขั้นที่ 23: กราฟ Burn up" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li><b>Burn up</b> มีให้ในบัญชีนี้แล้ว (บัญชีส่วนตัว ตรวจเมื่อ 28 ต.ค. 2569) ตอนนี้ยังไม่มีข้อมูลเพราะยังไม่มี issue</li><li>เปลี่ยน filter เป็น <code>iteration:@current</code> เพื่อดูเฉพาะ sprint นี้ ส่วนที่เป็น <b>Open</b> คือ "งานคงเหลือ" ซึ่งให้ข้อมูลเดียวกับ burndown</li><li>กด <b>Configure</b> เพื่อเปลี่ยนสิ่งที่นับ (ขั้นถัดไป)</li></ol>
+    
     
     
     
   </article>
 
-  <article class="step" id="step-18">
-    <header><span class="num">18</span><h3>นับเป็นแต้มแทนจำนวน issue</h3></header>
-    <figure><img src="images/steps/step-18.png" alt="ขั้นที่ 18: นับเป็นแต้มแทนจำนวน issue" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-24">
+    <header><span class="num">24</span><h3>นับเป็นแต้มแทนจำนวน issue</h3></header>
+    <figure><img src="images/steps/step-24.png" alt="ขั้นที่ 24: นับเป็นแต้มแทนจำนวน issue" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>ที่ Y-axis เลือก <b>Sum of a field</b> แล้วเลือก <b>Estimate</b> กราฟจะเป็น burn up ตาม story points แล้วกด <b>Save to new chart</b></li></ol>
+    
     
     <p class="callout">GitHub ไม่มี burndown แบบมีเส้นอุดมคติให้ในตัว ถ้าทีมต้องการจริงๆ ต้องใช้เครื่องมือเสริม หรือเขียน GitHub Action ดึงข้อมูลมาวาดเอง</p>
     
@@ -301,7 +403,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 
 <section id="backlog">
 <h2>Product backlog ตัวอย่างของเงินไปไหน</h2>
-<p>งานจริงของแอปนี้ สร้างเป็น issue ตามขั้นที่ 3–4 ทำเสร็จแล้วปิดได้จริง กราฟจะได้มีข้อมูล</p>
+<p>งานจริงของแอปนี้ สร้างเป็น issue ตามขั้นที่ 9–10 ทำเสร็จแล้วปิดได้จริง กราฟจะได้มีข้อมูล</p>
 <p class="epic">Epic A: เป้าเก็บเงิน</p>
 <div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Estimate</th><th>Priority</th></tr></thead><tbody>
 <tr><td>A1</td><td>Story</td><td>ตั้งเป้าเก็บเงินต่อเดือนในเมนู ⋯</td><td class="num">3</td><td><span class="pri">P1</span></td></tr>
