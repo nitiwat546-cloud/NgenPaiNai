@@ -70,7 +70,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
   <li><a href="#p3">4. ตั้งค่า Project</a></li>
   <li><a href="#p4">5. ทำ backlog และแบ่ง sprint</a></li>
   <li><a href="#p5">6. ตั้งระบบอัตโนมัติ</a></li>
-  <li><a href="#p6">7. ดูรายงาน (burn up)</a></li>
+  <li><a href="#p6">7. สร้างกราฟ burndown (burn up)</a></li>
   <li><a href="#points">Story points</a></li>
   <li><a href="#epic-sprint">Epic กับ Sprint</a></li>
   <li><a href="#backlog">Backlog ตัวอย่าง</a></li>
@@ -79,7 +79,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 <main>
 <header>
   <h1>ฝึกใช้ <span class="tag">GitHub Projects</span> แทน Jira</h1>
-  <p class="lead">คู่มือแบบภาพ 27 ขั้น ภาพทุกภาพถ่ายจากหน้าจอ GitHub จริงของ Project <a href="https://github.com/users/pthanathon/projects/22">เงินไปไหน – Dev</a> เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ</p>
+  <p class="lead">คู่มือแบบภาพ 32 ขั้น ภาพทุกภาพถ่ายจากหน้าจอ GitHub จริงของ Project <a href="https://github.com/users/pthanathon/projects/22">เงินไปไหน – Dev</a> เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ</p>
 </header>
 
 <section id="map">
@@ -94,7 +94,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 <tr><td>Sprint board</td><td>view <b>Board</b> กรอง <code>iteration:@current</code></td><td></td></tr>
 <tr><td>Fix version</td><td><b>Milestone</b></td><td></td></tr>
 <tr><td>Component</td><td><b>Label</b></td><td></td></tr>
-<tr><td>Burndown</td><td>Insights → <b>Burn up</b></td><td>ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 25–27)</td></tr>
+<tr><td>Burndown</td><td>Insights → <b>Burn up</b></td><td>ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 25–32)</td></tr>
 </tbody></table></div>
 </section>
 
@@ -385,13 +385,13 @@ body:
 </section>
 
 <section id="p6">
-<h2><span class="n">7</span>ดูรายงาน (burn up)</h2>
-<p class="part-lead">ใช้แทน burndown ของ Jira</p>
+<h2><span class="n">7</span>สร้างกราฟ burndown (burn up)</h2>
+<p class="part-lead">GitHub ไม่มี burndown ในตัว แต่ตั้งกราฟ Burn up ให้นับแต้มของ sprint ปัจจุบันแล้วอ่านส่วนงานค้างแทนได้</p>
 
   <article class="step" id="step-25">
     <header><span class="num">25</span><h3>กราฟ Burn up</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/insights" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
     <figure><img src="images/steps/step-25.png" alt="ขั้นที่ 25: กราฟ Burn up" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li><b>Burn up</b> มีให้ในบัญชีส่วนตัวแบบฟรีด้วย (ตรวจเมื่อ 28 ต.ค. 2569)</li><li>เปลี่ยน filter เป็น <code>iteration:@current</code> เพื่อดูเฉพาะ sprint นี้</li><li>กด <b>Configure</b> เพื่อเปลี่ยนสิ่งที่นับ (ขั้นที่ 27)</li></ol>
+    <ol class="notes"><li><b>Burn up</b> มีให้ในบัญชีส่วนตัวแบบฟรีด้วย (ตรวจเมื่อ 28 ต.ค. 2569)</li><li>ช่อง filter ใช้เลือกว่าจะนับ item ไหน (ขั้นที่ 27)</li><li>กด <b>Configure</b> เพื่อเปลี่ยนแกนและรูปแบบกราฟ (ขั้นที่ 28)</li></ol>
     
     
     
@@ -409,13 +409,63 @@ body:
   </article>
 
   <article class="step" id="step-27">
-    <header><span class="num">27</span><h3>นับเป็นแต้มแทนจำนวน issue</h3></header>
-    <figure><img src="images/steps/step-27.png" alt="ขั้นที่ 27: นับเป็นแต้มแทนจำนวน issue" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ที่ Y-axis เลือก <b>Sum of a field</b> แล้วเลือก <b>Story point</b> กราฟจะเป็น burn up ตามแต้ม แล้วกด <b>Save to new chart</b></li></ol>
+    <header><span class="num">27</span><h3>สร้างกราฟ Sprint burndown (1/6): กรองเฉพาะ sprint นี้</h3></header>
+    <figure><img src="images/steps/step-27.png" alt="ขั้นที่ 27: สร้างกราฟ Sprint burndown (1/6): กรองเฉพาะ sprint นี้" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ในหน้า Burn up พิมพ์ <code>iteration:@current</code> ในช่อง filter แล้วกด Enter เลข 3 ท้ายช่องคือ sprint นี้มี 3 ใบ (ใช้ <code>iteration:"Iteration 1"</code> ถ้าอยากดู sprint ที่ระบุชื่อ)</li><li><b>Discard</b> ยกเลิก filter กลับเป็นค่าเดิม ตอนนี้ยังไม่ต้องกด</li><li>แกน Y เปลี่ยนตามสิ่งที่นับ ภาพนี้ตั้งเป็นผลรวมแต้มไว้แล้ว (ขั้นที่ 31) จึงขึ้นถึง 10 แต้ม</li></ol>
     
     
-    <p class="callout">GitHub ไม่มี burndown แบบมีเส้นอุดมคติให้ในตัว ถ้าทีมต้องการจริงๆ ต้องใช้เครื่องมือเสริม หรือเขียน GitHub Action ดึงข้อมูลมาวาดเอง</p>
+    <p class="callout"><code>@current</code> เลื่อนไป sprint ถัดไปเองเมื่อเปลี่ยนรอบ กราฟที่บันทึกไว้จึงใช้ได้ทุก sprint ไม่ต้องสร้างใหม่</p>
     
+  </article>
+
+  <article class="step" id="step-28">
+    <header><span class="num">28</span><h3>สร้างกราฟ Sprint burndown (2/6): เปิด Configure</h3></header>
+    <figure><img src="images/steps/step-28.png" alt="ขั้นที่ 28: สร้างกราฟ Sprint burndown (2/6): เปิด Configure" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li><b>Layout</b>: รูปแบบกราฟ (ขั้นที่ 29)</li><li><b>X-axis</b>: แกนนอน (ขั้นที่ 30)</li><li><b>Y-axis</b>: สิ่งที่นับ ค่าเริ่มต้นคือ Count of items นับจำนวน issue (ขั้นที่ 31)</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-29">
+    <header><span class="num">29</span><h3>สร้างกราฟ Sprint burndown (3/6): Layout</h3></header>
+    <figure><img src="images/steps/step-29.png" alt="ขั้นที่ 29: สร้างกราฟ Sprint burndown (3/6): Layout" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li><b>Stacked area</b> (ค่าเริ่มต้น) ซ้อนพื้นที่งานเสร็จกับงานค้างไว้ อ่านง่ายที่สุด</li><li><b>Line</b> แยกเป็นเส้น ใช้ดูเส้นงานค้าง (Open) อย่างเดียวได้ชัดกว่า เส้นนี้ก็คือเส้น burndown</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-30">
+    <header><span class="num">30</span><h3>สร้างกราฟ Sprint burndown (4/6): X-axis = Time</h3></header>
+    <figure><img src="images/steps/step-30.png" alt="ขั้นที่ 30: สร้างกราฟ Sprint burndown (4/6): X-axis = Time" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ใช้ <b>Time</b> (กลุ่ม Historical) แกนนอนเป็นวันที่ เห็นว่างานค้างลดลงวันต่อวันอย่างไร</li><li>ฟิลด์ด้านล่าง เช่น Iteration หรือ Status เป็นกราฟแบบ "ภาพ ณ ตอนนี้" ไม่มีเส้นเวลา ใช้ทำกราฟ velocity ได้ (ดูหมายเหตุในขั้นที่ 32)</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-31">
+    <header><span class="num">31</span><h3>สร้างกราฟ Sprint burndown (5/6): Y-axis = Sum of a field</h3></header>
+    <figure><img src="images/steps/step-31.png" alt="ขั้นที่ 31: สร้างกราฟ Sprint burndown (5/6): Y-axis = Sum of a field" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>เลือก <b>Sum of a field</b> เพื่อนับเป็นผลรวมแต้มแทนจำนวน issue (issue 13 แต้มกับ 1 แต้มจะได้ไม่นับเท่ากัน)</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-32">
+    <header><span class="num">32</span><h3>สร้างกราฟ Sprint burndown (6/6): เลือก Story point แล้วบันทึก</h3></header>
+    <figure><img src="images/steps/step-32.png" alt="ขั้นที่ 32: สร้างกราฟ Sprint burndown (6/6): เลือก Story point แล้วบันทึก" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li><b>Y-axis field</b> เลือก <b>Story point</b> (ต้องเป็นฟิลด์ชนิด Number เท่านั้น ฟิลด์ Single select จะไม่ขึ้นในรายการนี้)</li><li>กด <b>Save to new chart</b> กราฟจะไปอยู่ใต้ Custom charts ทางซ้าย ตั้งชื่อเช่น "Sprint burndown" ได้จากเมนู ⋯ ข้างชื่อกราฟ</li></ol>
+    
+    
+    <p class="callout">กราฟ velocity (แต้มที่ทำเสร็จต่อ sprint): กด <b>+ New chart</b> → Configure ตั้ง Layout = Stacked column, X-axis = <b>Iteration</b>, Group by = <b>Status</b>, Y-axis = Sum of a field → <b>Story point</b> แท่งส่วน Done ของแต่ละ sprint คือ velocity ใช้ประมาณว่า sprint หน้ารับงานได้กี่แต้ม</p>
+    <p class="callout warn">อ่านกราฟเป็น burndown: ดู<b>ส่วน Open</b> ซึ่งคือแต้มที่ยังค้างอยู่ ควรลดลงจนเหลือ 0 ในวันสุดท้ายของ sprint แต่งานจะนับว่าเสร็จก็ต่อเมื่อ <b>issue ถูกปิด</b> (workflow Auto-close issue ปิดให้เมื่อย้ายการ์ดไป Done) และ GitHub ไม่มีเส้นอุดมคติให้ ต้องเทียบในใจว่าควรลดลงวันละเท่าไร</p>
   </article>
 </section>
 

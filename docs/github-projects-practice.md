@@ -1,6 +1,6 @@
 # ฝึกใช้ GitHub Projects แทน Jira
 
-คู่มือแบบภาพ 27 ขั้น ภาพถ่ายจากหน้าจอ GitHub จริงของ Project [เงินไปไหน – Dev](https://github.com/users/pthanathon/projects/22) เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ
+คู่มือแบบภาพ 32 ขั้น ภาพถ่ายจากหน้าจอ GitHub จริงของ Project [เงินไปไหน – Dev](https://github.com/users/pthanathon/projects/22) เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ
 
 > ฉบับ HTML อ่านง่ายกว่า: เปิด `docs/github-projects-practice.html` ในเบราว์เซอร์
 
@@ -17,7 +17,7 @@
 | Sprint board | view **Board** กรอง `iteration:@current` |  |
 | Fix version | **Milestone** |  |
 | Component | **Label** |  |
-| Burndown | Insights → **Burn up** | ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 25–27) |
+| Burndown | Insights → **Burn up** | ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 25–32) |
 
 ## 1. เตรียม repo
 
@@ -273,9 +273,9 @@ Project นี้สร้างจาก template "Team planning" ฟิลด�
 1. ตอนนี้ตั้งให้เพิ่ม issue ที่เปิดอยู่ของ repo NgenPaiNai ทุกใบ (`is:issue is:open`)
 2. กด **Edit** ถ้าอยากเปลี่ยน filter เช่น เอาเฉพาะ `label:story,task,bug`
 
-## 7. ดูรายงาน (burn up)
+## 7. สร้างกราฟ burndown (burn up)
 
-ใช้แทน burndown ของ Jira
+GitHub ไม่มี burndown ในตัว แต่ตั้งกราฟ Burn up ให้นับแต้มของ sprint ปัจจุบันแล้วอ่านส่วนงานค้างแทนได้
 
 ### ขั้นที่ 25: กราฟ Burn up
 
@@ -284,8 +284,8 @@ Project นี้สร้างจาก template "Team planning" ฟิลด�
 ![ขั้นที่ 25](images/steps/step-25.png)
 
 1. **Burn up** มีให้ในบัญชีส่วนตัวแบบฟรีด้วย (ตรวจเมื่อ 28 ต.ค. 2569)
-2. เปลี่ยน filter เป็น `iteration:@current` เพื่อดูเฉพาะ sprint นี้
-3. กด **Configure** เพื่อเปลี่ยนสิ่งที่นับ (ขั้นที่ 27)
+2. ช่อง filter ใช้เลือกว่าจะนับ item ไหน (ขั้นที่ 27)
+3. กด **Configure** เพื่อเปลี่ยนแกนและรูปแบบกราฟ (ขั้นที่ 28)
 
 ### ขั้นที่ 26: อ่านกราฟ Burn up
 
@@ -293,13 +293,54 @@ Project นี้สร้างจาก template "Team planning" ฟิลด�
 
 1. เส้นเขียวคืองานที่ยังเปิดอยู่ (Open) ตอนนี้มี 8 ใบ เพิ่งสร้างเมื่อ 27–28 ต.ค. จึงพุ่งขึ้นตอนท้าย เมื่อปิด issue ได้ ส่วนที่เป็นงานเสร็จ (Completed) จะโตขึ้นและส่วน Open จะลดลง ส่วน Open ก็คือ "งานคงเหลือ" ที่ burndown แสดง
 
-### ขั้นที่ 27: นับเป็นแต้มแทนจำนวน issue
+### ขั้นที่ 27: สร้างกราฟ Sprint burndown (1/6): กรองเฉพาะ sprint นี้
 
 ![ขั้นที่ 27](images/steps/step-27.png)
 
-1. ที่ Y-axis เลือก **Sum of a field** แล้วเลือก **Story point** กราฟจะเป็น burn up ตามแต้ม แล้วกด **Save to new chart**
+1. ในหน้า Burn up พิมพ์ `iteration:@current` ในช่อง filter แล้วกด Enter เลข 3 ท้ายช่องคือ sprint นี้มี 3 ใบ (ใช้ `iteration:"Iteration 1"` ถ้าอยากดู sprint ที่ระบุชื่อ)
+2. **Discard** ยกเลิก filter กลับเป็นค่าเดิม ตอนนี้ยังไม่ต้องกด
+3. แกน Y เปลี่ยนตามสิ่งที่นับ ภาพนี้ตั้งเป็นผลรวมแต้มไว้แล้ว (ขั้นที่ 31) จึงขึ้นถึง 10 แต้ม
 
-> GitHub ไม่มี burndown แบบมีเส้นอุดมคติให้ในตัว ถ้าทีมต้องการจริงๆ ต้องใช้เครื่องมือเสริม หรือเขียน GitHub Action ดึงข้อมูลมาวาดเอง
+> `@current` เลื่อนไป sprint ถัดไปเองเมื่อเปลี่ยนรอบ กราฟที่บันทึกไว้จึงใช้ได้ทุก sprint ไม่ต้องสร้างใหม่
+
+### ขั้นที่ 28: สร้างกราฟ Sprint burndown (2/6): เปิด Configure
+
+![ขั้นที่ 28](images/steps/step-28.png)
+
+1. **Layout**: รูปแบบกราฟ (ขั้นที่ 29)
+2. **X-axis**: แกนนอน (ขั้นที่ 30)
+3. **Y-axis**: สิ่งที่นับ ค่าเริ่มต้นคือ Count of items นับจำนวน issue (ขั้นที่ 31)
+
+### ขั้นที่ 29: สร้างกราฟ Sprint burndown (3/6): Layout
+
+![ขั้นที่ 29](images/steps/step-29.png)
+
+1. **Stacked area** (ค่าเริ่มต้น) ซ้อนพื้นที่งานเสร็จกับงานค้างไว้ อ่านง่ายที่สุด
+2. **Line** แยกเป็นเส้น ใช้ดูเส้นงานค้าง (Open) อย่างเดียวได้ชัดกว่า เส้นนี้ก็คือเส้น burndown
+
+### ขั้นที่ 30: สร้างกราฟ Sprint burndown (4/6): X-axis = Time
+
+![ขั้นที่ 30](images/steps/step-30.png)
+
+1. ใช้ **Time** (กลุ่ม Historical) แกนนอนเป็นวันที่ เห็นว่างานค้างลดลงวันต่อวันอย่างไร
+2. ฟิลด์ด้านล่าง เช่น Iteration หรือ Status เป็นกราฟแบบ "ภาพ ณ ตอนนี้" ไม่มีเส้นเวลา ใช้ทำกราฟ velocity ได้ (ดูหมายเหตุในขั้นที่ 32)
+
+### ขั้นที่ 31: สร้างกราฟ Sprint burndown (5/6): Y-axis = Sum of a field
+
+![ขั้นที่ 31](images/steps/step-31.png)
+
+1. เลือก **Sum of a field** เพื่อนับเป็นผลรวมแต้มแทนจำนวน issue (issue 13 แต้มกับ 1 แต้มจะได้ไม่นับเท่ากัน)
+
+### ขั้นที่ 32: สร้างกราฟ Sprint burndown (6/6): เลือก Story point แล้วบันทึก
+
+![ขั้นที่ 32](images/steps/step-32.png)
+
+1. **Y-axis field** เลือก **Story point** (ต้องเป็นฟิลด์ชนิด Number เท่านั้น ฟิลด์ Single select จะไม่ขึ้นในรายการนี้)
+2. กด **Save to new chart** กราฟจะไปอยู่ใต้ Custom charts ทางซ้าย ตั้งชื่อเช่น "Sprint burndown" ได้จากเมนู ⋯ ข้างชื่อกราฟ
+
+> กราฟ velocity (แต้มที่ทำเสร็จต่อ sprint): กด **+ New chart** → Configure ตั้ง Layout = Stacked column, X-axis = **Iteration**, Group by = **Status**, Y-axis = Sum of a field → **Story point** แท่งส่วน Done ของแต่ละ sprint คือ velocity ใช้ประมาณว่า sprint หน้ารับงานได้กี่แต้ม
+
+> ⚠️ อ่านกราฟเป็น burndown: ดู**ส่วน Open** ซึ่งคือแต้มที่ยังค้างอยู่ ควรลดลงจนเหลือ 0 ในวันสุดท้ายของ sprint แต่งานจะนับว่าเสร็จก็ต่อเมื่อ **issue ถูกปิด** (workflow Auto-close issue ปิดให้เมื่อย้ายการ์ดไป Done) และ GitHub ไม่มีเส้นอุดมคติให้ ต้องเทียบในใจว่าควรลดลงวันละเท่าไร
 
 ## Story points: ใส่ 1 ค่าต่อ issue
 
