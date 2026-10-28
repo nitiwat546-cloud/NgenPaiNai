@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ฝึก GitHub Projects แทน Jira</title>
+<meta name="description" content="แบบฝึกหัดใช้ GitHub Projects ทำ backlog แบ่ง sprint สร้าง issue และดู burn up โดยใช้ repo เงินไปไหน">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+:root {
+  --bg: #fbfbf7; --surface: #ffffff; --surface-2: #f1f1ea; --line: #e2e2d8;
+  --ink: #16160f; --muted: #5e5e54; --accent: #4f6b00; --mark: #d4ff2a; --on-mark: #0f0f0f;
+  --warn-bg: #fff4d6; --warn-ink: #5a4100; --bad: #b3261e;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0f0f; --surface: #1a1a1a; --surface-2: #242424; --line: #2e2e2e;
+    --ink: #f4f4ee; --muted: #a6a69c; --accent: #d4ff2a; --mark: #d4ff2a; --on-mark: #0f0f0f;
+    --warn-bg: #2e2810; --warn-ink: #f5dc8a; --bad: #ff8a80;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Anuphan", system-ui, sans-serif; font-size: 17px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--mark); color: var(--on-mark); }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px; }
+nav.toc { position: sticky; top: 24px; align-self: start; font-size: 0.92rem; }
+nav.toc b { display: block; font-family: "Kanit", sans-serif; font-weight: 600; margin-bottom: 8px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+nav.toc a { display: block; padding: 4px 0 4px 14px; margin-left: -2px; border-left: 2px solid transparent; color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--ink); border-left-color: var(--accent); }
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; padding: 24px 16px 64px; }
+  nav.toc { position: static; }
+}
+
+main { max-width: 760px; min-width: 0; }
+header.hero { margin-bottom: 40px; }
+h1 { font-family: "Kanit", sans-serif; font-weight: 800; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.2; margin: 0 0 12px; }
+h1 .tag { display: inline-block; background: var(--mark); color: var(--on-mark); padding: 0 10px; transform: skewX(-8deg); }
+.lead { font-size: 1.08rem; color: var(--muted); margin: 0; }
+h2 { font-family: "Kanit", sans-serif; font-weight: 600; font-size: 1.5rem; line-height: 1.3; margin: 56px 0 14px; padding-top: 8px; }
+h2 .n { font-family: "Anton", sans-serif; font-weight: 400; color: var(--accent); margin-right: 10px; }
+h3 { font-family: "Kanit", sans-serif; font-weight: 600; font-size: 1.15rem; margin: 32px 0 10px; }
+p, li { max-width: 70ch; }
+ol, ul { padding-left: 1.4em; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin-top: 6px; }
+code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.88em; background: var(--surface-2); padding: 1px 6px; border-radius: 5px; }
+strong { font-weight: 600; }
+
+.table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; padding: 10px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+thead th { border-top: 0; font-family: "Kanit", sans-serif; font-weight: 600; background: var(--surface-2); white-space: nowrap; }
+td.num { font-variant-numeric: tabular-nums; text-align: right; }
+.pri { display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 0 8px; border-radius: 999px; background: var(--surface-2); white-space: nowrap; }
+.pri.p0 { background: var(--mark); color: var(--on-mark); }
+
+.note { border-radius: 12px; padding: 14px 18px; margin: 18px 0; background: var(--surface-2); }
+.note.warn { background: var(--warn-bg); color: var(--warn-ink); }
+.note p { margin: 0; }
+.note p + p, .note p + ol, .note p + ul { margin-top: 8px; }
+.check { font-weight: 600; color: var(--accent); white-space: nowrap; }
+.note.warn .check { color: inherit; text-decoration: underline; }
+
+.epic { font-family: "Kanit", sans-serif; font-weight: 600; margin: 28px 0 0; }
+.total { font-size: 1.05rem; }
+.total b { font-family: "Anton", sans-serif; font-weight: 400; font-size: 1.3rem; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.two > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 4px 18px; }
+@media (max-width: 640px) { .two { grid-template-columns: 1fr; } }
+.bad { color: var(--bad); }
+footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.9rem; color: var(--muted); }
+footer ul { padding-left: 1.2em; }
+
+@media print {
+  nav.toc { display: none; }
+  .layout { display: block; padding: 0; }
+  h2 { break-after: avoid; }
+  .table-wrap, .note { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc" aria-label="สารบัญ">
+  <b>สารบัญ</b>
+  <ol>
+    <li><a href="#s1">1. เทียบ Jira → GitHub</a></li>
+    <li><a href="#s2">2. เตรียม repo</a></li>
+    <li><a href="#s3">3. สร้าง Project</a></li>
+    <li><a href="#s4">4. สร้างฟิลด์</a></li>
+    <li><a href="#s5">5. Product backlog</a></li>
+    <li><a href="#s6">6. Sprint</a></li>
+    <li><a href="#s7">7. Burn up / burndown</a></li>
+    <li><a href="#s8">8. Backlog ตัวอย่าง</a></li>
+    <li><a href="#s9">9. สรุปให้พี่เลี้ยง</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <h1>ฝึกใช้ <span class="tag">GitHub Projects</span> แทน Jira</h1>
+  <p class="lead">แบบฝึกหัดทีละขั้น ตั้งแต่ทำ product backlog → แบ่ง sprint → สร้าง issue → ใช้ Insights ดูความคืบหน้า โดยใช้ repo <a href="https://github.com/pthanathon/NgenPaiNai">เงินไปไหน</a> เป็นสนามซ้อม backlog ในข้อ 8 เป็นงานจริงของแอปนี้ ทำเสร็จแล้วปิด issue ได้จริง กราฟจึงมีข้อมูลจริงให้ดู</p>
+  <div class="note warn">
+    <p>ข้อมูลอ้างอิงจากเอกสาร GitHub ณ ตุลาคม 2569 (2026) ฟีเจอร์นี้เปลี่ยนบ่อย จุดที่มีหมายเหตุ <span class="check">ลองเช็กเอง</span> ให้ทดสอบกับบัญชีจริงก่อนไปสรุปให้ทีม</p>
+  </div>
+</header>
+
+<section id="s1">
+<h2><span class="n">1</span>เทียบคำศัพท์ Jira → GitHub</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Jira</th><th>GitHub</th><th>หมายเหตุ</th></tr></thead>
+<tbody>
+<tr><td>Project / Board</td><td><strong>Project</strong> (ระดับ user หรือ org)</td><td>Project หนึ่งดึง issue จากหลาย repo ได้</td></tr>
+<tr><td>Epic</td><td><strong>Parent issue + sub-issues</strong></td><td>issue แม่แสดงความคืบหน้าของ sub-issue ให้เอง</td></tr>
+<tr><td>Story / Task / Bug</td><td><strong>Issue</strong> + <strong>label</strong> (<code>story</code> <code>task</code> <code>bug</code>)</td><td><strong>Issue types</strong> ของจริงมีเฉพาะ repo ที่อยู่ใน organization</td></tr>
+<tr><td>Story points</td><td><strong>ฟิลด์ Number</strong> ที่สร้างเอง (เช่น <code>Points</code>)</td><td>ไม่มีให้ในตัว ต้องสร้างเอง</td></tr>
+<tr><td>Sprint</td><td><strong>ฟิลด์ Iteration</strong> (เช่น <code>Sprint</code>)</td><td>ตั้งความยาว วันเริ่ม และช่วงพักได้</td></tr>
+<tr><td>Status / Workflow</td><td><strong>ฟิลด์ Status</strong> + <strong>Workflows</strong></td><td>ย้ายสถานะอัตโนมัติได้บางส่วน เช่น ปิด issue แล้วย้ายไป Done</td></tr>
+<tr><td>Backlog view</td><td><strong>Table view</strong> ที่กรอง <code>no:sprint</code></td><td></td></tr>
+<tr><td>Sprint board</td><td><strong>Board view</strong> กรอง <code>sprint:@current</code></td><td></td></tr>
+<tr><td>Roadmap / Timeline</td><td><strong>Roadmap view</strong></td><td></td></tr>
+<tr><td>Fix version / Release</td><td><strong>Milestone</strong></td><td></td></tr>
+<tr><td>Component</td><td><strong>Label</strong></td><td></td></tr>
+<tr><td>Sprint report / Burndown</td><td><strong>Insights</strong> (charts)</td><td>มี <strong>Burn up</strong> ในตัว แต่<strong class="bad">ไม่มี burndown สำเร็จรูป</strong> (ดูข้อ 7)</td></tr>
+<tr><td>Issue template</td><td><code>.github/ISSUE_TEMPLATE/*.yml</code> (issue forms)</td><td>repo นี้มี template ให้แล้ว 3 แบบ</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="s2">
+<h2><span class="n">2</span>เตรียม repo (ทำครั้งเดียว)</h2>
+<ol>
+  <li><strong>สร้าง label</strong>: ไปที่ repo → <strong>Issues</strong> → <strong>Labels</strong> → <strong>New label</strong> สร้าง <code>story</code>, <code>task</code>, <code>epic</code> (<code>bug</code> มีอยู่แล้ว)<br>template ใน <code>.github/ISSUE_TEMPLATE/</code> จะติด label เหล่านี้ให้อัตโนมัติ แต่ label ต้องมีอยู่ใน repo ก่อน</li>
+  <li><strong>ลองเปิด template</strong>: ไปที่ <a href="https://github.com/pthanathon/NgenPaiNai/issues/new/choose">Issues → New issue</a> จะเห็น 3 แบบให้เลือก คือ <strong>User story</strong>, <strong>Bug</strong>, <strong>Task</strong></li>
+</ol>
+</section>
+
+<section id="s3">
+<h2><span class="n">3</span>สร้าง Project</h2>
+<ol>
+  <li>ไปที่โปรไฟล์ GitHub ของตัวเอง → แท็บ <strong>Projects</strong> → <strong>New project</strong></li>
+  <li>เลือก template <strong>Team planning</strong> หรือเริ่มจาก <strong>Table</strong> เปล่าก็ได้ ตั้งชื่อเช่น <code>เงินไปไหน – Dev</code></li>
+  <li>เชื่อม Project กับ repo: ใน repo → แท็บ <strong>Projects</strong> → <strong>Link a project</strong></li>
+  <li><strong>Settings</strong> ของ Project (เมนู ⋯ มุมขวาบน) → ตั้งเป็น <strong>Public</strong> ถ้าไม่มีข้อมูลลับ<br>เอกสาร GitHub ระบุว่า project แบบ public บันทึก chart ใน Insights ได้ไม่จำกัด ส่วนบัญชีฟรีแบบ private เคยจำกัดไว้ที่ 2 chart <span class="check">ลองเช็กเอง</span></li>
+  <li>จดเลข Project จาก URL ไว้ เช่น <code>github.com/users/pthanathon/projects/1</code> คือเลข <code>1</code><br>เอาไปใส่บรรทัด <code>projects:</code> ใน template ได้ issue ที่สร้างจาก template จะเข้า Project ให้เอง</li>
+</ol>
+</section>
+
+<section id="s4">
+<h2><span class="n">4</span>สร้างฟิลด์ (เทียบได้กับการตั้งค่า board ใน Jira)</h2>
+<p>ใน Project → คลิกหัวคอลัมน์ <strong>+</strong> → <strong>New field</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>ฟิลด์</th><th>ชนิด</th><th>ค่า</th></tr></thead>
+<tbody>
+<tr><td><code>Status</code></td><td>Single select (มีให้อยู่แล้ว)</td><td>แก้ตัวเลือกเป็น <code>Backlog</code>, <code>Ready</code>, <code>In progress</code>, <code>In review</code>, <code>Done</code></td></tr>
+<tr><td><code>Priority</code></td><td>Single select</td><td><code>P0 ด่วน</code>, <code>P1 สำคัญ</code>, <code>P2 ทำเมื่อว่าง</code></td></tr>
+<tr><td><code>Points</code></td><td>Number</td><td>1, 2, 3, 5, 8, 13</td></tr>
+<tr><td><code>Sprint</code></td><td><strong>Iteration</strong></td><td>ความยาว <strong>1 สัปดาห์</strong> เริ่ม <strong>พุธ 28 ต.ค. 2569</strong> (ฝึกแบบสั้นจะได้เห็นกราฟเร็ว ทีมจริงมักใช้ 2 สัปดาห์)</td></tr>
+</tbody></table></div>
+<ul>
+  <li>ฟิลด์ Iteration สร้างแล้วจะได้ 3 iteration ให้ทันที เปลี่ยนชื่อจาก <code>Iteration 1-3</code> เป็น <code>Sprint 1-3</code> ได้ใน Settings</li>
+  <li>ใส่ <strong>break</strong> (ช่วงพัก) คั่นระหว่าง sprint ได้ เช่น ช่วงสอบ</li>
+</ul>
+</section>
+
+<section id="s5">
+<h2><span class="n">5</span>ทำ Product backlog</h2>
+<ol>
+  <li><strong>สร้าง Epic</strong>: ใช้ issue เปล่าหรือ template ก็ได้ ตั้งชื่อเช่น <code>[Epic] เป้าเก็บเงิน</code> แล้วติด label <code>epic</code></li>
+  <li><strong>สร้าง Story / Task / Bug</strong> จาก template ตามรายการในข้อ 8</li>
+  <li><strong>ผูก story เข้ากับ Epic</strong>: เปิด issue ของ Epic → <strong>Create sub-issue</strong> หรือ <strong>Add existing issue</strong><br>Epic จะแสดงแถบความคืบหน้า เช่น 1 of 3 ให้เอง</li>
+  <li><strong>ใส่ issue เข้า Project</strong>: เลือก Project ที่แถบขวาของ issue หรือพิมพ์ <code>#เลข</code> ที่แถวล่างสุดของตาราง</li>
+  <li>ใน Project ใส่ <code>Priority</code> กับ <code>Points</code> ให้ทุก story</li>
+  <li><strong>สร้าง view "Backlog"</strong>: ใช้ Table view ตั้ง filter <code>no:sprint -status:Done</code> แล้วเรียงตาม <strong>Priority</strong> ตามด้วย <strong>Points</strong><br>view นี้คือ product backlog ที่เรียงลำดับแล้ว</li>
+</ol>
+</section>
+
+<section id="s6">
+<h2><span class="n">6</span>Sprint planning และระหว่าง sprint</h2>
+<ol>
+  <li><strong>Sprint planning</strong>: ใน view Backlog ใส่ <code>Sprint = Sprint 1</code> ให้ story ด้านบนสุด ให้ผลรวม Points ไม่เกินกำลังทีม (ฝึกคนเดียวลองประมาณ 8 แต้ม/สัปดาห์)<br>เปิด <strong>Field sum</strong> ของคอลัมน์ Points ในเมนู view จะเห็นผลรวมแต้ม</li>
+  <li><strong>สร้าง view "Sprint board"</strong>: layout <strong>Board</strong> ให้ column ตาม <strong>Status</strong> และตั้ง filter <code>sprint:@current</code> แล้วเปิด Field sum ของ Points จะเห็นแต้มรวมของแต่ละคอลัมน์</li>
+  <li><strong>สร้าง view "Roadmap"</strong>: layout <strong>Roadmap</strong> ใช้ <code>Sprint</code> เป็นแกนเวลา</li>
+  <li><strong>ตั้ง Workflows</strong> (เมนู ⋯ → <strong>Workflows</strong>)
+    <ul>
+      <li><em>Item added to project</em> → Status = <code>Backlog</code></li>
+      <li><em>Item closed</em> → Status = <code>Done</code> (เปิดไว้ตั้งแต่แรก)</li>
+      <li><em>Pull request merged</em> → Status = <code>Done</code></li>
+      <li><em>Auto-add to project</em>: เพิ่ม issue ใหม่จาก repo นี้เข้า Project เอง ตั้ง filter ได้ เช่น <code>is:issue label:story,task,bug</code> (แผนฟรีสร้างได้จำนวนจำกัด <span class="check">ลองเช็กเอง</span>)</li>
+    </ul>
+    <div class="note warn"><p><strong>อย่าเปิด</strong> <em>Auto-archive items</em> ระหว่างฝึก เพราะ Insights ไม่นับ item ที่ archive แล้ว กราฟจะหาย</p></div>
+  </li>
+  <li><strong>ระหว่าง sprint</strong>: ลากการ์ดจาก Ready → In progress → Done หรือปิด issue ผ่าน PR ที่เขียนว่า <code>Closes #12</code></li>
+  <li><strong>จบ sprint</strong>: งานที่ค้างให้ย้ายไป sprint ถัดไป วิธีคือ group view ตาม Sprint แล้วใช้คำสั่ง <strong>move all items</strong> ที่หัวกลุ่ม GitHub ไม่มีปุ่ม "Complete sprint" แบบ Jira sprint จะจบเองตามวันที่</li>
+</ol>
+</section>
+
+<section id="s7">
+<h2><span class="n">7</span>Report: burn up และ burndown</h2>
+<div class="note warn">
+  <p><strong>ข้อจำกัดที่ต้องบอกทีม: GitHub Projects ไม่มี burndown chart สำเร็จรูปแบบ Jira</strong></p>
+</div>
+<p>Insights มี chart 2 แบบ</p>
+<ul>
+  <li><strong>Current chart</strong>: แสดงสถานะ<em>ตอนนี้</em> เช่น แต้มรวมต่อ sprint ใช้ทำ velocity ได้</li>
+  <li><strong>Historical chart</strong>: แสดงการเปลี่ยนแปลง<em>ตามเวลา</em> ตั้งต้นมีกราฟ <strong>Burn up</strong> ให้ (Open กับ Completed ซ้อนกัน)<br>เอกสารรุ่นเก่าเขียนว่าใช้ได้กับ <strong>GitHub Team / Enterprise Cloud ของ organization</strong> ส่วนเอกสารปัจจุบันไม่ได้ระบุ <span class="check">ลองเช็กเอง</span> ด้วยการเปิด Insights ดูว่ามีกราฟ Burn up หรือไม่</li>
+</ul>
+
+<h3>7.1 Sprint burn-up (ใช้แทน burndown)</h3>
+<ol>
+  <li>Project → ไอคอน <strong>Insights</strong> (มุมขวาบน) → เปิด chart <strong>Burn up</strong></li>
+  <li>ใส่ filter <code>sprint:@current</code> แล้ว <strong>Save changes</strong></li>
+  <li>อ่านกราฟ: เส้นบนสุดคืองานทั้งหมดใน sprint ส่วนที่เป็น <em>Open</em> คือ "งานที่เหลือ" ซึ่งเท่ากับเส้น burndown นั่นเอง ทุกครั้งที่ปิด issue ได้ ส่วน Open จะหดลง</li>
+  <li>ลองเปิด <strong>Configure</strong> ดูว่าแกน Y เลือก <strong>Sum of Points</strong> ได้ไหม ถ้าได้จะเป็น burn-up ตามแต้ม ถ้าไม่ได้จะนับเป็นจำนวน issue <span class="check">ลองเช็กเอง</span></li>
+</ol>
+
+<h3>7.2 Velocity (แต้มที่ทำเสร็จต่อ sprint)</h3>
+<p><strong>New chart</strong> → Layout <strong>Column</strong> → X-axis <strong>Sprint</strong> → Group by <strong>Status</strong> → Y-axis <strong>Sum of Points</strong><br>แท่ง <code>Done</code> ของแต่ละ sprint คือ velocity</p>
+
+<h3>7.3 ถ้าทีมต้องการ burndown แบบมีเส้นอุดมคติจริงๆ</h3>
+<ol>
+  <li>ใช้ burn-up ข้างบนแทน อ่านส่วน Open เป็น "งานคงเหลือ"</li>
+  <li>ใช้เครื่องมือเสริมที่อ่านข้อมูล GitHub Projects ได้ เช่น Screenful (เสียเงิน)</li>
+  <li>เขียน GitHub Action ที่ดึงข้อมูลผ่าน GraphQL API ทุกวัน แล้ววาดกราฟเอง ทำได้แต่ต้องดูแลเอง</li>
+</ol>
+</section>
+
+<section id="s8">
+<h2><span class="n">8</span>Product backlog ตัวอย่างของเงินไปไหน</h2>
+<p>ทุกข้อเป็นงานจริงของแอปนี้ ที่มาคือ <code>PRODUCT.md</code> และสิ่งที่ผู้ตรวจงานบอกว่ายังไม่ได้ทดสอบ</p>
+
+<p class="epic">Epic A: เป้าเก็บเงิน</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Points</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>A1</td><td>Story</td><td>ตั้งเป้าเก็บเงินต่อเดือนในเมนู ⋯</td><td class="num">3</td><td><span class="pri">P1</span></td></tr>
+<tr><td>A2</td><td>Story</td><td>แสดงความคืบหน้าเป้าเก็บเงิน (รายรับ − รายจ่าย เทียบกับเป้า) ในหน้าแรก</td><td class="num">5</td><td><span class="pri">P1</span></td></tr>
+<tr><td>A3</td><td>Story</td><td>สรุปท้ายเดือนว่าเก็บได้ตามเป้าไหม ด้วยข้อความแบบเพื่อน</td><td class="num">2</td><td><span class="pri">P2</span></td></tr>
+</tbody></table></div>
+
+<p class="epic">Epic B: ใช้บนมือถือเหมือนแอปจริง</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Points</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>B1</td><td>Task</td><td>เปิด GitHub Pages ให้แอปมีลิงก์เข้าใช้จากมือถือ</td><td class="num">1</td><td><span class="pri p0">P0</span></td></tr>
+<tr><td>B2</td><td>Story</td><td>เพิ่ม web app manifest และไอคอน เพื่อ "เพิ่มไปยังหน้าจอหลัก"</td><td class="num">2</td><td><span class="pri">P1</span></td></tr>
+<tr><td>B3</td><td>Story</td><td>ใช้งานแบบออฟไลน์ด้วย service worker</td><td class="num">5</td><td><span class="pri">P2</span></td></tr>
+<tr><td>B4</td><td>Bug</td><td>ตรวจว่าคีย์บอร์ดมือถือบังปุ่ม "บันทึก" ในแผ่นจดหรือไม่ (ผู้ตรวจงานยังไม่ได้ทดสอบ)</td><td class="num">2</td><td><span class="pri p0">P0</span></td></tr>
+</tbody></table></div>
+
+<p class="epic">Epic C: จดเร็วขึ้น</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Points</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>C1</td><td>Story</td><td>ปุ่มรายการที่จดบ่อย (เช่น "ข้าวมันไก่ 50") แตะครั้งเดียวจดได้เลย</td><td class="num">5</td><td><span class="pri">P1</span></td></tr>
+<tr><td>C2</td><td>Story</td><td>ค้นหารายการจากบันทึกช่วยจำ</td><td class="num">3</td><td><span class="pri">P2</span></td></tr>
+<tr><td>C3</td><td>Story</td><td>เพิ่มหรือแก้ชื่อหมวดเองได้</td><td class="num">8</td><td><span class="pri">P2</span></td></tr>
+</tbody></table></div>
+
+<p class="epic">Epic D: คุณภาพโค้ด</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Points</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>D1</td><td>Task</td><td>เขียน unit test ให้ <code>parseAmount</code> และการคำนวณงบ/รายจ่ายประจำ</td><td class="num">3</td><td><span class="pri">P1</span></td></tr>
+<tr><td>D2</td><td>Task</td><td>ตั้ง GitHub Actions ให้รันเทสต์ทุกครั้งที่ push</td><td class="num">2</td><td><span class="pri">P2</span></td></tr>
+</tbody></table></div>
+
+<p class="total">รวม 12 งาน <b>41</b> แต้ม ถ้าทำได้ประมาณ 8 แต้ม/สัปดาห์ จะได้ประมาณ 5 sprint</p>
+<div class="note"><p><strong>ตัวอย่างการแบ่ง Sprint 1 (28 ต.ค. – 3 พ.ย.)</strong>: B1 (1) + B4 (2) + A1 (3) + B2 (2) = 8 แต้ม</p></div>
+</section>
+
+<section id="s9">
+<h2><span class="n">9</span>สรุปสำหรับเล่าให้พี่เลี้ยงฟัง</h2>
+<div class="two">
+  <div>
+    <h3>ข้อดีของ GitHub Projects</h3>
+    <ul>
+      <li>อยู่ที่เดียวกับโค้ด เชื่อม issue ↔ PR ↔ commit ได้ทันที (<code>Closes #12</code>)</li>
+      <li>ฟิลด์ยืดหยุ่น Project เดียวดึงงานจากหลาย repo ได้</li>
+      <li>ใช้กับ repo public ได้ฟรี และไม่ต้องจ่ายค่า license แยกต่อคนแบบ Jira</li>
+    </ul>
+  </div>
+  <div>
+    <h3>ข้อที่ด้อยกว่า Jira</h3>
+    <ul>
+      <li>ไม่มี burndown สำเร็จรูป มีแค่ burn up กับ chart ที่สร้างเอง</li>
+      <li>ไม่มีขั้นตอน start/complete sprint ต้องย้ายงานค้างเอง</li>
+      <li>Story points เป็นแค่ฟิลด์ตัวเลข ไม่มีรายงาน velocity สำเร็จรูป</li>
+      <li>Issue types มีเฉพาะ organization และบางฟีเจอร์ขึ้นกับแผนที่ใช้</li>
+      <li>ไม่มีเครื่องมือในตัวสำหรับย้ายข้อมูลเก่าจาก Jira</li>
+    </ul>
+  </div>
+</div>
+<div class="note"><p><strong>ควรทดลองกับ org จริงของทีมก่อนตัดสินใจ</strong>: historical chart, issue types และจำนวน auto-add workflow ที่แผนของทีมใช้ได้</p></div>
+</section>
+
+<footer>
+  <p>แหล่งอ้างอิง</p>
+  <ul>
+    <li><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/viewing-insights-from-your-project/about-insights-for-projects">About insights for Projects</a></li>
+    <li><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/viewing-insights-from-your-project/configuring-charts">Configuring charts</a></li>
+    <li><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-iteration-fields">About iteration fields</a></li>
+    <li><a href="https://docs.github.com/en/enterprise-server@3.11/issues/planning-and-tracking-with-projects/viewing-insights-from-your-project/about-insights-for-projects">About insights (Enterprise Server 3.11 ระบุข้อจำกัดตามแผน)</a></li>
+  </ul>
+</footer>
+</main>
+</div>
+</body>
+</html>
