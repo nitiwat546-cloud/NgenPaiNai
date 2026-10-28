@@ -27,7 +27,7 @@ body:
     id: points
     attributes:
       label: Story points (ประมาณการ)
-      description: ฟอร์มนี้ใส่ค่าลงฟิลด์ใน Project ให้ไม่ได้ ต้องไปตั้งฟิลด์ "Points" ใน Project เองอีกครั้ง
+      description: ฟอร์มนี้ใส่ค่าลงฟิลด์ใน Project ให้ไม่ได้ ต้องไปตั้งฟิลด์ "Estimate" ใน Project เองอีกครั้ง
       options: ["1", "2", "3", "5", "8", "13", "ยังไม่ได้ประมาณ"]
     validations:
       required: false
