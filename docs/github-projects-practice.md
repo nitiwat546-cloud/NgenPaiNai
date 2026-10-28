@@ -79,10 +79,8 @@ Project นี้สร้างจาก template "Team planning" ฟิลด�
 
 ![ขั้นที่ 6](images/steps/step-06.png)
 
-1. ฟิลด์ทั้งหมดของ Project template ให้มาแล้ว 7 ตัว: Status, Sub-issues progress, Priority, Size, Estimate, Iteration, Start/Target date
+1. ฟิลด์ทั้งหมดของ Project ทุกตัวมาจาก template: **Estimate** ใช้เป็น story points, **Iteration** ใช้เป็น sprint, **Priority** ใช้จัดลำดับ backlog ส่วน **Size** เป็นขนาดแบบ S/M/L ใช้แทน Estimate ได้ถ้าทีมไม่ใช้แต้ม
 2. ปุ่ม **+** ตรงนี้ใช้สร้างฟิลด์ใหม่ได้เหมือนกัน
-
-> ⚠️ ตอนนี้มี **Point** ซ้ำกับ **Estimate** และ **Sprint** ซ้ำกับ **Iteration** ควรเลือกใช้อย่างละตัว คู่มือนี้ใช้ **Estimate** เป็น story points และ **Iteration** เป็น sprint ถ้าไม่ใช้ Point กับ Sprint ลบได้ที่หน้านี้ (คลิกชื่อฟิลด์ → Delete field)
 
 ### ขั้นที่ 7: อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง
 
@@ -127,7 +125,7 @@ Project นี้สร้างจาก template "Team planning" ฟิลด�
 
 ![ขั้นที่ 12](images/steps/step-12.png)
 
-1. พิมพ์ filter ในช่องนี้ ภาพนี้พิมพ์ `no:sprint` ตามฟิลด์ Sprint ถ้าใช้ Iteration ให้พิมพ์ `no:iteration` จะได้ **product backlog** (งานที่ยังไม่อยู่ใน sprint ไหน)
+1. พิมพ์ filter ในช่องนี้ เช่น `no:iteration` จะได้ **product backlog** (งานที่ยังไม่อยู่ใน sprint ไหน)
 2. **Save** เก็บ filter ไว้กับ view นี้ ส่วน **Discard** ยกเลิก
 
 | filter | ได้อะไร |

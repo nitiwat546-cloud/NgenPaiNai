@@ -156,10 +156,10 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
   <article class="step" id="step-6">
     <header><span class="num">6</span><h3>ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)</h3></header>
     <figure><img src="images/steps/step-06.png" alt="ขั้นที่ 6: ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ฟิลด์ทั้งหมดของ Project template ให้มาแล้ว 7 ตัว: Status, Sub-issues progress, Priority, Size, Estimate, Iteration, Start/Target date</li><li>ปุ่ม <b>+</b> ตรงนี้ใช้สร้างฟิลด์ใหม่ได้เหมือนกัน</li></ol>
+    <ol class="notes"><li>ฟิลด์ทั้งหมดของ Project ทุกตัวมาจาก template: <b>Estimate</b> ใช้เป็น story points, <b>Iteration</b> ใช้เป็น sprint, <b>Priority</b> ใช้จัดลำดับ backlog ส่วน <b>Size</b> เป็นขนาดแบบ S/M/L ใช้แทน Estimate ได้ถ้าทีมไม่ใช้แต้ม</li><li>ปุ่ม <b>+</b> ตรงนี้ใช้สร้างฟิลด์ใหม่ได้เหมือนกัน</li></ol>
     
     
-    <p class="callout warn">ตอนนี้มี <b>Point</b> ซ้ำกับ <b>Estimate</b> และ <b>Sprint</b> ซ้ำกับ <b>Iteration</b> ควรเลือกใช้อย่างละตัว คู่มือนี้ใช้ <b>Estimate</b> เป็น story points และ <b>Iteration</b> เป็น sprint ถ้าไม่ใช้ Point กับ Sprint ลบได้ที่หน้านี้ (คลิกชื่อฟิลด์ → Delete field)</p>
+    
   </article>
 
   <article class="step" id="step-7">
@@ -215,7 +215,7 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
   <article class="step" id="step-12">
     <header><span class="num">12</span><h3>กรองงานด้วย filter</h3></header>
     <figure><img src="images/steps/step-12.png" alt="ขั้นที่ 12: กรองงานด้วย filter" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>พิมพ์ filter ในช่องนี้ ภาพนี้พิมพ์ <code>no:sprint</code> ตามฟิลด์ Sprint ถ้าใช้ Iteration ให้พิมพ์ <code>no:iteration</code> จะได้ <b>product backlog</b> (งานที่ยังไม่อยู่ใน sprint ไหน)</li><li><b>Save</b> เก็บ filter ไว้กับ view นี้ ส่วน <b>Discard</b> ยกเลิก</li></ol>
+    <ol class="notes"><li>พิมพ์ filter ในช่องนี้ เช่น <code>no:iteration</code> จะได้ <b>product backlog</b> (งานที่ยังไม่อยู่ใน sprint ไหน)</li><li><b>Save</b> เก็บ filter ไว้กับ view นี้ ส่วน <b>Discard</b> ยกเลิก</li></ol>
     <div class="table-wrap"><table><thead><tr><th>filter</th><th>ได้อะไร</th></tr></thead><tbody><tr><td><code>no:iteration</code></td><td>งานที่ยังไม่อยู่ใน sprint (backlog)</td></tr><tr><td><code>iteration:@current</code></td><td>งานใน sprint ปัจจุบัน</td></tr><tr><td><code>iteration:@next</code></td><td>งานที่วางไว้ sprint หน้า</td></tr><tr><td><code>-status:Done</code></td><td>ซ่อนงานที่เสร็จแล้ว</td></tr><tr><td><code>label:bug</code></td><td>เฉพาะ bug</td></tr></tbody></table></div>
     
     
