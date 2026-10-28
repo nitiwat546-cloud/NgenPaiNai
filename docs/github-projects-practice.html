@@ -72,13 +72,14 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
   <li><a href="#p5">6. ตั้งระบบอัตโนมัติ</a></li>
   <li><a href="#p6">7. ดูรายงาน (burn up)</a></li>
   <li><a href="#points">Story points</a></li>
+  <li><a href="#epic-sprint">Epic กับ Sprint</a></li>
   <li><a href="#backlog">Backlog ตัวอย่าง</a></li>
   <li><a href="#summary">สรุปให้พี่เลี้ยง</a></li>
 </ol></nav>
 <main>
 <header>
   <h1>ฝึกใช้ <span class="tag">GitHub Projects</span> แทน Jira</h1>
-  <p class="lead">คู่มือแบบภาพ 24 ขั้น ภาพทุกภาพถ่ายจากหน้าจอ GitHub จริงของ Project <a href="https://github.com/users/pthanathon/projects/22">เงินไปไหน – Dev</a> เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ</p>
+  <p class="lead">คู่มือแบบภาพ 27 ขั้น ภาพทุกภาพถ่ายจากหน้าจอ GitHub จริงของ Project <a href="https://github.com/users/pthanathon/projects/22">เงินไปไหน – Dev</a> เมื่อ 28 ต.ค. 2569 เลขในวงกลมแดงในภาพตรงกับเลขในคำอธิบายใต้ภาพ</p>
 </header>
 
 <section id="map">
@@ -87,13 +88,13 @@ footer { margin-top:64px; padding-top:20px; border-top:1px solid var(--line); fo
 <tr><td>Project / Board</td><td><b>Project</b></td><td>Project เดียวดึง issue จากหลาย repo ได้</td></tr>
 <tr><td>Epic</td><td><b>Parent issue + sub-issues</b></td><td>issue แม่แสดงความคืบหน้าของ sub-issue ให้เอง</td></tr>
 <tr><td>Story / Task / Bug</td><td><b>Issue</b> + <b>label</b> + template</td><td>Issue types ของจริงมีเฉพาะ repo ใน organization</td></tr>
-<tr><td>Story points</td><td>ฟิลด์ <b>Estimate</b> (Number)</td><td>template Team planning มีให้แล้ว</td></tr>
+<tr><td>Story points</td><td>ฟิลด์ <b>Story point</b> (Number)</td><td>template ตั้งชื่อว่า Estimate เปลี่ยนชื่อได้ แต่ต้องเป็น Number ถึงจะรวมแต้มได้</td></tr>
 <tr><td>Sprint</td><td>ฟิลด์ <b>Iteration</b></td><td>template ตั้งไว้ sprint ละ 2 สัปดาห์</td></tr>
 <tr><td>Backlog</td><td>view ตารางที่กรอง <code>no:iteration</code></td><td></td></tr>
 <tr><td>Sprint board</td><td>view <b>Board</b> กรอง <code>iteration:@current</code></td><td></td></tr>
 <tr><td>Fix version</td><td><b>Milestone</b></td><td></td></tr>
 <tr><td>Component</td><td><b>Label</b></td><td></td></tr>
-<tr><td>Burndown</td><td>Insights → <b>Burn up</b></td><td>ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 23–24)</td></tr>
+<tr><td>Burndown</td><td>Insights → <b>Burn up</b></td><td>ไม่มี burndown ในตัว ใช้ burn up แทน (ขั้นที่ 25–27)</td></tr>
 </tbody></table></div>
 </section>
 
@@ -205,12 +206,12 @@ body:
 
 <section id="p2">
 <h2><span class="n">3</span>สร้าง issue จาก template</h2>
-<p class="part-lead">เทียบได้กับปุ่ม Create ใน Jira</p>
+<p class="part-lead">เทียบได้กับปุ่ม Create ใน Jira ตัวอย่างในขั้นนี้คือ Epic C ของจริงใน repo (#5–#8)</p>
 
   <article class="step" id="step-9">
     <header><span class="num">9</span><h3>เลือก template ของ issue</h3><a class="open" href="https://github.com/pthanathon/NgenPaiNai/issues/new/choose" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
     <figure><img src="images/steps/step-09.png" alt="ขั้นที่ 9: เลือก template ของ issue" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>เลือกตามชนิดงาน: <b>Bug</b>, <b>Task</b> หรือ <b>User story</b> (เทียบได้กับ issue type ใน Jira)</li></ol>
+    <ol class="notes"><li>เลือกตามชนิดงาน: <b>Bug</b>, <b>Epic</b>, <b>Task</b> หรือ <b>User story</b> (เทียบได้กับ issue type ใน Jira) ควรสร้าง Epic ก่อน แล้วค่อยสร้าง story ที่อยู่ใน epic นั้น</li></ol>
     
     
     
@@ -220,10 +221,20 @@ body:
   <article class="step" id="step-10">
     <header><span class="num">10</span><h3>กรอก User story</h3></header>
     <figure><img src="images/steps/step-10.png" alt="ขั้นที่ 10: กรอก User story" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ตั้งชื่อต่อท้าย <code>[Story]</code> แล้วกรอก user story กับ acceptance criteria ด้านล่าง</li><li><b>Labels</b> ยังขึ้นว่า "No labels" เพราะยังไม่ได้ทำขั้นที่ 2 ถ้าสร้าง label แล้วจะติด <code>story</code> ให้เอง</li><li><b>Projects</b> เลือก "เงินไปไหน – Dev" ตรงนี้ได้เลย (หรือปล่อยให้ workflow ในขั้นที่ 22 เพิ่มให้)</li><li>ติ๊ก <b>Create more</b> แล้วจะสร้าง issue ถัดไปต่อได้ทันที เหมาะตอนลง backlog ทีละหลายใบ</li></ol>
+    <ol class="notes"><li>ตั้งชื่อต่อท้าย <code>[Story]</code> แล้วกรอก user story กับ acceptance criteria ด้านล่าง acceptance criteria ต้องเป็นข้อที่ตอบได้ว่าผ่านหรือไม่ผ่าน ดูตัวอย่างใน <a href="https://github.com/pthanathon/NgenPaiNai/issues/6">#6</a></li><li><b>Labels</b> ยังขึ้นว่า "No labels" เพราะยังไม่ได้ทำขั้นที่ 2 ถ้าสร้าง label แล้วจะติด <code>story</code> ให้เอง</li><li><b>Projects</b> เลือก "เงินไปไหน – Dev" ตรงนี้ได้เลย (หรือปล่อยให้ workflow ในขั้นที่ 24 เพิ่มให้)</li><li>ติ๊ก <b>Create more</b> แล้วจะสร้าง issue ถัดไปต่อได้ทันที เหมาะตอนลง backlog ทีละหลายใบ</li></ol>
     
     
+    <p class="callout">ช่อง Story points ในฟอร์มเป็นแค่ข้อความในเนื้อ issue ค่าที่ใช้คำนวณจริงคือฟิลด์ <b>Story point</b> ใน Project ซึ่งต้องใส่เองอีกครั้ง</p>
     
+  </article>
+
+  <article class="step" id="step-11">
+    <header><span class="num">11</span><h3>ผูก story เข้ากับ Epic (sub-issues)</h3><a class="open" href="https://github.com/pthanathon/NgenPaiNai/issues/5" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-11.png" alt="ขั้นที่ 11: ผูก story เข้ากับ Epic (sub-issues)" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>story ที่อยู่ใน epic นี้ (#6, #7, #8)</li><li>กดลูกศรข้าง <b>Create sub-issue</b> → <b>Add existing issue</b> เพื่อผูก story ที่สร้างไว้แล้ว หรือกด <b>Create sub-issue</b> เพื่อสร้างใหม่</li><li>ความคืบหน้าของ epic (ปิดไปแล้วกี่ใบจากทั้งหมด) อัปเดตเองเมื่อปิด story</li></ol>
+    
+    
+    <p class="callout">Epic ไม่ต้องใส่ Story point เพราะแต้มของ epic คือผลรวมของ story ลูก ถ้าใส่ซ้ำจะนับแต้มเกิน</p>
     
   </article>
 </section>
@@ -232,20 +243,10 @@ body:
 <h2><span class="n">4</span>ตั้งค่า Project</h2>
 <p class="part-lead">Project นี้สร้างจาก template "Team planning" ฟิลด์และ view ส่วนใหญ่จึงมีให้แล้ว</p>
 
-  <article class="step" id="step-11">
-    <header><span class="num">11</span><h3>ส่วนต่างๆ ของ Project</h3><a class="open" href="https://github.com/users/pthanathon/projects/22" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-11.png" alt="ขั้นที่ 11: ส่วนต่างๆ ของ Project" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li><b>View</b> ที่ template สร้างให้: Backlog (ตาราง), Board, Current iteration, Roadmap และ My items</li><li><b>Insights</b>: หน้ากราฟ (ขั้นที่ 23)</li><li><b>Workflows</b>: ระบบอัตโนมัติ เปิดอยู่ 7 ตัว (ขั้นที่ 21)</li></ol>
-    
-    
-    
-    
-  </article>
-
   <article class="step" id="step-12">
-    <header><span class="num">12</span><h3>ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)</h3></header>
-    <figure><img src="images/steps/step-12.png" alt="ขั้นที่ 12: ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ฟิลด์ทั้งหมดของ Project ทุกตัวมาจาก template: <b>Estimate</b> ใช้เป็น story points, <b>Iteration</b> ใช้เป็น sprint, <b>Priority</b> ใช้จัดลำดับ backlog ส่วน <b>Size</b> เป็นขนาดแบบ S/M/L ใช้แทน Estimate ได้ถ้าทีมไม่ใช้แต้ม</li><li>ปุ่ม <b>+</b> ตรงนี้ใช้สร้างฟิลด์ใหม่ได้เหมือนกัน</li></ol>
+    <header><span class="num">12</span><h3>ส่วนต่างๆ ของ Project</h3><a class="open" href="https://github.com/users/pthanathon/projects/22" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-12.png" alt="ขั้นที่ 12: ส่วนต่างๆ ของ Project" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li><b>View</b> ที่ template สร้างให้: Backlog (ตาราง), Board, Current iteration, Roadmap และ My items</li><li><b>Insights</b>: หน้ากราฟ (ขั้นที่ 25)</li><li><b>Workflows</b>: ระบบอัตโนมัติ เปิดอยู่ 7 ตัว (ขั้นที่ 23)</li></ol>
     
     
     
@@ -253,9 +254,9 @@ body:
   </article>
 
   <article class="step" id="step-13">
-    <header><span class="num">13</span><h3>อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง</h3></header>
-    <figure><img src="images/steps/step-13.png" alt="ขั้นที่ 13: อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ใน view ตาราง เลื่อนไปขวาสุด (Shift + ล้อเมาส์) แล้วกด <b>+</b></li></ol>
+    <header><span class="num">13</span><h3>ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)</h3></header>
+    <figure><img src="images/steps/step-13.png" alt="ขั้นที่ 13: ดูฟิลด์ที่มีอยู่ (เมนู ⋯ → Settings)" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ฟิลด์ของ Project: <b>Story point</b> (ชนิด Number เปลี่ยนชื่อมาจาก Estimate ของ template) ใช้ใส่แต้ม, <b>Iteration</b> ใช้เป็น sprint, <b>Priority</b> ใช้จัดลำดับ backlog ส่วน <b>Size</b> เป็นขนาดแบบ S/M/L ใช้แทนแต้มได้ถ้าทีมไม่ใช้ story points</li><li>ปุ่ม <b>+</b> ตรงนี้ใช้สร้างฟิลด์ใหม่ได้เหมือนกัน และคลิกชื่อฟิลด์เพื่อเปลี่ยนชื่อหรือลบได้</li></ol>
     
     
     
@@ -263,9 +264,9 @@ body:
   </article>
 
   <article class="step" id="step-14">
-    <header><span class="num">14</span><h3>เลือก New field</h3></header>
-    <figure><img src="images/steps/step-14.png" alt="ขั้นที่ 14: เลือก New field" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>กด <b>New field</b> รายการด้านล่างใช้ซ่อนหรือแสดงคอลัมน์ในตาราง</li></ol>
+    <header><span class="num">14</span><h3>อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง</h3></header>
+    <figure><img src="images/steps/step-14.png" alt="ขั้นที่ 14: อีกทางในการเพิ่มฟิลด์: ปุ่ม + ท้ายตาราง" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ใน view ตาราง เลื่อนไปขวาสุด (Shift + ล้อเมาส์) แล้วกด <b>+</b></li></ol>
     
     
     
@@ -273,9 +274,9 @@ body:
   </article>
 
   <article class="step" id="step-15">
-    <header><span class="num">15</span><h3>ตั้งชื่อและชนิดฟิลด์</h3></header>
-    <figure><img src="images/steps/step-15.png" alt="ขั้นที่ 15: ตั้งชื่อและชนิดฟิลด์" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ชื่อฟิลด์</li><li>ชนิดฟิลด์ (ดูขั้นถัดไป)</li><li>กด <b>Save</b></li></ol>
+    <header><span class="num">15</span><h3>เลือก New field</h3></header>
+    <figure><img src="images/steps/step-15.png" alt="ขั้นที่ 15: เลือก New field" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>กด <b>New field</b> รายการด้านล่างใช้ซ่อนหรือแสดงคอลัมน์ในตาราง</li></ol>
     
     
     
@@ -283,9 +284,9 @@ body:
   </article>
 
   <article class="step" id="step-16">
-    <header><span class="num">16</span><h3>ชนิดฟิลด์ที่เลือกได้</h3></header>
-    <figure><img src="images/steps/step-16.png" alt="ขั้นที่ 16: ชนิดฟิลด์ที่เลือกได้" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li><b>Number</b>: ใช้กับ story points เพราะ Insights รวมผล (Sum) ได้</li><li><b>Single select</b>: ตัวเลือกเดียว เช่น Priority หรือ Status</li><li><b>Iteration</b>: ใช้เป็น sprint</li></ol>
+    <header><span class="num">16</span><h3>ตั้งชื่อและชนิดฟิลด์</h3></header>
+    <figure><img src="images/steps/step-16.png" alt="ขั้นที่ 16: ตั้งชื่อและชนิดฟิลด์" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ชื่อฟิลด์</li><li>ชนิดฟิลด์ (ดูขั้นถัดไป)</li><li>กด <b>Save</b></li></ol>
     
     
     
@@ -293,9 +294,19 @@ body:
   </article>
 
   <article class="step" id="step-17">
-    <header><span class="num">17</span><h3>ตั้งค่า sprint (ฟิลด์ Iteration)</h3></header>
-    <figure><img src="images/steps/step-17.png" alt="ขั้นที่ 17: ตั้งค่า sprint (ฟิลด์ Iteration)" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>template สร้างไว้ 3 sprint ยาว <b>2 สัปดาห์</b> เริ่ม 27 ต.ค. sprint ที่กำลังทำอยู่มีป้าย <b>Current</b></li><li><b>Add iteration</b> เพิ่ม sprint ถัดไป ส่วนเมนู More options ใช้เปลี่ยนความยาวหรือเพิ่มช่วงพักได้</li></ol>
+    <header><span class="num">17</span><h3>ชนิดฟิลด์ที่เลือกได้</h3></header>
+    <figure><img src="images/steps/step-17.png" alt="ขั้นที่ 17: ชนิดฟิลด์ที่เลือกได้" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li><b>Number</b>: ใช้กับ story points เพราะรวมผลได้ทั้งใน Field sum และ Insights</li><li><b>Single select</b>: ตัวเลือกเดียว เช่น Priority หรือ Status <b>ห้ามใช้กับ story points</b> เพราะ GitHub จะรวมแต้มให้ไม่ได้</li><li><b>Iteration</b>: ใช้เป็น sprint</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-18">
+    <header><span class="num">18</span><h3>ตั้งค่า sprint (ฟิลด์ Iteration)</h3></header>
+    <figure><img src="images/steps/step-18.png" alt="ขั้นที่ 18: ตั้งค่า sprint (ฟิลด์ Iteration)" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>template สร้างไว้ 3 sprint ยาว <b>2 สัปดาห์</b> เริ่ม 27 ต.ค. sprint ที่กำลังทำอยู่มีป้าย <b>Current</b> เปลี่ยนชื่อเป็น Sprint 1, 2, 3 ได้ที่ช่องชื่อของแต่ละรอบ</li><li><b>Add iteration</b> เพิ่ม sprint ถัดไป ส่วนเมนู More options ใช้เปลี่ยนความยาวหรือเพิ่มช่วงพักได้</li></ol>
     
     
     
@@ -307,30 +318,40 @@ body:
 <h2><span class="n">5</span>ทำ backlog และแบ่ง sprint</h2>
 <p class="part-lead">ใช้ filter กับ view จัดงาน</p>
 
-  <article class="step" id="step-18">
-    <header><span class="num">18</span><h3>กรองงานด้วย filter</h3></header>
-    <figure><img src="images/steps/step-18.png" alt="ขั้นที่ 18: กรองงานด้วย filter" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>พิมพ์ filter ในช่องนี้ เช่น <code>no:iteration</code> จะได้ <b>product backlog</b> (งานที่ยังไม่อยู่ใน sprint ไหน)</li><li><b>Save</b> เก็บ filter ไว้กับ view นี้ ส่วน <b>Discard</b> ยกเลิก</li></ol>
-    <div class="table-wrap"><table><thead><tr><th>filter</th><th>ได้อะไร</th></tr></thead><tbody><tr><td><code>no:iteration</code></td><td>งานที่ยังไม่อยู่ใน sprint (backlog)</td></tr><tr><td><code>iteration:@current</code></td><td>งานใน sprint ปัจจุบัน</td></tr><tr><td><code>iteration:@next</code></td><td>งานที่วางไว้ sprint หน้า</td></tr><tr><td><code>-status:Done</code></td><td>ซ่อนงานที่เสร็จแล้ว</td></tr><tr><td><code>label:bug</code></td><td>เฉพาะ bug</td></tr></tbody></table></div>
-    
-    
-    
-  </article>
-
   <article class="step" id="step-19">
-    <header><span class="num">19</span><h3>ตั้งค่า view (ปุ่ม View)</h3></header>
-    <figure><img src="images/steps/step-19.png" alt="ขั้นที่ 19: ตั้งค่า view (ปุ่ม View)" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>เปลี่ยนรูปแบบ: Table / Board / Roadmap</li><li><b>Group by</b>: จัดกลุ่ม เช่น ตาม Iteration เพื่อดูงานแยกตาม sprint ระหว่างวางแผน</li><li><b>Field sum</b>: แสดงผลรวม Estimate ใช้ดูว่าแต้มรวมเกินกำลังของ sprint หรือไม่</li></ol>
-    
+    <header><span class="num">19</span><h3>กรองหา product backlog</h3></header>
+    <figure><img src="images/steps/step-19.png" alt="ขั้นที่ 19: กรองหา product backlog" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>พิมพ์ <code>no:iteration</code> จะเหลือเฉพาะงานที่ยังไม่อยู่ใน sprint ไหน นี่คือ <b>product backlog</b></li><li><b>Save</b> เก็บ filter ไว้กับ view นี้ ส่วน <b>Discard</b> ยกเลิก</li><li>ผลลัพธ์: Epic C กับ story ลูก 3 ใบ ซึ่งยังไม่ได้เลือกเข้า sprint</li></ol>
+    <div class="table-wrap"><table><thead><tr><th>filter</th><th>ได้อะไร</th></tr></thead><tbody><tr><td><code>no:iteration</code></td><td>งานที่ยังไม่อยู่ใน sprint (product backlog)</td></tr><tr><td><code>iteration:@current</code></td><td>งานใน sprint ปัจจุบัน</td></tr><tr><td><code>iteration:@next</code></td><td>งานที่วางไว้ sprint หน้า</td></tr><tr><td><code>-status:Done</code></td><td>ซ่อนงานที่เสร็จแล้ว</td></tr><tr><td><code>label:story</code></td><td>เฉพาะ story</td></tr></tbody></table></div>
     
     
     
   </article>
 
   <article class="step" id="step-20">
-    <header><span class="num">20</span><h3>Sprint board</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/views/2" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-20.png" alt="ขั้นที่ 20: Sprint board" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>แต่ละคอลัมน์คือ Status พร้อมจำนวนการ์ดและแต้ม Estimate รวม ลากการ์ดข้ามคอลัมน์เพื่อเปลี่ยนสถานะ ถ้าใส่ filter <code>iteration:@current</code> จะเห็นเฉพาะงานใน sprint นี้</li></ol>
+    <header><span class="num">20</span><h3>ตั้งค่า view (ปุ่ม View)</h3></header>
+    <figure><img src="images/steps/step-20.png" alt="ขั้นที่ 20: ตั้งค่า view (ปุ่ม View)" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>เปลี่ยนรูปแบบ: Table / Board / Roadmap</li><li><b>Group by</b>: จัดกลุ่ม เช่น ตาม Iteration เพื่อดูงานแยกตาม sprint ระหว่างวางแผน</li><li><b>Field sum</b>: แสดงผลรวม Story point ใช้ดูว่าแต้มรวมเกินกำลังของ sprint หรือไม่</li><li><b>Show hierarchy</b>: แสดง sub-issues ซ้อนใต้ epic (ดูข้อควรระวังในขั้นถัดไป)</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-21">
+    <header><span class="num">21</span><h3>ข้อควรระวัง: Show hierarchy กับผลรวมแต้ม</h3></header>
+    <figure><img src="images/steps/step-21.png" alt="ขั้นที่ 21: ข้อควรระวัง: Show hierarchy กับผลรวมแต้ม" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ภาพนี้ปิด Show hierarchy แล้ว ผลรวมเป็น <b>8 รายการ 27 แต้ม</b> ซึ่งถูกต้อง แต่ตอนเปิด Show hierarchy (ค่าตั้งต้น) จะขึ้นแค่ 5 รายการ 11 แต้ม เพราะ<b>ไม่นับ story ที่ซ้อนอยู่ใต้ epic</b></li><li>story ลูกของ Epic C (#6–#8) รวม 16 แต้ม แสดงเป็นแถวปกติเมื่อปิด hierarchy</li></ol>
+    
+    
+    
+    <p class="callout warn">ตอนวางแผน sprint ให้ใช้ view ที่<b>ปิด Show hierarchy</b> ไม่อย่างนั้นแต้มรวมจะต่ำกว่าความจริง ตรวจเมื่อ 28 ต.ค. 2569</p>
+  </article>
+
+  <article class="step" id="step-22">
+    <header><span class="num">22</span><h3>Sprint board</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/views/2" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-22.png" alt="ขั้นที่ 22: Sprint board" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>แต่ละคอลัมน์คือ Status พร้อมจำนวนการ์ดและแต้ม Story point รวม ตัวเลขแบบ "0 / 5" คือจำนวนการ์ดเทียบกับขีดจำกัดของคอลัมน์ (WIP limit) ลากการ์ดข้ามคอลัมน์เพื่อเปลี่ยนสถานะ ถ้าใส่ filter <code>iteration:@current</code> จะเห็นเฉพาะงานใน sprint นี้</li></ol>
     
     
     
@@ -342,19 +363,19 @@ body:
 <h2><span class="n">6</span>ตั้งระบบอัตโนมัติ</h2>
 <p class="part-lead">ให้การ์ดย้ายสถานะเองเมื่อปิด issue หรือ merge PR</p>
 
-  <article class="step" id="step-21">
-    <header><span class="num">21</span><h3>Workflows ที่เปิดอยู่</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/workflows" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-21.png" alt="ขั้นที่ 21: Workflows ที่เปิดอยู่" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>จุดเขียว = เปิดอยู่ เช่น <b>Item closed</b> ย้ายการ์ดไป Done เอง และ <b>Pull request merged</b> ก็เช่นกัน</li><li><b>Auto-archive items</b> ปิดอยู่ ซึ่งถูกต้อง เพราะ Insights ไม่นับ item ที่ archive แล้ว กราฟจะหายถ้าเปิด</li></ol>
+  <article class="step" id="step-23">
+    <header><span class="num">23</span><h3>Workflows ที่เปิดอยู่</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/workflows" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-23.png" alt="ขั้นที่ 23: Workflows ที่เปิดอยู่" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>จุดเขียว = เปิดอยู่ เช่น <b>Item closed</b> ย้ายการ์ดไป Done เอง และ <b>Pull request merged</b> ก็เช่นกัน ส่วน <b>Item added to project</b> ตั้ง issue ใหม่เป็น <b>Todo</b> ถ้าอยากให้เข้า Backlog ก่อน ให้แก้ที่ workflow นี้</li><li><b>Auto-archive items</b> ปิดอยู่ ซึ่งถูกต้อง เพราะ Insights ไม่นับ item ที่ archive แล้ว กราฟจะหายถ้าเปิด</li></ol>
     
     
     
     
   </article>
 
-  <article class="step" id="step-22">
-    <header><span class="num">22</span><h3>Auto-add: เพิ่ม issue ใหม่เข้า Project เอง</h3></header>
-    <figure><img src="images/steps/step-22.png" alt="ขั้นที่ 22: Auto-add: เพิ่ม issue ใหม่เข้า Project เอง" width="800" height="417" loading="lazy"></figure>
+  <article class="step" id="step-24">
+    <header><span class="num">24</span><h3>Auto-add: เพิ่ม issue ใหม่เข้า Project เอง</h3></header>
+    <figure><img src="images/steps/step-24.png" alt="ขั้นที่ 24: Auto-add: เพิ่ม issue ใหม่เข้า Project เอง" width="800" height="417" loading="lazy"></figure>
     <ol class="notes"><li>ตอนนี้ตั้งให้เพิ่ม issue ที่เปิดอยู่ของ repo NgenPaiNai ทุกใบ (<code>is:issue is:open</code>)</li><li>กด <b>Edit</b> ถ้าอยากเปลี่ยน filter เช่น เอาเฉพาะ <code>label:story,task,bug</code></li></ol>
     
     
@@ -367,20 +388,30 @@ body:
 <h2><span class="n">7</span>ดูรายงาน (burn up)</h2>
 <p class="part-lead">ใช้แทน burndown ของ Jira</p>
 
-  <article class="step" id="step-23">
-    <header><span class="num">23</span><h3>กราฟ Burn up</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/insights" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
-    <figure><img src="images/steps/step-23.png" alt="ขั้นที่ 23: กราฟ Burn up" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li><b>Burn up</b> มีให้ในบัญชีนี้แล้ว (บัญชีส่วนตัว ตรวจเมื่อ 28 ต.ค. 2569) ตอนนี้ยังไม่มีข้อมูลเพราะยังไม่มี issue</li><li>เปลี่ยน filter เป็น <code>iteration:@current</code> เพื่อดูเฉพาะ sprint นี้ ส่วนที่เป็น <b>Open</b> คือ "งานคงเหลือ" ซึ่งให้ข้อมูลเดียวกับ burndown</li><li>กด <b>Configure</b> เพื่อเปลี่ยนสิ่งที่นับ (ขั้นถัดไป)</li></ol>
+  <article class="step" id="step-25">
+    <header><span class="num">25</span><h3>กราฟ Burn up</h3><a class="open" href="https://github.com/users/pthanathon/projects/22/insights" target="_blank" rel="noopener">เปิดหน้านี้ ↗</a></header>
+    <figure><img src="images/steps/step-25.png" alt="ขั้นที่ 25: กราฟ Burn up" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li><b>Burn up</b> มีให้ในบัญชีส่วนตัวแบบฟรีด้วย (ตรวจเมื่อ 28 ต.ค. 2569)</li><li>เปลี่ยน filter เป็น <code>iteration:@current</code> เพื่อดูเฉพาะ sprint นี้</li><li>กด <b>Configure</b> เพื่อเปลี่ยนสิ่งที่นับ (ขั้นที่ 27)</li></ol>
     
     
     
     
   </article>
 
-  <article class="step" id="step-24">
-    <header><span class="num">24</span><h3>นับเป็นแต้มแทนจำนวน issue</h3></header>
-    <figure><img src="images/steps/step-24.png" alt="ขั้นที่ 24: นับเป็นแต้มแทนจำนวน issue" width="800" height="417" loading="lazy"></figure>
-    <ol class="notes"><li>ที่ Y-axis เลือก <b>Sum of a field</b> แล้วเลือก <b>Estimate</b> กราฟจะเป็น burn up ตาม story points แล้วกด <b>Save to new chart</b></li></ol>
+  <article class="step" id="step-26">
+    <header><span class="num">26</span><h3>อ่านกราฟ Burn up</h3></header>
+    <figure><img src="images/steps/step-26.png" alt="ขั้นที่ 26: อ่านกราฟ Burn up" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>เส้นเขียวคืองานที่ยังเปิดอยู่ (Open) ตอนนี้มี 8 ใบ เพิ่งสร้างเมื่อ 27–28 ต.ค. จึงพุ่งขึ้นตอนท้าย เมื่อปิด issue ได้ ส่วนที่เป็นงานเสร็จ (Completed) จะโตขึ้นและส่วน Open จะลดลง ส่วน Open ก็คือ "งานคงเหลือ" ที่ burndown แสดง</li></ol>
+    
+    
+    
+    
+  </article>
+
+  <article class="step" id="step-27">
+    <header><span class="num">27</span><h3>นับเป็นแต้มแทนจำนวน issue</h3></header>
+    <figure><img src="images/steps/step-27.png" alt="ขั้นที่ 27: นับเป็นแต้มแทนจำนวน issue" width="800" height="417" loading="lazy"></figure>
+    <ol class="notes"><li>ที่ Y-axis เลือก <b>Sum of a field</b> แล้วเลือก <b>Story point</b> กราฟจะเป็น burn up ตามแต้ม แล้วกด <b>Save to new chart</b></li></ol>
     
     
     <p class="callout">GitHub ไม่มี burndown แบบมีเส้นอุดมคติให้ในตัว ถ้าทีมต้องการจริงๆ ต้องใช้เครื่องมือเสริม หรือเขียน GitHub Action ดึงข้อมูลมาวาดเอง</p>
@@ -390,7 +421,7 @@ body:
 
 <section id="points">
 <h2>Story points: ใส่ 1 ค่าต่อ issue</h2>
-<p>ใส่ในฟิลด์ <b>Estimate</b> เป็นตัวเลขบอกขนาดงานเมื่อเทียบกับงานอื่น ไม่ใช่จำนวนชั่วโมง ชุด 1, 2, 3, 5, 8, 13 (Fibonacci) ห่างกันขึ้นเรื่อยๆ เพราะงานยิ่งใหญ่ยิ่งประเมินไม่แม่น</p>
+<p>ใส่ในฟิลด์ <b>Story point</b> เป็นตัวเลขบอกขนาดงานเมื่อเทียบกับงานอื่น ไม่ใช่จำนวนชั่วโมง ชุด 1, 2, 3, 5, 8, 13 (Fibonacci แบบดัดแปลง) ห่างกันขึ้นเรื่อยๆ เพราะงานยิ่งใหญ่ยิ่งประเมินไม่แม่น</p>
 <div class="table-wrap"><table><thead><tr><th>แต้ม</th><th>ความหมาย</th><th>ตัวอย่างจาก backlog</th></tr></thead><tbody>
 <tr><td class="num">1</td><td>งานเล็กมาก รู้ชัดว่าต้องทำอะไร</td><td>B1 เปิด GitHub Pages</td></tr>
 <tr><td class="num">2</td><td>งานเล็ก</td><td>B2 เพิ่ม manifest กับไอคอน</td></tr>
@@ -399,32 +430,45 @@ body:
 <tr><td class="num">8</td><td>งานใหญ่ หรือยังมีจุดที่ไม่แน่ใจ</td><td>C3 เพิ่มหรือแก้หมวดเองได้</td></tr>
 <tr><td class="num">13</td><td>ใหญ่เกินไป ควรแตกเป็นหลาย story ก่อน</td><td>–</td></tr>
 </tbody></table></div>
+<ul><li>ชุดตัวเลขนี้เป็น<b>ธรรมเนียมที่นิยม ไม่ใช่มาตรฐานสากล</b> Scrum Guide ไม่ได้บังคับ และ Jira ก็ให้ใส่เลขอะไรก็ได้ ทีมเลือกชุดเองได้ เช่น 1, 2, 4, 8 หรือ S/M/L (ฟิลด์ Size)</li><li>แต้มเทียบกันข้ามทีมไม่ได้ "5 แต้ม" ของแต่ละทีมไม่เท่ากัน</li><li>ต้องเป็นฟิลด์ชนิด <b>Number</b> ถ้าใช้ Single select จะได้ช่องเลือกที่สะดวกกว่า แต่ Field sum และกราฟจะรวมแต้มไม่ได้</li></ul>
+</section>
+
+<section id="epic-sprint">
+<h2>Epic กับ Sprint ต่างกันอย่างไร</h2>
+<p><b>Epic</b> คือกลุ่มงานตามเรื่อง ส่วน <b>Sprint</b> คือช่วงเวลา ตัวอักษร A, B, C ไม่ได้แปลว่าต้องทำตามลำดับ ใน sprint เดียวมี story จากหลาย epic ปนกันได้ และ epic หนึ่งใช้หลาย sprint ได้ การเลือก story เข้า sprint เรียงตาม <b>Priority</b> ไม่ได้เรียงตาม epic</p>
+<div class="table-wrap"><table><thead><tr><th></th><th>Sprint 1</th><th>Sprint 2</th><th>Sprint 3</th></tr></thead><tbody>
+<tr><td><b>Epic A</b> เป้าเก็บเงิน</td><td>A1</td><td>A2</td><td>A3</td></tr>
+<tr><td><b>Epic B</b> ใช้บนมือถือ</td><td>B1, B4, B2</td><td></td><td>B3</td></tr>
+<tr><td><b>Epic C</b> จดเร็วขึ้น</td><td></td><td>C1</td><td>C2, C3</td></tr>
+<tr><td><b>Epic D</b> คุณภาพโค้ด</td><td>D1</td><td>D2</td><td></td></tr>
+</tbody></table></div>
+<p class="callout">อ่านตามแนวนอน (epic) จะเห็นว่าแต่ละเรื่องคืบหน้าแค่ไหน อ่านตามแนวตั้ง (sprint) จะเห็นว่ารอบนั้นทำอะไรบ้าง ใน GitHub: epic คือ issue แม่ที่มี sub-issues ส่วน sprint คือค่าในฟิลด์ Iteration ของแต่ละ story</p>
 </section>
 
 <section id="backlog">
 <h2>Product backlog ตัวอย่างของเงินไปไหน</h2>
-<p>งานจริงของแอปนี้ สร้างเป็น issue ตามขั้นที่ 9–10 ทำเสร็จแล้วปิดได้จริง กราฟจะได้มีข้อมูล</p>
+<p>งานจริงของแอปนี้ เลขในวงเล็บคือ issue ที่สร้างไว้แล้วใน repo สร้างเป็น issue ตามขั้นที่ 9–10 ทำเสร็จแล้วปิดได้จริง กราฟจะได้มีข้อมูล</p>
 <p class="epic">Epic A: เป้าเก็บเงิน</p>
-<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Estimate</th><th>Priority</th></tr></thead><tbody>
-<tr><td>A1</td><td>Story</td><td>ตั้งเป้าเก็บเงินต่อเดือนในเมนู ⋯</td><td class="num">3</td><td><span class="pri">P1</span></td></tr>
-<tr><td>A2</td><td>Story</td><td>แสดงความคืบหน้าเป้าเก็บเงินในหน้าแรก</td><td class="num">5</td><td><span class="pri">P1</span></td></tr>
-<tr><td>A3</td><td>Story</td><td>สรุปท้ายเดือนว่าเก็บได้ตามเป้าไหม</td><td class="num">2</td><td><span class="pri">P2</span></td></tr>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Story point</th><th>Priority</th></tr></thead><tbody>
+<tr><td>A1</td><td>Story</td><td>ตั้งเป้าเก็บเงินต่อเดือนในเมนู ⋯ (#1)</td><td class="num">3</td><td><span class="pri">P1</span></td></tr>
+<tr><td>A2</td><td>Story</td><td>แสดงความคืบหน้าเป้าเก็บเงินในหน้าแรก (#2)</td><td class="num">5</td><td><span class="pri">P1</span></td></tr>
+<tr><td>A3</td><td>Story</td><td>สรุปท้ายเดือนว่าเก็บได้ตามเป้าไหม (#3)</td><td class="num">2</td><td><span class="pri">P2</span></td></tr>
 </tbody></table></div>
 <p class="epic">Epic B: ใช้บนมือถือเหมือนแอปจริง</p>
-<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Estimate</th><th>Priority</th></tr></thead><tbody>
-<tr><td>B1</td><td>Task</td><td>เปิด GitHub Pages ให้แอปมีลิงก์เข้าใช้จากมือถือ</td><td class="num">1</td><td><span class="pri p0">P0</span></td></tr>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Story point</th><th>Priority</th></tr></thead><tbody>
+<tr><td>B1</td><td>Task</td><td>เปิด GitHub Pages ให้แอปมีลิงก์เข้าใช้จากมือถือ (#4)</td><td class="num">1</td><td><span class="pri p0">P0</span></td></tr>
 <tr><td>B2</td><td>Story</td><td>เพิ่ม web app manifest และไอคอน</td><td class="num">2</td><td><span class="pri">P1</span></td></tr>
 <tr><td>B3</td><td>Story</td><td>ใช้งานออฟไลน์ด้วย service worker</td><td class="num">5</td><td><span class="pri">P2</span></td></tr>
 <tr><td>B4</td><td>Bug</td><td>ตรวจว่าคีย์บอร์ดมือถือบังปุ่ม "บันทึก" หรือไม่</td><td class="num">2</td><td><span class="pri p0">P0</span></td></tr>
 </tbody></table></div>
-<p class="epic">Epic C: จดเร็วขึ้น</p>
-<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Estimate</th><th>Priority</th></tr></thead><tbody>
-<tr><td>C1</td><td>Story</td><td>ปุ่มรายการที่จดบ่อย แตะครั้งเดียวจดได้</td><td class="num">5</td><td><span class="pri">P1</span></td></tr>
-<tr><td>C2</td><td>Story</td><td>ค้นหารายการจากบันทึกช่วยจำ</td><td class="num">3</td><td><span class="pri">P2</span></td></tr>
-<tr><td>C3</td><td>Story</td><td>เพิ่มหรือแก้ชื่อหมวดเองได้</td><td class="num">8</td><td><span class="pri">P2</span></td></tr>
+<p class="epic">Epic C: จดเร็วขึ้น (#5)</p>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Story point</th><th>Priority</th></tr></thead><tbody>
+<tr><td>C1</td><td>Story</td><td>ปุ่มรายการที่จดบ่อย แตะครั้งเดียวจดได้ (#6)</td><td class="num">5</td><td><span class="pri">P1</span></td></tr>
+<tr><td>C2</td><td>Story</td><td>ค้นหารายการจากบันทึกช่วยจำ (#7)</td><td class="num">3</td><td><span class="pri">P2</span></td></tr>
+<tr><td>C3</td><td>Story</td><td>เพิ่มหรือแก้ชื่อหมวดเองได้ (#8)</td><td class="num">8</td><td><span class="pri">P2</span></td></tr>
 </tbody></table></div>
 <p class="epic">Epic D: คุณภาพโค้ด</p>
-<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Estimate</th><th>Priority</th></tr></thead><tbody>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>ชนิด</th><th>ชื่อ</th><th>Story point</th><th>Priority</th></tr></thead><tbody>
 <tr><td>D1</td><td>Task</td><td>unit test ให้ parseAmount และการคำนวณงบ</td><td class="num">3</td><td><span class="pri">P1</span></td></tr>
 <tr><td>D2</td><td>Task</td><td>GitHub Actions รันเทสต์ทุกครั้งที่ push</td><td class="num">2</td><td><span class="pri">P2</span></td></tr>
 </tbody></table></div>
@@ -435,7 +479,7 @@ body:
 <h2>สรุปสำหรับเล่าให้พี่เลี้ยงฟัง</h2>
 <div class="two">
   <div><h3>ข้อดี</h3><ul><li>อยู่ที่เดียวกับโค้ด ปิด issue ได้จาก PR (<code>Closes #12</code>) และการ์ดย้ายไป Done เอง</li><li>ฟิลด์และ view ปรับได้ยืดหยุ่น Project เดียวดึงงานจากหลาย repo ได้</li><li>บัญชีส่วนตัวแบบฟรีก็ใช้ Burn up ได้ และนับเป็นแต้มได้ (ตรวจแล้ว 28 ต.ค. 2569)</li></ul></div>
-  <div><h3>ข้อที่ด้อยกว่า Jira</h3><ul><li>ไม่มี burndown แบบมีเส้นอุดมคติในตัว</li><li>ไม่มีปุ่ม start/complete sprint งานค้างต้องย้ายเอง</li><li>ไม่มีรายงาน velocity สำเร็จรูป ต้องสร้างกราฟเอง</li><li>Issue types มีเฉพาะ organization</li><li>ไม่มีเครื่องมือย้ายข้อมูลจาก Jira ในตัว</li></ul></div>
+  <div><h3>ข้อที่ด้อยกว่า Jira</h3><ul><li>ไม่มี burndown แบบมีเส้นอุดมคติในตัว</li><li>ไม่มีปุ่ม start/complete sprint งานค้างต้องย้ายเอง</li><li>ไม่มีรายงาน velocity สำเร็จรูป ต้องสร้างกราฟเอง</li><li>Issue types มีเฉพาะ organization</li><li>ไม่มีเครื่องมือย้ายข้อมูลจาก Jira ในตัว</li><li>Story points ต้องเลือกระหว่างช่องเลือกที่สะดวก (Single select) กับการรวมแต้มได้ (Number) ได้อย่างเดียว</li><li>ถ้าเปิด Show hierarchy ผลรวมแต้มใน view จะไม่นับ sub-issues ทำให้แต้มรวมต่ำกว่าความจริง</li></ul></div>
 </div>
 <p class="callout">ควรลองกับ organization จริงของทีมก่อนตัดสินใจด้วย เพราะบางฟีเจอร์ เช่น issue types และจำนวน workflow ขึ้นกับแผนที่ทีมใช้</p>
 </section>
