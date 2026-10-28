@@ -47,6 +47,15 @@
         ],
         "createdAt": "2026-10-28T01:14:21.928Z",
         "reason": "table-wrap is a bordered scroll container; the inset lives on the th/td cells (10px 14px)"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "consolas",
+        "files": [
+          "docs/github-projects-practice.html"
+        ],
+        "createdAt": "2026-10-28T02:09:19.678Z",
+        "reason": "monospace used only for inline code snippets in the practice guide"
       }
     ]
   }
