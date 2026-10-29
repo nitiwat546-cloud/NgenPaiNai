@@ -1,0 +1,20 @@
+name: Feature
+description: เพิ่มฟีเจอร์
+title: "[Feature] "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: for
+    attributes:
+      label: ฟีเจอร์เอาไว้ทำอะไร
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      placeholder: |
+        - [ ] …
+    validations:
+      required: true
