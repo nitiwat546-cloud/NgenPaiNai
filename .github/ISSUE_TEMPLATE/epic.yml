@@ -1,5 +1,5 @@
 name: Epic
-description: ฟีเจอร์ใหญ่ที่แตกเป็นหลาย story (เทียบได้กับ Epic ใน Jira) story ลูกให้ผูกเป็น sub-issues
+description: ฟีเจอร์ใหญ่ที่แตกเป็นหลาย story story ลูกให้ผูกเป็น sub-issues
 title: "[Epic] "
 labels: ["epic"]
 body:

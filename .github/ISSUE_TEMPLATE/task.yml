@@ -1,5 +1,5 @@
 name: Task
-description: งานเทคนิคที่ไม่ใช่ฟีเจอร์โดยตรง เช่น เขียนเทสต์ ตั้งค่า deploy (เทียบได้กับ Task ใน Jira)
+description: งานเทคนิคที่ไม่ใช่ฟีเจอร์โดยตรง เช่น เขียนเทสต์ ตั้งค่า deploy
 title: "[Task] "
 labels: ["task"]
 body:
