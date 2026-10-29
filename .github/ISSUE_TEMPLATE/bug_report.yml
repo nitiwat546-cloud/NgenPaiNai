@@ -1,5 +1,5 @@
 name: Bug
-description: แจ้งสิ่งที่ทำงานผิด (เทียบได้กับ Bug ใน Jira)
+description: แจ้งสิ่งที่ทำงานผิด
 title: "[Bug] "
 labels: ["bug"]
 body:
